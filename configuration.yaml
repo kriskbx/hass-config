@@ -1,0 +1,269 @@
+
+default_config:
+browser_mod:
+
+# -------- Theme -------- #
+
+frontend:
+  themes:
+    default:
+      app-header-background-color: '#222627'
+      primary-color: '#e0e1e1'
+      primary-background-color: '#222627'
+      primary-text-color: '#e0e1e1'
+      card-background-color: '#222627'
+
+      paper-item-icon-color: '#9da0a2'
+      paper-item-icon-active-color: '#3182b7'
+
+      switch-checked-color: '#7a7d7f'
+      switch-unchecked-button-color: '#3b4041'
+      switch-unchecked-track-color: '#0c0d0d'
+
+      bar-card-border-radius: '0.3em'
+
+      card-color: rgba(34,38,39,0.9)
+      card-header: rgba(48,52,52,0.8)
+      card-mod-theme: default
+
+      card-mod-root: |
+        hui-view {
+          background: url('/local/background.png') !important;
+          background-size: cover !important;
+        }
+      card-mod-card: |
+        .card-header {
+          font-size: 1.2rem;
+          opacity: .65;
+          font-weight: var(--mcg-title-font-weight, 500);
+          line-height: 1;
+          padding: 18px 23px;
+          background: rgb(77,83,85);
+          margin-bottom: 20px;
+        }
+        .type-custom-bar-card bar-card-name {
+          padding-left: 0.25em;
+        }
+        .type-custom-bar-card bar-card-iconbar {
+          padding-left: 0.23em;
+        }
+        .type-custom-bar-card bar-card-value {
+          margin-right: auto;
+          color: #e0e1e1;
+          text-shadow: none;
+          font-size: 1em;
+          font-weight: 400;
+          letter-spacing: 0.01em;
+        }
+        .type-custom-bar-card bar-card-backgroundbar {
+          background: none;
+        }
+        .type-custom-bar-card bar-card-background {
+          background: radial-gradient(circle, rgba(52, 57, 58, 0.1) 0%, rgba(17,18,18,0.2) 75%);
+          box-shadow: inset 0 0 25px #00000045;
+          border-radius: 0.3em;
+          overflow: hidden;
+        }
+      card-mod-more-info-yaml: |
+        .: |
+          app-toolbar {
+            background: none !important;
+          }
+          mwc-icon-button {
+            margin-top: -3px;
+            color: #9e9e9e;
+          }
+          .main-title {
+            margin-top: 5px;
+          }
+        $: |
+          .mdc-dialog__scrim {
+            backdrop-filter: blur(20px) brightness(70%);
+            -webkit-backdrop-filter: blur(20px) brightness(70%);
+          }
+          .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+            background: linear-gradient(180deg,
+              var(--card-header) 0%,
+              var(--card-header) 4.6em,
+              var(--card-color) 4.6em,
+              var(--card-color) 100%);
+            box-shadow: none;
+            border-radius: 1em;
+          }
+          /* * * * * * * * * * * * * * * * * *
+           *                                 *
+           *        LIGHT POPUP CARD         *
+           *                                 *
+           * * * * * * * * * * * * * * * * * */
+        "div>hui-entities-card":
+          $:
+            "#states>div>light-popup-card":
+              $: |
+                #popup {
+                  margin: -2.4em 0 1.4em 0;
+                  isolation: isolate;
+                }
+                #popup>div.range-holder>input[type=range] {
+                  cursor: grab;
+                }
+                #brightnessValue {
+                  color: rgba(255, 255, 255, 0.8);
+                  margin: 4em 0 0 0;
+                  font-size: 2em;
+                  font-weight: 400;
+                  position: absolute;
+                  z-index: 100;
+                  letter-spacing: 0.02em;
+                  pointer-events: none;
+                  mix-blend-mode: difference;
+                  text-align: center;
+                  width: 3.4em;
+                  height: 3.4em;
+                }
+                #popup>div.range-holder>input[type=range]::-webkit-slider-thumb {
+                  border: 0;
+                  height: 0;
+                  width: 0;
+                  cursor: grabbing;
+                }
+
+# -------- Lovelace -------- #
+
+lovelace:
+  mode: yaml
+  resources:
+    - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js?v=0.10.0
+      type: module
+    - url: /hacsfiles/config-template-card/config-template-card.js
+      type: module
+    - url: /hacsfiles/stack-in-card/stack-in-card.js
+      type: module
+    - url: /hacsfiles/bar-card/bar-card.js
+      type: module
+    - url: /hacsfiles/lovelace-card-mod/card-mod.js
+      type: module
+    - url: /hacsfiles/lovelace-multiple-entity-row/multiple-entity-row.js
+      type: module
+    - url: /hacsfiles/button-card/button-card.js
+      type: module
+    - url: /hacsfiles/lovelace-hui-element/hui-element.js
+      type: module
+    - url: /hacsfiles/weather-card/weather-card.js
+      type: module          
+    - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
+      type: module
+    - url: /hacsfiles/light-popup-card/light-popup-card.js
+      type: module
+    - url: /hacsfiles/light-entity-card/light-entity-card.js
+      type: module           
+    - url: /hacsfiles/battery-state-card/battery-state-card.js
+      type: module
+    - url: /browser_mod.js
+      type: module
+    - url: '/local/custom_icons.js'
+      type: module
+                
+# -------- Integrations -------- #
+
+asuswrt:
+  host: !secret asuswrt_host
+  username: !secret asuswrt_username
+  protocol: ssh
+  ssh_key: /config/secrets/router_rsa
+  port: !secret asuswrt_port
+  mode: router
+
+nextcloud:
+  url: !secret nextcloud_url
+  username: !secret nextcloud_user
+  password: !secret nextcloud_password
+
+spotify:
+  client_id: !secret spotify_client_id
+  client_secret: !secret spotify_client_secret
+
+cast:
+
+hacs:
+  token: !secret hacs_token
+
+synology_dsm:
+  host: !secret synologydsm_host
+  port: !secret synologydsm_port
+  ssl: true
+  verify_ssl: false
+  username: !secret synologydsm_username
+  password: !secret synologydsm_password
+
+brother:
+  host: !secret brother_host
+  type: laser
+
+weather:
+  - platform: openweathermap
+    api_key: !secret openweathermap
+
+# -------- Sensors -------- #
+
+binary_sensor :
+  - platform: template
+    sensors:
+      nextcloud_updates_available:
+        friendly_name: "Updates available"
+        value_template: >
+          {{ (states('sensor.nextcloud_system_apps_num_updates_available')|int)>0 }}
+
+sensor:
+  - platform: template
+    sensors:
+      krisnas_status:
+        friendly_name: "Status"
+        icon_template: custom:synology-nas
+        value_template: >
+          {% set entity_id = 'sensor.krisnas_volume_1_status' %}
+          {% if is_state(entity_id, 'normal') %} Normal
+          {% elif is_state(entity_id, 'background') %} Checking…
+          {% else %} {{ states(entity_id) }}
+          {% endif %}
+      nextcloud_space_usage:
+        friendly_name: "Space usage"
+        unit_of_measurement: '%'
+        icon_template: mdi:harddisk
+        value_template: >
+          {{ 100-(((states('sensor.nextcloud_system_freespace')|int)/(20*1024*1000*10))|round(2)) }}
+      nextcloud_memory_usage:
+        friendly_name: "Memory usage"
+        unit_of_measurement: '%'
+        icon_template: mdi:memory
+        value_template: >
+          {{ (((states('sensor.nextcloud_system_mem_free')|int)/(states('sensor.nextcloud_system_mem_total')|int))|round(4))*100 }}
+      nextcloud_server_load_1m:
+        friendly_name: "Server load 1 M"
+        unit_of_measurement: '%'
+        icon_template: mdi:chip
+        value_template: >
+          {{ (states('sensor.nextcloud_system_cpuload')|regex_findall_index("\d.\d\d")|float)*100 }}
+
+# ------ Scenes ------ #
+
+scene:
+  - name: Romantic
+    entities:
+      light.decke_arbeitszimmer: off
+      light.decke_flur: off
+      light.decke_wohnzimmer: off
+      light.deckenlampe: off
+      light.stehlampe_wohnzimmer:
+        state: on
+        brightness: 100
+        color_temp: 500
+      light.stehlampe_arbeitszimmer:
+        state: on
+        brightness: 100
+        color_temp: 500
+      light.arbeitslicht:
+        state: on
+        brightness: 255
+      light.bett_oben:
+        state: on
+        brightness: 100

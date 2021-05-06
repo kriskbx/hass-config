@@ -1,0 +1,512 @@
+  # !toggle word-wrap
+
+  #################################################
+  #                                               #
+  #                     BASE                      #
+  #                                               #
+  #################################################
+
+  base:
+    aspect_ratio: 1/1
+    show_state: false
+    show_icon: false
+    tap_action:
+      action: toggle
+      haptic: light
+    styles:
+      grid:
+        - display: flex
+        - flex-direction: column-reverse
+        - justify-content: space-between
+        - text-align: left
+        - align-items: flex-start
+      name:
+        - display: block
+        - white-space: normal
+        - padding: 0 14px 5px 14px
+        - line-height: 1.2
+        - width: calc(100% - 28px)
+      card:
+        - font-weight: 400
+        - border: 2px solid
+        - border-color: >
+            [[[ return (entity.state === 'on' || entity.state === 'home') ? 'rgba(255, 255, 255, 0.2)' : 'transparent'; ]]]
+        - background-color: >
+            [[[ return (entity.state === 'on' || entity.state === 'home') ? 'rgba(255, 255, 255, 0.025)' : 'var( --ha-card-background, var(--card-background-color, white) )'; ]]]
+        
+
+  #################################################
+  #                                               #
+  #                    CIRCLE                     #
+  #                                               #
+  #################################################
+
+  circle:
+    custom_fields:
+      circle: >
+        [[[
+          if (entity.state === 'on') {
+            const input = variables.circle_input;
+            const radius = 20.5;
+            const circumference = radius * 2 * Math.PI;
+            return `
+              <svg viewBox="0 0 50 50">
+                <style>
+                  circle {
+                    transform: rotate(-90deg);
+                    transform-origin: 50% 50%;
+                    stroke-dasharray: ${circumference};
+                    stroke-dashoffset: ${circumference - input / 100 * circumference};
+                  }
+                  tspan {
+                    font-size: 10px;
+                  }
+                </style>
+                <circle cx="25" cy="25" r="${radius}" stroke="#b2b2b2" stroke-width="2" fill="none" />
+                <text x="50%" y="54%" fill="#8d8e90" font-size="14" text-anchor="middle" alignment-baseline="middle" dominant-baseline="middle">${input}<tspan font-size="10">%</tspan></text>
+              </svg>
+            `;
+          }
+        ]]]
+    styles:
+      custom_fields:
+        circle: &person
+          - top: 14px
+          - right: 16px
+          - width: 45px
+          - position: absolute
+
+  #################################################
+  #                                               #
+  #                    LOADER                     #
+  #                                               #
+  #################################################
+
+  loader:
+    custom_fields:
+      loader: >
+        [[[
+          if (states[entity.entity_id.replace(entity.entity_id.split('.')[0], 'input_boolean')].state === 'on') {
+            return '<img src="/local/loader.svg" width="100%">';
+          }
+        ]]]
+    styles:
+      custom_fields:
+        loader:
+          - top: 3%
+          - left: 60%
+          - width: 3.7vw
+          - position: absolute
+          - opacity: 0.6
+          - filter: >
+              [[[ return entity.state === 'off' ? 'invert(1)' : 'none'; ]]]
+
+  #################################################
+  #                                               #
+  #                     LIGHT                     #
+  #                                               #
+  #################################################
+
+  light:
+    template:
+      - base
+    hold_action:
+      action: fire-dom-event
+      browser_mod:
+        command: popup
+        title: >
+          [[[ return entity.attributes.friendly_name ]]]
+        card:
+          type: entities
+          entities:
+            - type: custom:light-popup-card
+              entity: >
+                [[[ return entity.entity_id ]]]
+              icon: none
+              fullscreen: false
+              brightnessWidth: 130px
+              brightnessHeight: 360px
+              borderRadius: 1.7em
+              sliderColor: '#c7c7c7'
+              sliderTrackColor: rgba(25, 25, 25, 0.9)
+            - type: custom:hui-element
+              card_type: horizontal-stack
+              card_mod:
+                style: >
+                  #root {
+                    justify-content: center;
+                    margin-top: 2em;
+                  }
+              cards:
+                - type: custom:button-card
+                  styles:
+                    card:
+                      - background: '#d8d9e1'
+                  tap_action:
+                    action: call-service
+                    service: light.turn_on
+                    service_data:
+                      entity_id: >
+                        [[[ return entity.entity_id ]]]
+                      color_temp: 153
+                  template: color_light
+                - type: custom:button-card
+                  styles:
+                    card:
+                      - background: '#d5b08d'
+                  tap_action:
+                    action: call-service
+                    service: light.turn_on
+                    service_data:
+                      entity_id: >
+                        [[[ return entity.entity_id ]]]
+                      color_temp: 326
+                  template: color_light
+            - type: custom:hui-element
+              card_type: horizontal-stack
+              card_mod:
+                style: >
+                  #root {
+                    justify-content: center;
+                    margin-bottom: 1em;
+                  }
+              cards:
+                - type: custom:button-card
+                  styles:
+                    card: 
+                      - background: '#ce944b'
+                  tap_action:
+                    action: call-service
+                    service: light.turn_on
+                    service_data:
+                      entity_id: >
+                        [[[ return entity.entity_id ]]]
+                      color_temp: 500
+                  template: color_light
+                #- type: custom:button-card
+                #  styles:
+                #    card:
+                #      [background: 'radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 80%), 
+                #      conic-gradient(rgb(120, 39, 230), rgb(230, 34, 231), rgb(228, 5, 136), rgb(228, 25, 25), 
+                #      rgb(229, 105, 30), rgb(232, 226, 46), rgb(125, 230, 41), rgb(52, 232, 40), rgb(51, 231, 92), 
+                #      rgb(52, 232, 224), rgb(32, 125, 229), rgb(18, 39, 229), rgb(120, 39, 230))']
+                #  tap_action:
+                #    action: fire-dom-event
+                #    browser_mod:
+                #      command: popup
+                #      title: >
+                #        [[[ return entity.attributes.friendly_name ]]]
+                #      card:
+                #        type: custom:light-entity-card
+                #        entity: >
+                #          [[[ return entity.entity_id ]]]
+                #        brightness: true
+                #        color_temp: true
+                #        full_width_sliders: false
+                #        hide_header: true
+                #        show_slider_percent: true
+                #        smooth_color_wheel: true
+                #        persist_features: true
+                #        consolidate_entities: true
+                #  template: color_light
+
+
+  #################################################
+  #                                               #
+  #                 POPUP BUTTONS                 #
+  #                                               #
+  #################################################
+
+  icon_name:
+    size: 1.4em
+    color: '#9da0a2'
+    styles:
+      grid:
+        - grid-template-areas: '"i n"'
+        - grid-column-gap: 0.3em
+      card:
+        - color: '#9da0a2'
+        - border-radius: 0.6em
+        - padding: 1em 1.4em 1em 1.2em
+        - width: 100%
+        - font-size: 1.06em
+        - font-weight: 500
+        - letter-spacing: 0.015em
+        - background: '#FFFFFF10'
+
+  icon_only:
+    color: '#9da0a2'
+    styles:
+      card:
+        - color: '#9da0a2'
+        - border-radius: 0.6em
+        - width: 4em
+        - height: 3.7em
+        - background: '#FFFFFF10'
+
+  color_light:
+    styles:
+      card:
+        - border-radius: 50%
+        - height: 4em
+        - width: 4em
+        - margin: 4px
+
+  #################################################
+  #                                               #
+  #                     ICONS                     #
+  #                                               #
+  #################################################
+
+  icon_shade:
+    styles:
+      custom_fields:
+        icon_shade:
+          - height: 50px
+          - margin: 5px 0 0 5px
+    custom_fields:
+      icon_shade: >
+        [[[
+          const state = entity.state === 'on' ? 'animate' : null;
+          return `
+            <svg viewBox="0 0 50 50" style="height:100%">
+              <style>
+                @keyframes animate {
+                  0% {
+                    transform: scale(0.85);
+                  }
+                  20% {
+                    transform: scale(1.1);
+                  }
+                  40% {
+                    transform: scale(0.95);
+                  }
+                  60% {
+                    transform: scale(1.03);
+                  }
+                  80% {
+                    transform: scale(0.97);
+                  }
+                  100% {
+                    transform: scale(1);
+                  }
+                }
+                .animate {
+                  animation: animate 0.8s;
+                  transform-origin: center;
+                }
+              </style>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M24.9 18.1587C24.3477 18.1587 23.9 18.6064 23.9 19.1587V41.3755H21.7202C21.1679 41.3755 20.7202 41.8232 20.7202 42.3755V42.5755C20.7202 43.1278 21.1679 43.5755 21.7202 43.5755H28.2799C28.8322 43.5755 29.2799 43.1278 29.2799 42.5755V42.3755C29.2799 41.8232 28.8322 41.3755 28.2799 41.3755H26.1V19.1587C26.1 18.6064 25.6523 18.1587 25.1 18.1587H24.9Z" fill="#4F5152"/>
+              <path class="${state}" fill="var(--button-card-light-color-no-temperature)" d="M19.2775 6.6411C19.495 6.05192 20.0566 5.66064 20.6846 5.66064H28.7162C29.3223 5.66064 29.8689 6.02546 30.1014 6.58524L34.6447 17.5229C35.055 18.5107 34.3291 19.5983 33.2595 19.5983H16.6462C15.6021 19.5983 14.8774 18.5582 15.2391 17.5788L19.2775 6.6411Z" fill="#9DA0A2"/>
+              </svg>
+          `;
+        ]]]
+
+  icon_work_lamp:
+    styles:
+      custom_fields:
+        work_lamp:
+          - height: 50px
+          - margin: 2px 0px 0px 12px
+    custom_fields:
+      work_lamp: >
+        [[[
+          const state = entity.state === 'on' ? 'animate' : null;
+          return `
+            <svg viewBox="0 0 50 50" style="height:100%">
+              <style>
+                @keyframes animate {
+                  0% {
+                    transform: scale(0.85);
+                  }
+                  20% {
+                    transform: scale(1.1);
+                  }
+                  40% {
+                    transform: scale(0.95);
+                  }
+                  60% {
+                    transform: scale(1.03);
+                  }
+                  80% {
+                    transform: scale(0.97);
+                  }
+                }
+                .animate {
+                  animation: animate 0.8s;
+                  transform-origin: center;
+                }
+              </style>
+              <path class="${state}" fill="var(--button-card-light-color-no-temperature)" d="M26.4703 16.9644C26.1488 15.3828 27.4145 11.7258 28.7605 10.5509C30.1065 9.37605 34.4408 6.79424 39.5716 8.62641C44.7024 10.4586 38.1065 26.9047 33.617 25.3015C29.1276 23.6984 26.7918 18.546 26.4703 16.9644Z" fill="#9DA0A2"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12.1684 9.09739C12.3286 8.56885 12.887 8.27026 13.4155 8.43047L27.498 12.6991C28.0265 12.8593 28.3251 13.4177 28.1649 13.9462L28.1069 14.1376C27.9466 14.6661 27.3883 14.9647 26.8598 14.8045L17.6793 12.0218L17.6793 42.5952C17.6793 42.5953 17.6793 42.5954 17.6793 42.5955H20.0574C20.6097 42.5955 21.0574 43.0432 21.0574 43.5955V43.7955C21.0574 44.3477 20.6097 44.7955 20.0574 44.7955H13.4585C12.9062 44.7955 12.4585 44.3477 12.4585 43.7955V43.5955C12.4585 43.0432 12.9062 42.5955 13.4585 42.5955H15.4793C15.4793 42.5954 15.4793 42.5953 15.4793 42.5952L15.4793 11.428C15.4793 11.4037 15.4802 11.3796 15.4819 11.3557L12.7773 10.5359C12.2488 10.3757 11.9502 9.81732 12.1104 9.28879L12.1684 9.09739Z" fill="#4F5152"/>
+              </svg>
+          `;
+        ]]]
+
+  icon_led:
+    styles:
+      custom_fields:
+        icon_led:
+          - height: 50px
+          - margin: 2px 0px 0px 12px
+    custom_fields:
+      icon_led: >
+        [[[
+          const state = entity.state === 'on' ? 'animate' : null;
+          return `
+            <svg viewBox="0 0 50 50" style="height:100%">
+              <style>
+                @keyframes animate {
+                  0% {
+                    transform: scale(0.85);
+                  }
+                  20% {
+                    transform: scale(1.1);
+                  }
+                  40% {
+                    transform: scale(0.95);
+                  }
+                  60% {
+                    transform: scale(1.03);
+                  }
+                  80% {
+                    transform: scale(0.97);
+                  }
+                }
+                .animate {
+                  animation: animate 0.8s;
+                  transform-origin: center;
+                }
+              </style>
+              <rect x="38.453" y="9.55908" width="8.90696" height="39.2861" rx="1" transform="rotate(52.7219 38.453 9.55908)" fill="#4F5152"/>
+              <rect x="19.9248" y="9.55908" width="8.90696" height="17.3087" rx="1" transform="rotate(52.7219 19.9248 9.55908)" fill="#4F5152"/>
+              <path class="${state}" fill="var(--button-card-light-color-no-temperature)" fill-rule="evenodd" clip-rule="evenodd" d="M16.4922 15.2718C16.164 16.4741 16.8726 17.7148 18.0749 18.043C19.2772 18.3711 20.5179 17.6625 20.8461 16.4602C21.1742 15.2579 20.4656 14.0173 19.2633 13.6891C18.0611 13.3609 16.8204 14.0695 16.4922 15.2718ZM12.2086 22.5366C11.0063 22.2084 10.2977 20.9678 10.6259 19.7655C10.954 18.5632 12.1947 17.8546 13.397 18.1827C14.5993 18.5109 15.3079 19.7516 14.9797 20.9539C14.6516 22.1562 13.4109 22.8648 12.2086 22.5366ZM35.0923 15.2718C34.7641 16.4741 35.4727 17.7148 36.675 18.043C37.8773 18.3711 39.118 17.6625 39.4462 16.4602C39.7743 15.2579 39.0657 14.0173 37.8634 13.6891C36.6611 13.3609 35.4205 14.0695 35.0923 15.2718ZM29.226 19.7655C28.8978 20.9678 29.6064 22.2084 30.8087 22.5366C32.011 22.8648 33.2517 22.1562 33.5798 20.9539C33.908 19.7516 33.1994 18.5109 31.9971 18.1827C30.7948 17.8546 29.5541 18.5632 29.226 19.7655ZM24.9424 27.0312C23.7401 26.7031 23.0315 25.4624 23.3596 24.2601C23.6878 23.0578 24.9285 22.3492 26.1308 22.6774C27.3331 23.0055 28.0417 24.2462 27.7135 25.4485C27.3853 26.6508 26.1446 27.3594 24.9424 27.0312ZM17.4935 28.7538C17.1654 29.956 17.874 31.1967 19.0763 31.5249C20.2786 31.8531 21.5192 31.1445 21.8474 29.9422C22.1756 28.7399 21.467 27.4992 20.2647 27.171C19.0624 26.8429 17.8217 27.5515 17.4935 28.7538ZM13.2099 36.0186C12.0076 35.6904 11.299 34.4497 11.6272 33.2474C11.9554 32.0451 13.1961 31.3365 14.3983 31.6647C15.6006 31.9928 16.3092 33.2335 15.9811 34.4358C15.6529 35.6381 14.4122 36.3467 13.2099 36.0186Z" fill="#C4C4C4"/>
+              </svg>
+          `;
+        ]]]
+
+  icon_ceiling:
+    styles:
+      custom_fields:
+        icon_ceiling:
+          - height: 50px
+          - margin: 2px 0px 0px 12px
+    custom_fields:
+      icon_ceiling: >
+        [[[
+          const state = entity.state === 'on' ? 'animate' : null;
+          return `
+            <svg viewBox="0 0 50 50" style="height:100%">
+              <style>
+                @keyframes animate {
+                  0% {
+                    transform: scale(0.85);
+                  }
+                  20% {
+                    transform: scale(1.1);
+                  }
+                  40% {
+                    transform: scale(0.95);
+                  }
+                  60% {
+                    transform: scale(1.03);
+                  }
+                  80% {
+                    transform: scale(0.97);
+                  }
+                }
+                .animate {
+                  animation: animate 0.8s;
+                  transform-origin: center;
+                }
+              </style>
+              <rect x="23.8999" y="8.95801" width="2.2" height="17.71" rx="1" fill="#4F5152"/>
+              <path class="${state}" fill="var(--button-card-light-color-no-temperature)"  d="M22.6794 24.6488C22.961 24.2548 23.4155 24.021 23.8998 24.021H26.0285C26.5109 24.021 26.9638 24.253 27.2457 24.6445L35.1217 35.5821C35.8362 36.5743 35.1271 37.9587 33.9045 37.9587H16.0827C14.8625 37.9587 14.1529 36.5792 14.8624 35.5865L22.6794 24.6488Z" fill="#9DA0A2"/>
+              </svg>
+          `;
+        ]]] 
+
+  icon_ceiling_double:
+    styles:
+      custom_fields:
+        icon_ceiling_double:
+          - height: 50px
+          - margin: 2px 0px 0px 12px
+    custom_fields:
+      icon_ceiling_double: >
+        [[[
+          const state = entity.state === 'on' ? 'animate' : null;
+          return `
+            <svg viewBox="0 0 50 50" style="height:100%">
+              <style>
+                @keyframes animate {
+                  0% {
+                    transform: scale(0.85);
+                  }
+                  20% {
+                    transform: scale(1.1);
+                  }
+                  40% {
+                    transform: scale(0.95);
+                  }
+                  60% {
+                    transform: scale(1.03);
+                  }
+                  80% {
+                    transform: scale(0.97);
+                  }
+                }
+                .animate {
+                  animation: animate 0.8s;
+                  transform-origin: center;
+                }
+              </style>
+              <rect x="15.5801" y="3.24756" width="2.6097" height="21.008" rx="1" fill="#4F5152"/>
+              <rect x="33.2698" y="3.24756" width="2.6097" height="18.2018" rx="1" fill="#4F5152"/>
+              <path class="${state}" fill="var(--button-card-light-color-no-temperature)" fill-rule="evenodd" clip-rule="evenodd" d="M16.1709 23.1333C15.5158 23.1333 14.9847 23.6644 14.9847 24.3195V27.1339C14.9847 27.137 14.9847 27.1401 14.9847 27.1433C13.05 29.1386 10.333 32.5646 10.333 36.0697C10.333 41.5127 14.674 45.4317 15.4779 45.4317C15.4779 45.4317 15.4779 46.7529 16.8849 46.7529C18.2919 46.7529 18.2919 45.4317 18.2919 45.4317C19.0958 45.4317 23.4368 41.5127 23.4368 36.0697C23.4368 32.5487 20.695 29.1073 18.7587 27.1161V24.3195C18.7587 23.6644 18.2276 23.1333 17.5725 23.1333H16.1709Z" fill="#9DA0A2"/>
+              <path class="${state}" fill="var(--button-card-light-color-no-temperature)" fill-rule="evenodd" clip-rule="evenodd" d="M33.8738 19.5391C33.2186 19.5391 32.6875 20.0702 32.6875 20.7253V23.307C30.8093 24.0568 29.4822 25.8925 29.4822 28.0383C29.4822 30.8507 31.7621 33.1306 34.5745 33.1306C37.3869 33.1306 39.6668 30.8507 39.6668 28.0383C39.6668 25.8926 38.3397 24.0569 36.4616 23.3071V20.7253C36.4616 20.0702 35.9305 19.5391 35.2753 19.5391H33.8738Z" fill="#9DA0A2"/>
+              </svg>
+          `;
+        ]]]           
+
+  icon_panel:
+    styles:
+      custom_fields:
+        icon_panel:
+          - height: 50px
+          - margin: 2px 0px 0px 12px
+    custom_fields:
+      icon_panel: >
+        [[[
+          const state = entity.state === 'on' ? 'animate' : null;
+          return `
+            <svg viewBox="0 0 50 50" style="height:100%">
+              <style>
+                @keyframes animate {
+                  0% {
+                    transform: scale(0.85);
+                  }
+                  20% {
+                    transform: scale(1.1);
+                  }
+                  40% {
+                    transform: scale(0.95);
+                  }
+                  60% {
+                    transform: scale(1.03);
+                  }
+                  80% {
+                    transform: scale(0.97);
+                  }
+                }
+                .animate {
+                  animation: animate 0.8s;
+                  transform-origin: center;
+                }
+              </style>
+              <path d="M9.24709 13.6686C9.03125 14.3161 9.51322 14.9848 10.1958 14.9848H40.8043C41.4869 14.9848 41.9688 14.3161 41.753 13.6686L41.6778 13.443C41.5417 13.0347 41.1596 12.7593 40.7291 12.7593H10.271C9.84053 12.7593 9.45839 13.0347 9.32228 13.443L9.24709 13.6686Z" fill="#4F5152"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M41.866 16.9789C42.0308 16.3454 41.5528 15.7271 40.8983 15.7271H10.0669C9.42332 15.7271 8.94732 16.3261 9.09274 16.953L13.6194 36.4668C13.7246 36.92 14.1283 37.2408 14.5936 37.2408H35.821C36.2763 37.2408 36.6741 36.9332 36.7888 36.4926L41.866 16.9789ZM38.8311 18.6773C38.996 18.0438 38.5179 17.4254 37.8633 17.4254H13.1028C12.4589 17.4254 11.9828 18.0251 12.1288 18.6522L15.8813 34.769C15.9867 35.2218 16.3903 35.5423 16.8553 35.5423H33.6691C34.1244 35.5423 34.5222 35.2347 34.6368 34.7941L38.8311 18.6773Z" fill="#4F5152"/>
+              <path class="${state}" fill="var(--button-card-light-color-no-temperature)" d="M13.5665 19.9347C13.4104 19.3041 13.8876 18.6943 14.5372 18.6943H36.4269C37.0876 18.6943 37.5667 19.3237 37.3908 19.9606L33.6405 33.5395C33.5207 33.973 33.1263 34.2733 32.6766 34.2733H17.8996C17.4399 34.2733 17.0394 33.9598 16.9289 33.5136L13.5665 19.9347Z" fill="#9DA0A2"/>
+              </svg>
+          `;
+        ]]]

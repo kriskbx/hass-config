@@ -1,0 +1,9 @@
+.cloud
+.idea
+.storage
+backup
+deps
+image
+secrets
+secrets.yaml
+home-assistant*
