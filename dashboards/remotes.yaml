@@ -211,7 +211,6 @@ views:
             columns: 3
             square: false
             cards:
-
               - type: button
                 icon: mdi:power
                 tap_action:
@@ -221,3 +220,112 @@ views:
                     entity_id: remote.ir_blaster_remote
                     device: stereo
                     command: amp-power
+
+          - type: markdown
+            content: " "
+            style:
+              .: |
+                ha-card {
+                  background-color: transparent !important;
+                  box-shadow: none !important;
+                }
+
+          - type: grid
+            columns: 3
+            square: false
+            cards:
+              - type: button
+                icon: mdi:volume-minus
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:  
+                    entity_id: remote.ir_blaster_remote
+                    device: stereo
+                    command: volume-down
+              - type: button
+                icon: mdi:volume-off
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:  
+                    entity_id: remote.ir_blaster_remote
+                    device: stereo
+                    command: mute
+              - type: button
+                icon: mdi:volume-plus
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:  
+                    entity_id: remote.ir_blaster_remote
+                    device: stereo
+                    command: volume-up
+
+          - type: markdown
+            content: " "
+            style:
+              .: |
+                ha-card {
+                  background-color: transparent !important;
+                  box-shadow: none !important;
+                }
+
+          - type: grid
+            columns: 3
+            square: true
+            cards:
+              - type: button
+                name: CD
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:  
+                    entity_id: remote.ir_blaster_remote
+                    device: stereo
+                    command: cd
+              - type: button
+                name: Recorder
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:  
+                    entity_id: remote.ir_blaster_remote
+                    device: stereo
+                    command: recorder
+              - type: button
+                name: Network
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:  
+                    entity_id: remote.ir_blaster_remote
+                    device: stereo
+                    command: network
+              - type: button
+                name: Phono
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:  
+                    entity_id: remote.ir_blaster_remote
+                    device: stereo
+                    command: phono
+              - type: button
+                name: AUX
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:  
+                    entity_id: remote.ir_blaster_remote
+                    device: stereo
+                    command: aux
+              - type: button
+                name: Tuner
+                tap_action:
+                  action: call-service
+                  service: remote.send_command
+                  service_data:  
+                    entity_id: remote.ir_blaster_remote
+                    device: stereo
+                    command: tuner
