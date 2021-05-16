@@ -1,0 +1,125 @@
+frontend:
+  themes:
+
+    default:
+      app-header-background-color: '#222627'
+      primary-color: '#e0e1e1'
+      primary-background-color: '#222627'
+      primary-text-color: '#e0e1e1'
+      card-background-color: '#222627'
+
+      paper-item-icon-color: '#9da0a2'
+      paper-item-icon-active-color: '#3182b7'
+
+      switch-checked-color: '#7a7d7f'
+      switch-unchecked-button-color: '#3b4041'
+      switch-unchecked-track-color: '#0c0d0d'
+
+      bar-card-border-radius: '0.3em'
+
+      card-color: rgba(34,38,39,0.9)
+      card-header: rgba(48,52,52,0.8)
+      card-mod-theme: default
+
+      card-mod-root: |
+        hui-view {
+          background: url('/local/background.png') !important;
+          background-size: cover !important;
+        }
+
+      card-mod-card: |
+        .card-header {
+          font-size: 1.2rem;
+          opacity: .65;
+          font-weight: var(--mcg-title-font-weight, 500);
+          line-height: 1;
+          padding: 18px 23px;
+          background: rgb(77,83,85);
+          margin-bottom: 20px;
+        }
+        .type-custom-bar-card bar-card-name {
+          padding-left: 0.25em;
+        }
+        .type-custom-bar-card bar-card-iconbar {
+          padding-left: 0.23em;
+        }
+        .type-custom-bar-card bar-card-value {
+          margin-right: auto;
+          color: #e0e1e1;
+          text-shadow: none;
+          font-size: 1em;
+          font-weight: 400;
+          letter-spacing: 0.01em;
+        }
+        .type-custom-bar-card bar-card-backgroundbar {
+          background: none;
+        }
+        .type-custom-bar-card bar-card-background {
+          background: radial-gradient(circle, rgba(52, 57, 58, 0.1) 0%, rgba(17,18,18,0.2) 75%);
+          box-shadow: inset 0 0 25px #00000045;
+          border-radius: 0.3em;
+          overflow: hidden;
+        }
+
+      card-mod-more-info-yaml: |
+        .: |
+          app-toolbar {
+            background: none !important;
+          }
+          mwc-icon-button {
+            margin-top: -3px;
+            color: #9e9e9e;
+          }
+          .main-title {
+            margin-top: 5px;
+          }
+        $: |
+          .mdc-dialog__scrim {
+            backdrop-filter: blur(20px) brightness(70%);
+            -webkit-backdrop-filter: blur(20px) brightness(70%);
+          }
+          .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
+            background: linear-gradient(180deg,
+              var(--card-header) 0%,
+              var(--card-header) 4.6em,
+              var(--card-color) 4.6em,
+              var(--card-color) 100%);
+            box-shadow: none;
+            border-radius: 1em;
+          }
+          /* * * * * * * * * * * * * * * * * *
+           *                                 *
+           *        LIGHT POPUP CARD         *
+           *                                 *
+           * * * * * * * * * * * * * * * * * */
+        "div>hui-entities-card":
+          $:
+            "#states>div>light-popup-card":
+              $: |
+                #popup {
+                  margin: -2.4em 0 1.4em 0;
+                  isolation: isolate;
+                }
+                #popup>div.range-holder>input[type=range] {
+                  cursor: grab;
+                }
+                #brightnessValue {
+                  color: rgba(255, 255, 255, 0.8);
+                  margin: 4em 0 0 0;
+                  font-size: 2em;
+                  font-weight: 400;
+                  position: absolute;
+                  z-index: 100;
+                  letter-spacing: 0.02em;
+                  pointer-events: none;
+                  mix-blend-mode: difference;
+                  text-align: center;
+                  width: 3.4em;
+                  height: 3.4em;
+                }
+                #popup>div.range-holder>input[type=range]::-webkit-slider-thumb {
+                  border: 0;
+                  height: 0;
+                  width: 0;
+                  cursor: grabbing;
+                }

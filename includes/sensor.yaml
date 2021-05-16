@@ -1,0 +1,42 @@
+binary_sensor :
+  - platform: template
+    sensors:
+      nextcloud_updates_available:
+        friendly_name: "Updates available"
+        value_template: >
+          {{ (states('sensor.nextcloud_system_apps_num_updates_available')|int)>0 }}
+
+sensor:
+  - platform: template
+    sensors:
+
+      krisnas_status:
+        friendly_name: "Status"
+        icon_template: custom:synology-nas
+        value_template: >
+          {% set entity_id = 'sensor.krisnas_volume_1_status' %}
+          {% if is_state(entity_id, 'normal') %} Normal
+          {% elif is_state(entity_id, 'background') %} Checking…
+          {% else %} {{ states(entity_id) }}
+          {% endif %}
+
+      nextcloud_space_usage:
+        friendly_name: "Space usage"
+        unit_of_measurement: '%'
+        icon_template: mdi:harddisk
+        value_template: >
+          {{ 100-(((states('sensor.nextcloud_system_freespace')|int)/(20*1024*1000*10))|round(2)) }}
+
+      nextcloud_memory_usage:
+        friendly_name: "Memory usage"
+        unit_of_measurement: '%'
+        icon_template: mdi:memory
+        value_template: >
+          {{ (((states('sensor.nextcloud_system_mem_free')|int)/(states('sensor.nextcloud_system_mem_total')|int))|round(4))*100 }}
+
+      nextcloud_server_load_1m:
+        friendly_name: "Server load 1 M"
+        unit_of_measurement: '%'
+        icon_template: mdi:chip
+        value_template: >
+          {{ (states('sensor.nextcloud_system_cpuload')|regex_findall_index("\d.\d\d")|float)*100 }}

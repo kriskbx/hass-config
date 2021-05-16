@@ -1,0 +1,118 @@
+scene:
+
+  - name: "Off"
+    entities:
+      light.decke_arbeitszimmer: off
+      light.decke_flur: off
+      light.decke_wohnzimmer: off
+      light.deckenlampe: off
+      light.stehlampe_wohnzimmer: off
+      light.stehlampe_arbeitszimmer: off
+      light.arbeitslicht: off
+      light.bett_oben: off
+
+  - name: Dining
+    entities:
+      light.decke_arbeitszimmer: off
+      light.decke_flur: off
+      light.decke_wohnzimmer: off
+      light.deckenlampe:
+        state: on
+        brightness: 85
+      light.stehlampe_wohnzimmer: off
+      light.stehlampe_arbeitszimmer: off
+      light.arbeitslicht:
+        state: on
+        brightness: 255
+      light.bett_oben: off
+
+  - name: Work
+    entities:
+      light.decke_arbeitszimmer: 
+        state: on
+        brightness: 200
+      light.decke_flur:
+        state: on
+        brightness: 200
+      light.decke_wohnzimmer:
+        state: on
+        brightness: 200
+      light.deckenlampe: off
+      light.stehlampe_wohnzimmer: off
+      light.stehlampe_arbeitszimmer: off
+      light.arbeitslicht: off
+      light.bett_oben: off
+  - name: work_temp
+    entities:
+      light.decke_arbeitszimmer: 
+        state: on
+        color_temp: 153
+      light.decke_flur:
+        state: on
+        color_temp: 153
+      light.decke_wohnzimmer:
+        state: on
+        color_temp: 153
+
+  - name: Cinema
+    entities:
+      light.decke_arbeitszimmer: off
+      light.decke_flur: off
+      light.decke_wohnzimmer: off
+      light.deckenlampe: off
+      light.stehlampe_wohnzimmer: off
+      light.stehlampe_arbeitszimmer: off
+      light.arbeitslicht: off
+      light.bett_oben:
+        state: on
+        brightness: 25
+
+  - name: Bath
+    entities:
+      light.decke_arbeitszimmer: off
+      light.decke_flur:
+        state: on
+        brightness: 60
+      light.decke_wohnzimmer: off
+      light.deckenlampe: off
+      light.stehlampe_wohnzimmer: off
+      light.stehlampe_arbeitszimmer: off
+      light.arbeitslicht: off
+      light.bett_oben: off
+  - name: bath_temp
+    entities:
+      light.decke_flur:
+        state: on
+        color_temp: 500
+
+  - name: Romantic
+    entities:
+      light.decke_arbeitszimmer: off
+      light.decke_flur:
+        state: on
+        brightness: 40
+      light.decke_wohnzimmer: off
+      light.deckenlampe: off
+      light.stehlampe_wohnzimmer:
+        state: on
+        brightness: 100
+      light.stehlampe_arbeitszimmer:
+        state: on
+        brightness: 100
+      light.arbeitslicht:
+        state: on
+        brightness: 255
+      light.bett_oben:
+        state: on
+        brightness: 100
+  - name: romantic_temp
+    entities:
+      light.decke_flur:
+        state: on
+        color_temp: 500
+      light.stehlampe_wohnzimmer:
+        state: on
+        color_temp: 500
+      light.stehlampe_arbeitszimmer:
+        state: on
+        color_temp: 500

@@ -1,0 +1,299 @@
+script:
+
+  turn_off_light:
+    sequence:
+      - service: light.turn_off
+        data_template:
+          entity_id: "{{ entity }}"
+          transition: 1
+
+  turn_on_light:
+    sequence:
+      - service: light.turn_on
+        data_template:
+          entity_id: "{{ entity }}"
+          brightness: "{{ brightness }}"
+          transition: 1
+      - condition: template
+        value_template: "{{ float(color_temp) > 0 }}"
+      - delay: 00:00:01
+      - service: light.turn_on
+        data_template:
+          entity_id: "{{ entity }}"
+          color_temp: "{{ color_temp }}"
+          transition: 2
+
+  turn_on_scene:
+    sequence:
+      - service: scene.turn_on
+        data_template:
+          entity_id: scene.{{ entity }}
+      - delay: 00:00:01
+      - service: scene.turn_on
+        data_template:
+          entity_id: scene.{{ entity }}_temp
+          transition: 2
+
+  # -------- Learn remotes -------- #
+
+  learn_stereo:
+    sequence: 
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: stereo
+          command: power
+      - delay: 00:00:02    
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: stereo
+          command: amp-power
+      - delay: 00:00:02    
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: stereo
+          command: cd
+      - delay: 00:00:02    
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: stereo
+          command: recorder
+      - delay: 00:00:02    
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: stereo
+          command: network
+      - delay: 00:00:02    
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: stereo
+          command: phono
+      - delay: 00:00:02    
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: stereo
+          command: aux
+      - delay: 00:00:02    
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: stereo
+          command: tuner
+      - delay: 00:00:02    
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: stereo
+          command: volume-up
+      - delay: 00:00:02    
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: stereo
+          command: volume-down
+      - delay: 00:00:02    
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: stereo
+          command: mute
+  learn_projector:
+    sequence:
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: on 
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: off
+      - delay: 00:00:02    
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: user1
+      - delay: 00:00:02          
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: user2
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: user3
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: brightness
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: contrast
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: mode
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: keystone
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: aspect-ratio
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: 3d
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: mute
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: db
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: sleep-timer
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: up
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: left
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: enter
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: right
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: down
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: menu
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: hdmi1
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: hdmi2
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: vga1
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: vga2
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: video
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: projector
+          command: ypbpr

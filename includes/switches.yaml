@@ -1,0 +1,68 @@
+switch:
+  - platform: template
+    switches:
+
+      scene_dining:
+        friendly_name: Dining
+        icon_template: mdi:silverware-variant
+        value_template: false
+        turn_off:
+        turn_on:
+          - service: script.turn_on_scene
+            data:
+              entity: dining
+
+      scene_cinema:
+        friendly_name: Cinema
+        icon_template: mdi:movie-open
+        value_template: false
+        turn_off:
+          - service: switch.turn_off
+            entity_id: switch.scene_cinema
+        turn_on:
+          - service: switch.turn_on
+            entity_id: switch.scene_cinema
+          - service: script.turn_on_scene
+            data:
+              entity: cinema
+
+      scene_romantic:
+        friendly_name: Romantic
+        icon_template: mdi:cards-heart
+        value_template: false
+        turn_off:
+        turn_on:
+          - service: script.turn_on_scene
+            data:
+              entity: romantic
+
+      scene_work:
+        friendly_name: Work
+        icon_template: mdi:weather-sunny
+        value_template: false
+        turn_off:
+        turn_on:
+          - service: script.turn_on_scene
+            data:
+              entity: work
+
+      scene_bath:
+        friendly_name: Bath
+        icon_template: mdi:hot-tub
+        value_template: false
+        turn_off:
+        turn_on:
+          - service: script.turn_on_scene
+            data:
+              entity: bath
+
+      scene_off:
+        friendly_name: "Off"
+        icon_template: mdi:eye-off
+        value_template: false
+        turn_off:
+        turn_on:
+          - service: script.turn_on_scene
+            data:
+              entity: "off"
+          
