@@ -2,6 +2,75 @@ switch:
   - platform: template
     switches:
 
+      projector:
+        friendly_name: projector
+        icon_template: mdi:projector
+        value_template: "{{ is_state('input_boolean.projector', 'on') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.projector
+            state: "off"
+          - service: input_boolean.turn_on
+            data:
+              entity_id: input_boolean.projector
+          - service: remote.send_command
+            target:
+              entity_id: remote.ir_blaster_remote
+            data:
+              device: projector
+              command: on
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.projector
+            state: "on"
+          - service: input_boolean.turn_off
+            data:
+              entity_id: input_boolean.projector
+          - service: remote.send_command
+            target:
+              entity_id: remote.ir_blaster_remote
+            data:
+              device: projector
+              command: off
+          - delay: 00:00:02
+          - service: remote.send_command
+            target:
+              entity_id: remote.ir_blaster_remote
+            data:
+              device: projector
+              command: off
+
+      stereo:
+        friendly_name: Stereo
+        icon_template: mdi:speaker
+        value_template: "{{ is_state('input_boolean.stereo', 'on') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.stereo
+            state: "off"
+          - service: input_boolean.turn_on
+            data:
+              entity_id: input_boolean.stereo
+          - service: remote.send_command
+            target:
+              entity_id: remote.ir_blaster_remote
+            data:
+              device: stereo
+              command: amp-power
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.stereo
+            state: "on"
+          - service: input_boolean.turn_off
+            data:
+              entity_id: input_boolean.stereo
+          - service: remote.send_command
+            target:
+              entity_id: remote.ir_blaster_remote
+            data:
+              device: stereo
+              command: amp-power
+
       scene_dining:
         friendly_name: Dining
         icon_template: mdi:silverware-variant
@@ -15,13 +84,24 @@ switch:
       scene_cinema:
         friendly_name: Cinema
         icon_template: mdi:movie-open
-        value_template: {{ is_state('switch.scene_cinema', 'on') }}
+        value_template: "{{ is_state('input_boolean.projector', 'on') }}"
         turn_off:
           - service: switch.turn_off
-            entity_id: switch.scene_cinema
+            entity_id: switch.stereo
+          - service: switch.turn_off
+            entity_id: switch.projector
         turn_on:
           - service: switch.turn_on
-            entity_id: switch.scene_cinema
+            entity_id: switch.stereo
+          - service: switch.turn_on
+            entity_id: switch.projector
+          - delay: 00:00:01
+          - service: remote.send_command
+            target:
+              entity_id: remote.ir_blaster_remote
+            data:
+              device: stereo
+              command: tuner
           - service: script.turn_on_scene
             data:
               entity: cinema

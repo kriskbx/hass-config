@@ -1,3 +1,11 @@
+input_boolean:
+  projector:
+    name: Projector
+    initial: off
+  stereo:
+    name: Stereo
+    initial: off
+
 binary_sensor :
   - platform: template
     sensors:

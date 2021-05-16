@@ -1,4 +1,4 @@
-script:
+script:     
 
   turn_off_light:
     sequence:
@@ -33,6 +33,7 @@ script:
         data_template:
           entity_id: scene.{{ entity }}_temp
           transition: 2
+
 
   # -------- Learn remotes -------- #
 
@@ -121,7 +122,7 @@ script:
           entity_id: remote.ir_blaster_remote
         data:
           device: projector
-          command: on 
+          command: on
       - delay: 00:00:02
       - service: remote.learn_command
         target:
