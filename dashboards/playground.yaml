@@ -1,7 +1,7 @@
 button_card_templates: !include ../button_card_templates.yaml
 
 kiosk_mode:
-  #hide_header: true
+  hide_header: true
   hide_sidebar: true
 
 views:
@@ -159,6 +159,35 @@ views:
                       name: Memory - 4 GB
                     - entity: sensor.nextcloud_space_usage
                       name: Volume - 20 GB
+          # ----- Devices ----- #
+          - type: entities
+            title: Devices
+            show_header_toggle: false
+            entities:
+              - type: custom:battery-state-card
+                entity: sensor.pixel_4a_battery_level
+                color_thresholds: &battery_colors
+                  - value: 10
+                    color: "#EF4444"
+                  - value: 20
+                    color: "#F59E0B"
+                  - value: 100
+                    color: "#9da0a2"
+              - type: custom:battery-state-card
+                entity: sensor.honey_jahanis_iphone_battery_level
+                color_thresholds: *battery_colors
+              - type: custom:battery-state-card
+                entity: sensor.fernbedienung_arbeitszimmer
+                color_thresholds: *battery_colors
+              - type: custom:battery-state-card
+                entity: sensor.fernbedienung_wohnzimmer
+                color_thresholds: *battery_colors
+              - type: custom:battery-state-card
+                entity: sensor.fernbedienung_kuche
+                color_thresholds: *battery_colors
+              - type: custom:battery-state-card
+                entity: sensor.flur_fernbedienung
+                color_thresholds: *battery_colors
 
       - type: vertical-stack
         cards:
@@ -177,6 +206,15 @@ views:
                   background-color: transparent !important;
                   box-shadow: none !important;
                 }
+        # ----- Weather ----- #                        
+        - type: custom:weather-card
+          entity: weather.openweathermap
+          current: true
+          details: false
+          forecast: true
+          hourly_forecast: false
+          hide_precipitation: true
+          number_of_forecasts: 5
         # ----- Lights ----- #
         - type: grid
           columns: 3

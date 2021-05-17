@@ -5,6 +5,10 @@ input_boolean:
   stereo:
     name: Stereo
     initial: off
+  bath:
+    name: bath
+    initial: off
+
 
 binary_sensor :
   - platform: template

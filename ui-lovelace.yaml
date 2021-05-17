@@ -72,7 +72,7 @@ views:
               - light
               - icon_ceiling_double
   - title: Projector
-    path: Projector
+    path: projector
     icon: mdi:projector
     cards:
       - type: vertical-stack

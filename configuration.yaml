@@ -41,6 +41,8 @@ lovelace:
       type: module           
     - url: /hacsfiles/battery-state-card/battery-state-card.js
       type: module
+    - url: /hacsfiles/kiosk-mode/kiosk-mode.js
+      type: module     
     - url: /browser_mod.js
       type: module
     - url: '/local/custom_icons.js'
@@ -50,11 +52,11 @@ lovelace:
       mode: yaml
       title: Default
       filename: dashboards/default.yaml
-      show_in_sidebar: true
+      show_in_sidebar: false
                 
 # -------- Integrations -------- #
 
-# config flow: cast, asuswrt, openweathermap, broadlink
+# config flow: cast, asuswrt, openweathermap, broadlink, fullykiosk
 
 nextcloud:
   url: !secret nextcloud_url
@@ -64,6 +66,10 @@ nextcloud:
 spotify:
   client_id: !secret spotify_client_id
   client_secret: !secret spotify_client_secret
+
+spotcast:
+  sp_dc: !secret sp_dc
+  sp_key: !secret sp_key
 
 synology_dsm:
   host: !secret synologydsm_host

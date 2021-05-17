@@ -34,6 +34,25 @@ script:
           entity_id: scene.{{ entity }}_temp
           transition: 2
 
+  normalize_volume:
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: stereo
+          command: volume-down
+          num_repeats: 25
+          delay_secs: 0
+      - delay: 00:00:05
+      - service: remote.send_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: stereo
+          command: volume-up
+          num_repeats: 11
+          delay_secs: 0
 
   # -------- Learn remotes -------- #
 
