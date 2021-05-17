@@ -8,6 +8,9 @@ input_boolean:
   bath:
     name: bath
     initial: off
+  music:
+    name: music
+    initial: off
 
 
 binary_sensor :

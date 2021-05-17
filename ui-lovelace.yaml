@@ -22,6 +22,9 @@ views:
             entity: switch.scene_cinema
             show_name: false
           - type: custom:button-card
+            entity: switch.scene_music
+            show_name: false
+          - type: custom:button-card
             entity: switch.scene_bath
             show_name: false
           - type: custom:button-card
