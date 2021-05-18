@@ -48,6 +48,11 @@ lovelace:
     - url: '/local/custom_icons.js'
       type: module
   dashboards:
+    lovelace-remotes:
+      mode: yaml
+      title: Remotes
+      filename: dashboards/remotes.yaml
+      show_in_sidebar: true
     lovelace-default:
       mode: yaml
       title: Default

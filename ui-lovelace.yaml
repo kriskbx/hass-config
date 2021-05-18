@@ -5,88 +5,32 @@ views:
     path: default
     icon: mdi:home
     cards:
-      - type: grid
-        columns: 4
-        square: false
-        cards:
-          - type: custom:button-card
-            entity: switch.scene_dining
-            show_name: false
-          - type: custom:button-card
-            entity: switch.scene_work
-            show_name: false
-          - type: custom:button-card
-            entity: switch.scene_romantic
-            show_name: false
-          - type: custom:button-card
-            entity: switch.scene_cinema
-            show_name: false
-          - type: custom:button-card
-            entity: switch.scene_music
-            show_name: false
-          - type: custom:button-card
-            entity: switch.scene_bath
-            show_name: false
-          - type: custom:button-card
-            entity: switch.scene_off
-            show_name: false
-      - type: grid
-        columns: 3
-        square: true
-        cards:
-          - type: custom:button-card
-            entity: light.stehlampe_wohnzimmer
-            template:
-              - light
-              - icon_shade
-          - type: custom:button-card
-            entity: light.decke_wohnzimmer
-            template:
-              - light
-              - icon_panel
-          - type: custom:button-card
-            entity: light.bett_oben
-            template:
-              - light
-              - icon_led
-          - type: custom:button-card
-            entity: light.stehlampe_arbeitszimmer
-            template:
-              - light
-              - icon_work_lamp
-          - type: custom:button-card
-            entity: light.decke_arbeitszimmer
-            template:
-              - light
-              - icon_panel
-          - type: custom:button-card
-            entity: light.decke_flur
-            template:
-              - light
-              - icon_ceiling
-          - type: custom:button-card
-            entity: light.arbeitslicht
-            template:
-              - light
-              - icon_led    
-          - type: custom:button-card
-            entity: light.deckenlampe
-            template:
-              - light
-              - icon_ceiling_double
-  - title: Projector
-    path: projector
-    icon: mdi:projector
-    cards:
       - type: vertical-stack
         cards:
           - type: grid
-            columns: 3
+            columns: 4
             square: false
             cards:
               - type: custom:button-card
-                entity: switch.projector
-                icon: mdi:power
+                entity: switch.scene_dining
+                show_name: false
+              - type: custom:button-card
+                entity: switch.scene_work
+                show_name: false
+              - type: custom:button-card
+                entity: switch.scene_romantic
+                show_name: false
+              - type: custom:button-card
+                entity: switch.scene_cinema
+                show_name: false
+              - type: custom:button-card
+                entity: switch.scene_music
+                show_name: false
+              - type: custom:button-card
+                entity: switch.scene_bath
+                show_name: false
+              - type: custom:button-card
+                entity: switch.scene_off
                 show_name: false
           - type: markdown
             content: " "
@@ -100,176 +44,7 @@ views:
             columns: 3
             square: false
             cards:
-              - type: markdown
-                content: " "
-                style:
-                  .: |
-                    ha-card {
-                      background-color: transparent !important;
-                      box-shadow: none !important;
-                    }
-              - type: button
-                icon: mdi:arrow-up-bold
-                tap_action:
-                  action: call-service
-                  service: remote.send_command
-                  service_data:  
-                    entity_id: remote.ir_blaster_remote
-                    device: projector
-                    command: up      
-              - type: markdown
-                content: " "
-                style:
-                  .: |
-                    ha-card {
-                      background-color: transparent !important;
-                      box-shadow: none !important;
-                    }  
-              - type: button
-                icon: mdi:arrow-left-bold
-                tap_action:
-                  action: call-service
-                  service: remote.send_command
-                  service_data:  
-                    entity_id: remote.ir_blaster_remote
-                    device: projector
-                    command: left
-              - type: button
-                icon: mdi:check
-                tap_action:
-                  action: call-service
-                  service: remote.send_command
-                  service_data:  
-                    entity_id: remote.ir_blaster_remote
-                    device: projector
-                    command: enter
-              - type: button
-                icon: mdi:arrow-right-bold
-                tap_action:
-                  action: call-service
-                  service: remote.send_command
-                  service_data:  
-                    entity_id: remote.ir_blaster_remote
-                    device: projector
-                    command: right
-              - type: markdown
-                content: " "
-                style:
-                  .: |
-                    ha-card {
-                      background-color: transparent !important;
-                      box-shadow: none !important;
-                    }
-              - type: button
-                icon: mdi:arrow-down-bold
-                tap_action:
-                  action: call-service
-                  service: remote.send_command
-                  service_data:  
-                    entity_id: remote.ir_blaster_remote
-                    device: projector
-                    command: down      
-              - type: markdown
-                content: " "
-                style:
-                  .: |
-                    ha-card {
-                      background-color: transparent !important;
-                      box-shadow: none !important;
-                    }
-          - type: markdown
-            content: " "
-            style:
-              .: |
-                ha-card {
-                  background-color: transparent !important;
-                  box-shadow: none !important;
-                }
-          - type: grid
-            columns: 3
-            square: true
-            cards:
-              - type: button
-                name: Brightness
-                tap_action:
-                  action: call-service
-                  service: remote.send_command
-                  service_data:  
-                    entity_id: remote.ir_blaster_remote
-                    device: projector
-                    command: brightness
-              - type: button
-                name: Contrast
-                tap_action:
-                  action: call-service
-                  service: remote.send_command
-                  service_data:  
-                    entity_id: remote.ir_blaster_remote
-                    device: projector
-                    command: contrast
-              - type: button
-                name: Mode
-                tap_action:
-                  action: call-service
-                  service: remote.send_command
-                  service_data:  
-                    entity_id: remote.ir_blaster_remote
-                    device: projector
-                    command: mode
-              - type: button
-                name: Menu
-                tap_action:
-                  action: call-service
-                  service: remote.send_command
-                  service_data:  
-                    entity_id: remote.ir_blaster_remote
-                    device: projector
-                    command: menu
-              - type: button
-                name: HDMI1
-                tap_action:
-                  action: call-service
-                  service: remote.send_command
-                  service_data:  
-                    entity_id: remote.ir_blaster_remote
-                    device: projector
-                    command: hdmi1
-              - type: button
-                name: HDMI2
-                tap_action:
-                  action: call-service
-                  service: remote.send_command
-                  service_data:  
-                    entity_id: remote.ir_blaster_remote
-                    device: projector
-                    command: hdmi2
-  - title: Stereo
-    path: stereo
-    icon: mdi:speaker
-    cards:
-      - type: vertical-stack
-        cards:
-          - type: grid
-            columns: 3
-            square: false
-            cards:
               - type: custom:button-card
-                entity: switch.stereo
-                icon: mdi:power
-                show_name: false
-          - type: markdown
-            content: " "
-            style:
-              .: |
-                ha-card {
-                  background-color: transparent !important;
-                  box-shadow: none !important;
-                }
-          - type: grid
-            columns: 3
-            square: false
-            cards:
-              - type: button
                 icon: mdi:volume-minus
                 tap_action:
                   action: call-service
@@ -278,7 +53,7 @@ views:
                     entity_id: remote.ir_blaster_remote
                     device: stereo
                     command: volume-down
-              - type: button
+              - type: custom:button-card
                 icon: mdi:volume-off
                 tap_action:
                   action: call-service
@@ -287,7 +62,7 @@ views:
                     entity_id: remote.ir_blaster_remote
                     device: stereo
                     command: mute
-              - type: button
+              - type: custom:button-card
                 icon: mdi:volume-plus
                 tap_action:
                   action: call-service
@@ -296,7 +71,6 @@ views:
                     entity_id: remote.ir_blaster_remote
                     device: stereo
                     command: volume-up
-
           - type: markdown
             content: " "
             style:
@@ -305,63 +79,48 @@ views:
                   background-color: transparent !important;
                   box-shadow: none !important;
                 }
-
           - type: grid
             columns: 3
             square: true
             cards:
-              - type: button
-                name: CD
-                tap_action:
-                  action: call-service
-                  service: remote.send_command
-                  service_data:  
-                    entity_id: remote.ir_blaster_remote
-                    device: stereo
-                    command: cd
-              - type: button
-                name: Recorder
-                tap_action:
-                  action: call-service
-                  service: remote.send_command
-                  service_data:  
-                    entity_id: remote.ir_blaster_remote
-                    device: stereo
-                    command: recorder
-              - type: button
-                name: Network
-                tap_action:
-                  action: call-service
-                  service: remote.send_command
-                  service_data:  
-                    entity_id: remote.ir_blaster_remote
-                    device: stereo
-                    command: network
-              - type: button
-                name: Phono
-                tap_action:
-                  action: call-service
-                  service: remote.send_command
-                  service_data:  
-                    entity_id: remote.ir_blaster_remote
-                    device: stereo
-                    command: phono
-              - type: button
-                name: AUX
-                tap_action:
-                  action: call-service
-                  service: remote.send_command
-                  service_data:  
-                    entity_id: remote.ir_blaster_remote
-                    device: stereo
-                    command: aux
-              - type: button
-                name: Tuner
-                tap_action:
-                  action: call-service
-                  service: remote.send_command
-                  service_data:  
-                    entity_id: remote.ir_blaster_remote
-                    device: stereo
-                    command: tuner
-  
+              - type: custom:button-card
+                entity: light.stehlampe_wohnzimmer
+                template:
+                  - light
+                  - icon_shade
+              - type: custom:button-card
+                entity: light.decke_wohnzimmer
+                template:
+                  - light
+                  - icon_panel
+              - type: custom:button-card
+                entity: light.bett_oben
+                template:
+                  - light
+                  - icon_led
+              - type: custom:button-card
+                entity: light.stehlampe_arbeitszimmer
+                template:
+                  - light
+                  - icon_work_lamp
+              - type: custom:button-card
+                entity: light.decke_arbeitszimmer
+                template:
+                  - light
+                  - icon_panel
+              - type: custom:button-card
+                entity: light.decke_flur
+                template:
+                  - light
+                  - icon_ceiling
+              - type: custom:button-card
+                entity: light.arbeitslicht
+                template:
+                  - light
+                  - icon_led    
+              - type: custom:button-card
+                entity: light.deckenlampe
+                template:
+                  - light
+                  - icon_ceiling_double
+
