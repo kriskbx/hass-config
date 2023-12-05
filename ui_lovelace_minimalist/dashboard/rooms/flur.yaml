@@ -1,0 +1,44 @@
+title: "Flur & Bad"
+path: "flur"
+icon: "mdi:door"
+subview: true
+cards:
+  - type: "vertical-stack"
+    cards:
+
+      # -------- lights -------- #
+      - type: 'custom:button-card'
+        template: card_title
+        name: Lights
+      - type: "custom:button-card"
+        template: card_light
+        entity: light.light_decke_flur
+        variables:
+          ulm_card_light_enable_slider: true
+          ulm_card_light_enable_color: true
+          ulm_card_light_enable_horizontal: true
+          ulm_card_light_enable_popup: true
+
+      # -------- devices -------- #
+      #          - type: 'custom:button-card'
+      #            template: card_title
+      #            name: Actions
+      #          - type: grid
+      #            columns: 1
+      #            square: false
+      #            cards:
+
+      # -------- sensors -------- #
+      - type: 'custom:button-card'
+        template: card_title
+        name: Sensors
+      - type: grid
+        columns: 1
+        square: false
+        cards:
+          - type: 'custom:button-card'
+            template: card_binary_sensor
+            variables:
+              ulm_card_binary_sensor_alert: true
+              ulm_card_binary_sensor_show_last_changed: true
+            entity: binary_sensor.motion_sensor_flur_occupancy

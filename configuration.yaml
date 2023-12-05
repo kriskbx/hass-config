@@ -2,88 +2,123 @@
 
 homeassistant:
   name: Home
-  unit_system: metric
-  time_zone: Europe/Berlin
+  country: DE
+  latitude: !secret home_lat
+  longitude: !secret home_lng
   packages: !include_dir_named includes
-  allowlist_external_dirs: [/config/]
+  allowlist_external_dirs: [ /config/ ]
+  time_zone: Europe/Berlin
+  unit_system: metric
+
+  customize:
+    binary_sensor.window_sensor_arbeitszimmer_contact:
+      friendly_name: Window Arbeitszimmer open
+    binary_sensor.window_sensor_wohnzimmer_contact:
+      friendly_name: Window Wohnzimmer open
+    binary_sensor.window_sensor_kuche_contact:
+      friendly_name: Window Küche open
+    binary_sensor.internet_connected:
+      friendly_name: Internet connected
+    binary_sensor.dns_working:
+      friendly_name: DNS working
+    switch.steam_link_wohnzimmer:
+      friendly_name: Steam Link
+      icon: mdi:steam
+    switch.dehumidifier_kuche:
+      friendly_name: Dehumidifier
+      icon: mdi:air-humidifier
+    vacuum.roborock_vacuum_a15:
+      friendly_name: Marvin
+    light.light_stehlampe_wohnzimmer:
+      friendly_name: Stehlampe Wohnzimmer
+      icon: mdi:floor-lamp
+    light.light_decke_wohnzimmer:
+      friendly_name: Decke Wohnzimmer
+      icon: mdi:light-recessed
+    light.light_bett_oben:
+      friendly_name: Bett Oben
+      icon: mdi:led-strip-variant
+    light.light_bett_unten:
+      friendly_name: Bett Unten
+      icon: mdi:lamp
+    light.light_ambient_beamer:
+      friendly_name: Ambient Beamer
+      icon: mdi:led-strip-variant
+    light.light_ambient_stereo:
+      friendly_name: Ambient Stereo
+      icon: mdi:led-strip-variant
+    light.light_kris_schreibtisch:
+      friendly_name: Kris Schreibtisch
+      icon: mdi:led-strip-variant
+    light.light_hani_schreibtisch:
+      friendly_name: Hani Schreibtisch
+      icon: mdi:desk-lamp
+    light.light_stehlampe_arbeitszimmer:
+      friendly_name: Stehlampe Arbeitszimmer
+      icon: mdi:floor-lamp
+    light.light_decke_arbeitszimmer:
+      friendly_name: Decke Arbeitszimmer
+      icon: mdi:light-recessed
+    light.light_decke_flur:
+      friendly_name: Decke Flur
+      icon: mdi:ceiling-light
+    light.light_arbeitslicht_kuche:
+      friendly_name: Arbeitslicht Küche
+      icon: mdi:led-strip-variant
+    light.light_decke_kuche:
+      friendly_name: Decke Küche
+      icon: mdi:ceiling-light
+    climate.climate_kuche:
+      friendly_name: Küche
+    climate.climate_wohnzimmer:
+      friendly_name: Wohnzimmer
+    climate.climate_arbeitszimmer:
+      friendly_name: Arbeitszimmer
+
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 10.0.1.0/24
+
+frontend:
+  themes: !include_dir_merge_named themes
 
 default_config:
-browser_mod:
 
 # -------- Lovelace -------- #
 
 lovelace:
   mode: yaml
   resources:
-    - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js?v=0.10.0
-      type: module
-    - url: /hacsfiles/config-template-card/config-template-card.js
-      type: module
-    - url: /hacsfiles/stack-in-card/stack-in-card.js
-      type: module
-    - url: /hacsfiles/bar-card/bar-card.js
+    # - for minimalist UI - #
+    - url: /hacsfiles/button-card/button-card.js
       type: module
     - url: /hacsfiles/lovelace-card-mod/card-mod.js
       type: module
-    - url: /hacsfiles/lovelace-multiple-entity-row/multiple-entity-row.js
+    - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
       type: module
-    - url: /hacsfiles/button-card/button-card.js
-      type: module
-    - url: /hacsfiles/lovelace-hui-element/hui-element.js
-      type: module
-    - url: /hacsfiles/weather-card/weather-card.js
-      type: module          
     - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
       type: module
-    - url: /hacsfiles/light-popup-card/light-popup-card.js
+    - url: /hacsfiles/my-cards/my-cards.js
       type: module
     - url: /hacsfiles/light-entity-card/light-entity-card.js
-      type: module           
-    - url: /hacsfiles/battery-state-card/battery-state-card.js
       type: module
-    - url: /hacsfiles/kiosk-mode/kiosk-mode.js
-      type: module     
-    - url: /browser_mod.js
+    - url: /hacsfiles/lovelace-auto-entities/auto-entities.js
       type: module
-    - url: '/local/custom_icons.js'
+    - url: /hacsfiles/simple-weather-card/simple-weather-card-bundle.js
       type: module
-  dashboards:
-    lovelace-remotes:
-      mode: yaml
-      title: Remotes
-      filename: dashboards/remotes.yaml
-      show_in_sidebar: true
-    lovelace-default:
-      mode: yaml
-      title: Default
-      filename: dashboards/default.yaml
-      show_in_sidebar: false
-                
-# -------- Integrations -------- #
-
-# config flow: cast, asuswrt, openweathermap, broadlink, fullykiosk
-
-nextcloud:
-  url: !secret nextcloud_url
-  username: !secret nextcloud_user
-  password: !secret nextcloud_password
-
-spotify:
-  client_id: !secret spotify_client_id
-  client_secret: !secret spotify_client_secret
-
-spotcast:
-  sp_dc: !secret sp_dc
-  sp_key: !secret sp_key
-
-synology_dsm:
-  host: !secret synologydsm_host
-  port: !secret synologydsm_port
-  ssl: true
-  verify_ssl: false
-  username: !secret synologydsm_username
-  password: !secret synologydsm_password
-
-brother:
-  host: !secret brother_host
-  type: laser
+    - url: /hacsfiles/weather-radar-card/weather-radar-card.js
+      type: module
+    - url: /hacsfiles/vacuum-card/vacuum-card.js
+      type: module
+    - url: /hacsfiles/lovelace-layout-card/layout-card.js
+      type: module
+    - url: /hacsfiles/lovelace-state-switch/state-switch.js
+      type: module
+    - url: /hacsfiles/bar-card/bar-card.js
+      type: module
+    # - own extensions - #
+    - url: /hacsfiles/better-thermostat-ui-card/better-thermostat-ui-card.js
+      type: module
+    - url: /hacsfiles/lovelace-xiaomi-vacuum-map-card/xiaomi-vacuum-map-card.js
+      type: module

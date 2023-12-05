@@ -1,0 +1,125 @@
+# -------- Sensors -------- #
+template:
+  - binary_sensor:
+      # TODO: TRVs, power sockets are missing
+      - name: 'something_is_critical'
+        state: > 
+          {%- if is_state('binary_sensor.temperatur_humidity_kuche_critical', 'on') or is_state('binary_sensor.temperature_humidity_arbeitszimmer_critical', 'on') or is_state('binary_sensor.temperature_humidity_wohnzimmer_critical', 'on') or is_state('binary_sensor.window_sensor_kuche_critical', 'on') or is_state('binary_sensor.window_sensor_arbeitszimmer_critical', 'on') or is_state('binary_sensor.window_sensor_wohnzimmer_critical', 'on') or is_state('binary_sensor.motion_sensor_flur_critical', 'on') or is_state('binary_sensor.dimmer_wohnzimmer_critical', 'on') or is_state('binary_sensor.dimmer_arbeitszimmer_critical', 'on') or is_state('binary_sensor.dimmer_kuche_critical', 'on') or is_state('binary_sensor.button_flur_critical', 'on') or is_state('binary_sensor.dimmer_kuche_critical', 'on') or is_state('binary_sensor.internet_connected', 'off') or is_state('light.light_bett_unten', 'unavailable') or is_state('light.light_decke_arbeitszimmer', 'unavailable') or is_state('light.light_decke_kuche', 'unavailable') or is_state('light.light_decke_flur', 'unavailable') or is_state('light.light_decke_wohnzimmer', 'unavailable') or is_state('light.kris_schreibtisch', 'unavailable') or is_state('light.light_hani_schreibtisch', 'unavailable') or is_state('light.light_ambient_stereo', 'unavailable') or is_state('light.light_ambient_beamer', 'unavailable') or is_state('light.light_stehlampe_arbeitszimmer', 'unavailable') or is_state('light.light_stehlampe_wohnzimmer', 'unavailable') or is_state('light.light_arbeitslicht_kuche', 'unavailable') or is_state('light.light_bett_oben', 'unavailable') or is_state('light.light_bett_unten', 'unavailable') -%}on{%- else -%}off{%- endif -%}
+      - name: 'temperatur_humidity_kuche_critical'
+        state: >
+          {%- if states('sensor.temperature_humidity_kuche_battery')|int(0) < 30 or states('sensor.temperature_humidity_kuche') == 'unavailable' -%}on{%- else -%}off{%- endif -%}
+      - name: 'temperature_humidity_arbeitszimmer_critical'
+        state: >
+          {%- if states('sensor.temperature_humidity_arbeitszimmer_battery')|int(0) < 30 or states('sensor.temperature_humidity_arbeitszimmer') == 'unavailable' -%}on{%- else -%}off{%- endif -%}
+      - name: 'temperature_humidity_wohnzimmer_critical'
+        state: >
+          {%- if states('sensor.temperature_humidity_wohnzimmer_battery')|int(0) < 30 or states('sensor.temperature_humidity_wohnzimmer') == 'unavailable' -%}on{%- else -%}off{%- endif -%}
+      - name: 'window_sensor_kuche_critical'
+        state: >
+          {%- if states('sensor.window_sensor_kuche_battery')|int(0) < 30 or states('sensor.window_sensor_kuche') == 'unavailable' -%}on{%- else -%}off{%- endif -%}
+      - name: 'window_sensor_arbeitszimmer_critical'
+        state: >
+          {%- if states('sensor.window_sensor_arbeitszimmer_battery')|int(0) < 30 or states('sensor.window_sensor_arbeitszimmer') == 'unavailable' -%}on{%- else -%}off{%- endif -%}
+      - name: 'window_sensor_wohnzimmer_critical'
+        state: >
+          {%- if states('sensor.window_sensor_wohnzimmer_battery')|int(0) < 30 or states('sensor.window_sensor_wohnzimmer') == 'unavailable' -%}on{%- else -%}off{%- endif -%}
+      - name: 'motion_sensor_flur_critical'
+        state: >
+          {%- if states('sensor.motion_sensor_flur_battery')|int(0) < 30 or states('sensor.motion_sensor_flur') == 'unavailable' -%}on{%- else -%}off{%- endif -%}
+      - name: 'dimmer_arbeitszimmer_critical'
+        state: >
+          {%- if states('sensor.dimmer_arbeitszimmer_battery')|int(0) < 30 or states('sensor.dimmer_arbeitszimmer') == 'unavailable' -%}on{%- else -%}off{%- endif -%}
+      - name: 'dimmer_wohnzimmer_critical'
+        state: >
+          {%- if states('sensor.dimmer_wohnzimmer_battery')|int(0) < 30 or states('sensor.dimmer_wohnzimmer') == 'unavailable' -%}on{%- else -%}off{%- endif -%}
+      - name: 'dimmer_kuche_critical'
+        state: >
+          {%- if states('sensor.dimmer_kuche_battery')|int(0) < 30 or states('sensor.dimmer_kuche') == 'unavailable' -%}on{%- else -%}off{%- endif -%}
+      - name: 'button_flur_critical'
+        state: >
+          {%- if states('sensor.button_flur_battery')|int(0) < 30 or states('sensor.button_flur') == 'unavailable' -%}on{%- else -%}off{%- endif -%}
+
+
+# -------- binaries -------- #
+binary_sensor:
+  - platform: ping
+    name: internet_connected
+    host: 8.8.8.8
+    scan_interval: 20
+  - platform: ping
+    name: dns_working
+    host: denic.de
+    scan_interval: 20
+
+# -------- booleans -------- #
+input_boolean:
+  projector:
+    name: Projector
+    initial: off
+  stereo:
+    name: Stereo
+    initial: off
+  music:
+    name: Music
+    initial: off
+  cinema:
+    name: Cinema
+    initial: off
+  gaming:
+    name: Gaming
+    initial: off
+  party:
+    name: Party
+    initial: off
+  vacation:
+    name: Vacation
+    initial: off
+  heating:
+    name: Automated Heating
+    icon: mdi:thermostat-auto
+    initial: off
+
+# -------- light groups -------- #
+light:
+  - platform: group
+    name: light_group_wohnzimmer
+    entities:
+      - light.light_stehlampe_wohnzimmer
+      - light.light_bett_oben
+      - light.light_bett_unten
+      - light.light_ambient_beamer
+      - light.light_ambient_stereo
+  - platform: group
+    name: light_group_arbeitszimmer
+    entities:
+      - light.light_stehlampe_arbeitszimmer
+      - light.light_kris_schreibtisch
+      - light.light_hani_schreibtisch
+  - platform: group
+    name: light_group_flur
+    entities:
+      - light.light_decke_flur
+  - platform: group
+    name: light_group_kuche
+    entities:
+      - light.light_arbeitslicht_kuche
+      - light.light_decke_kuche
+  - platform: group
+    name: light_group_party_color
+    entities:
+      - light.light_kris_schreibtisch
+      - light.light_ambient_beamer
+      - light.light_ambient_stereo
+
+# -------- energy -------- #
+sensor:
+  - platform: integration
+    source: sensor.home_server_plug_power
+    name: home_server_energy_spent
+    unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.dehumidifier_kuche_power
+    name: dehumidifier_energy_spent
+    unit_prefix: k
+    round: 2

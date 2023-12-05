@@ -2,8 +2,12 @@
 .idea
 .storage
 backup
+backups
+dashboards/backup
 deps
 image
 secrets
-secrets.yaml
+secrets.yaml*
 home-assistant*
+zigbee.db
+tts

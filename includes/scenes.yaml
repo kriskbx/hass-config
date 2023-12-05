@@ -1,118 +1,164 @@
+# -------- Scenes -------- #
 scene:
 
-  - name: "Off"
+  # -------- vacation -------- #
+  - name: "vacation"
     entities:
-      light.decke_arbeitszimmer: off
-      light.decke_flur: off
-      light.decke_wohnzimmer: off
-      light.deckenlampe: off
-      light.stehlampe_wohnzimmer: off
-      light.stehlampe_arbeitszimmer: off
-      light.arbeitslicht: off
-      light.bett_oben: off
-
-  - name: Dining
-    entities:
-      light.decke_arbeitszimmer: off
-      light.decke_flur: off
-      light.decke_wohnzimmer: off
-      light.deckenlampe:
-        state: on
-        brightness: 85
-      light.stehlampe_wohnzimmer: off
-      light.stehlampe_arbeitszimmer: off
-      light.arbeitslicht:
+      light.light_decke_arbeitszimmer: off
+      light.light_decke_flur: off
+      light.light_decke_wohnzimmer: off
+      light.light_decke_kuche:
         state: on
         brightness: 255
-      light.bett_oben: off
+      light.light_kris_schreibtisch: off
+      light.light_stehlampe_wohnzimmer:
+        state: on
+        brightness: 255
+      light.light_stehlampe_arbeitszimmer:
+        state: on
+        brightness: 255
+      light.light_arbeitslicht_kuche: off
+      light.light_bett_oben: off
+      light.light_bett_unten: off
+      light.light_hani_schreibtisch: off
+      light.light_ambient_beamer: off
+      light.light_ambient_stereo: off
 
-  - name: Work
+  # -------- off -------- #
+  - name: "off"
     entities:
-      light.decke_arbeitszimmer: 
+      light.light_decke_arbeitszimmer: off
+      light.light_decke_flur: off
+      light.light_decke_wohnzimmer: off
+      light.light_kris_schreibtisch: off
+      light.light_decke_kuche: off
+      light.light_stehlampe_wohnzimmer: off
+      light.light_stehlampe_arbeitszimmer: off
+      light.light_arbeitslicht_kuche: off
+      light.light_bett_oben: off
+      light.light_bett_unten: off
+      light.light_hani_schreibtisch: off
+      light.light_ambient_beamer: off
+      light.light_ambient_stereo: off
+
+  # -------- work -------- #
+  - name: work
+    entities:
+      light.light_decke_arbeitszimmer:
         state: on
         brightness: 200
-      light.decke_flur:
+      light.light_decke_flur:
         state: on
         brightness: 200
-      light.decke_wohnzimmer:
+      light.light_decke_wohnzimmer:
         state: on
         brightness: 200
-      light.deckenlampe: off
-      light.stehlampe_wohnzimmer: off
-      light.stehlampe_arbeitszimmer: off
-      light.arbeitslicht: off
-      light.bett_oben: off
+      light.light_decke_kuche: off
+      light.light_kris_schreibtisch:
+        state: on
+        brightness: 255
+      light.light_stehlampe_wohnzimmer: off
+      light.light_stehlampe_arbeitszimmer: off
+      light.light_arbeitslicht_kuche: off
+      light.light_bett_oben: off
+      light.light_bett_unten: off
+      light.light_hani_schreibtisch:
+        state: on
+        brightness: 255
+      light.light_ambient_beamer: off
+      light.light_ambient_stereo: off
   - name: work_temp
     entities:
-      light.decke_arbeitszimmer: 
+      light.light_decke_arbeitszimmer:
         state: on
         color_temp: 153
-      light.decke_flur:
+      light.light_decke_flur:
         state: on
         color_temp: 153
-      light.decke_wohnzimmer:
+      light.light_decke_wohnzimmer:
+        state: on
+        color_temp: 153
+      light.light_kris_schreibtisch:
         state: on
         color_temp: 153
 
-  - name: Cinema
+  # -------- cinema -------- #
+  - name: cinema
     entities:
-      light.decke_arbeitszimmer: off
-      light.decke_flur: off
-      light.decke_wohnzimmer: off
-      light.deckenlampe: off
-      light.stehlampe_wohnzimmer: off
-      light.stehlampe_arbeitszimmer: off
-      light.arbeitslicht: off
-      light.bett_oben:
+      light.light_decke_arbeitszimmer: off
+      light.light_kris_schreibtisch: off
+      light.light_decke_flur: off
+      light.light_decke_wohnzimmer: off
+      light.light_decke_kuche: off
+      light.light_stehlampe_wohnzimmer: off
+      light.light_stehlampe_arbeitszimmer: off
+      light.light_arbeitslicht_kuche: off
+      light.light_bett_oben: off
+      light.light_bett_unten: off
+      light.light_hani_schreibtisch: off
+      light.light_ambient_beamer:
         state: on
-        brightness: 25
+        brightness: 50
+      light.light_ambient_stereo: off
+  - name: cinema_temp
+    entities:
+      light.light_ambient_beamer:
+        state: on
+        color_temp: 700
 
-  - name: Bath
+  # -------- romantic -------- #
+  - name: romantic
     entities:
-      light.decke_arbeitszimmer: off
-      light.decke_flur:
-        state: on
-        brightness: 60
-      light.decke_wohnzimmer: off
-      light.deckenlampe: off
-      light.stehlampe_wohnzimmer: off
-      light.stehlampe_arbeitszimmer: off
-      light.arbeitslicht: off
-      light.bett_oben: off
-  - name: bath_temp
-    entities:
-      light.decke_flur:
-        state: on
-        color_temp: 500
-
-  - name: Romantic
-    entities:
-      light.decke_arbeitszimmer: off
-      light.decke_flur:
-        state: on
-        brightness: 40
-      light.decke_wohnzimmer: off
-      light.deckenlampe: off
-      light.stehlampe_wohnzimmer:
-        state: on
-        brightness: 100
-      light.stehlampe_arbeitszimmer:
-        state: on
-        brightness: 100
-      light.arbeitslicht:
+      light.light_decke_arbeitszimmer: off
+      light.light_kris_schreibtisch:
         state: on
         brightness: 255
-      light.bett_oben:
+      light.light_decke_flur:
+        state: on
+        brightness: 40
+      light.light_decke_wohnzimmer: off
+      light.light_decke_kuche: off
+      light.light_stehlampe_wohnzimmer:
         state: on
         brightness: 100
+      light.light_stehlampe_arbeitszimmer:
+        state: on
+        brightness: 100
+      light.light_arbeitslicht_kuche:
+        state: on
+        brightness: 255
+      light.light_bett_oben:
+        state: on
+        brightness: 100
+      light.light_bett_unten:
+        state: on
+        brightness: 75
+      light.light_hani_schreibtisch:
+        state: on
+        brightness: 125
+      light.light_ambient_beamer:
+        state: on
+        brightness: 50
+      light.light_ambient_stereo:
+        state: on
+        brightness: 50
   - name: romantic_temp
     entities:
-      light.decke_flur:
+      light.light_decke_flur:
         state: on
         color_temp: 500
-      light.stehlampe_wohnzimmer:
+      light.light_stehlampe_wohnzimmer:
         state: on
         color_temp: 500
-      light.stehlampe_arbeitszimmer:
+      light.light_stehlampe_arbeitszimmer:
         state: on
         color_temp: 500
+      light.light_kris_schreibtisch:
+        state: on
+        color_temp: 500
+      light.light_ambient_beamer:
+        state: on
+        color_temp: 700
+      light.light_ambient_stereo:
+        state: on
+        color_temp: 700

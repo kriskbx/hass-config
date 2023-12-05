@@ -1,0 +1,157 @@
+# -------- Schedules -------- #
+schedule:
+
+  # -------- Heating -------- # 
+  heating_work:
+    name: "Heating Work"
+    monday:
+      - from: "08:00:00"
+        to: "18:59:00"
+    tuesday:
+      - from: "08:00:00"
+        to: "18:59:00"
+    wednesday:
+      - from: "08:00:00"
+        to: "18:59:00"
+    thursday:
+      - from: "08:00:00"
+        to: "18:59:00"
+    friday:
+      - from: "09:30:00"
+        to: "15:59:00"
+    saturday:
+      - from: "09:30:00"
+        to: "15:59:00"
+    sunday:
+      - from: "09:30:00"
+        to: "15:59:00"
+
+  heating_after_work:
+    name: "Heating After Work"
+    monday:
+      - from: "19:00:00"
+        to: "22:59:00"
+    tuesday:
+      - from: "19:00:00"
+        to: "22:59:00"
+    wednesday:
+      - from: "19:00:00"
+        to: "22:59:00"
+    thursday:
+      - from: "19:00:00"
+        to: "22:59:00"
+    friday:
+      - from: "16:00:00"
+        to: "22:59:00"
+    saturday:
+      - from: "16:00:00"
+        to: "22:59:00"
+    sunday:
+      - from: "16:00:00"
+        to: "22:59:00"
+
+  heating_night:
+    name: "Heating Night"
+    monday:
+      - from: "00:00:00"
+        to: "07:59:00"
+      - from: "23:00:00"
+        to: "23:59:00"
+    tuesday:
+      - from: "00:00:00"
+        to: "07:59:00"
+      - from: "23:00:00"
+        to: "23:59:00"
+    wednesday:
+      - from: "00:00:00"
+        to: "07:59:00"
+      - from: "23:00:00"
+        to: "23:59:00"
+    thursday:
+      - from: "00:00:00"
+        to: "07:59:00"
+      - from: "23:00:00"
+        to: "23:59:00"
+    friday:
+      - from: "00:00:00"
+        to: "09:29:00"
+      - from: "23:00:00"
+        to: "23:59:00"
+    saturday:
+      - from: "00:00:00"
+        to: "09:29:00"
+      - from: "23:00:00"
+        to: "23:59:00"
+    sunday:
+      - from: "00:00:00"
+        to: "09:29:00"
+      - from: "23:00:00"
+        to: "23:59:00"
+
+  # -------- lights -------- #
+  vacation_lights:
+    name: "Vacation light schedule"
+    monday:
+      - from: "17:00:00"
+        to: "23:30:00"
+    tuesday:
+      - from: "17:00:00"
+        to: "23:30:00"
+    wednesday:
+      - from: "17:00:00"
+        to: "23:30:00"
+    thursday:
+      - from: "17:00:00"
+        to: "23:30:00"
+    friday:
+      - from: "17:00:00"
+        to: "23:30:00"
+    saturday:
+      - from: "17:00:00"
+        to: "23:30:00"
+    sunday:
+      - from: "17:00:00"
+        to: "23:30:00"
+
+  # -------- vacuum -------- #
+  vacuum_workday_apartment:
+    name: "Vacuum workday apartment except office"
+    monday:
+      - from: "10:20:00"
+        to: "12:20:00"
+    tuesday:
+      - from: "10:20:00"
+        to: "12:20:00"
+    wednesday:
+      - from: "10:20:00"
+        to: "12:20:00"
+    thursday:
+      - from: "10:20:00"
+        to: "12:20:00"
+
+  vacuum_workday_office:
+    name: "Vacuum workday office"
+    monday:
+      - from: "20:00:00"
+        to: "21:00:00"
+    tuesday:
+      - from: "20:00:00"
+        to: "21:00:00"
+    wednesday:
+      - from: "20:00:00"
+        to: "21:00:00"
+    thursday:
+      - from: "20:00:00"
+        to: "21:00:00"
+
+  vacuum_weekend:
+    name: "Vacuum weekend"
+    friday:
+      - from: "13:00:00"
+        to: "15:00:00"
+    saturday:
+      - from: "13:00:00"
+        to: "15:00:00"
+    sunday:
+      - from: "13:00:00"
+        to: "15:00:00"

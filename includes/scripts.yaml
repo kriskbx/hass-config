@@ -1,12 +1,77 @@
-script:     
+# -------- Scripts -------- #
+script:
 
+  # -------- heating -------- #
+  set_heating_arbeitszimmer:
+    sequence:
+      
+
+  # -------- lights -------- #
+  party_color:
+    sequence:
+      - repeat:
+          while:
+            - condition: state
+              entity_id: input_boolean.party
+              state: "on"
+          sequence:
+            - service: light.turn_on
+              data:
+                transition: 1
+                rgb_color:
+                  - 63
+                  - 187
+                  - 0
+                brightness_pct: 100
+              target:
+                entity_id: light.light_group_party_color
+            - delay: 2
+            - service: light.turn_on
+              data:
+                transition: 1
+                rgb_color:
+                  - 187
+                  - 0
+                  - 86
+              target:
+                entity_id: light.light_group_party_color
+            - delay: 2
+            - service: light.turn_on
+              data:
+                transition: 1
+                rgb_color:
+                  - 0
+                  - 86
+                  - 179
+              target:
+                entity_id: light.light_group_party_color
+            - delay: 2
+            - service: light.turn_on
+              data:
+                transition: 1
+                rgb_color:
+                  - 176
+                  - 37
+                  - 0
+              target:
+                entity_id: light.light_group_party_color
+            - delay: 2
+            - service: light.turn_on
+              data:
+                transition: 1
+                rgb_color:
+                  - 0
+                  - 176
+                  - 160
+              target:
+                entity_id: light.light_group_party_color
+            - delay: 2
   turn_off_light:
     sequence:
       - service: light.turn_off
         data_template:
           entity_id: "{{ entity }}"
           transition: 1
-
   turn_on_light:
     sequence:
       - service: light.turn_on
@@ -22,7 +87,6 @@ script:
           entity_id: "{{ entity }}"
           color_temp: "{{ color_temp }}"
           transition: 2
-
   turn_on_scene:
     sequence:
       - service: scene.turn_on
@@ -34,6 +98,7 @@ script:
           entity_id: scene.{{ entity }}_temp
           transition: 2
 
+  # -------- Hifi -------- #
   normalize_volume:
     sequence:
       - service: remote.send_command
@@ -54,80 +119,234 @@ script:
           num_repeats: 11
           delay_secs: 0
 
-  # -------- Learn remotes -------- #
+  # -------- Vacuum cleaning -------- #
+  vacuum_kitchen:
+    alias: 'Vacuum: Kitchen'
+    mode: single
+    icon: mdi:countertop-outline
+    sequence:
+      - service: xiaomi_miio.vacuum_clean_zone
+        target:
+          entity_id: vacuum.roborock_vacuum_a15
+        data:
+          repeats: 1
+          zone:
+            - - 23568
+              - 23115
+              - 27543
+              - 26879
+  vacuum_bathroom:
+    alias: 'Vacuum: Bathroom'
+    mode: single
+    icon: mdi:shower
+    sequence:
+      - service: xiaomi_miio.vacuum_clean_zone
+        target:
+          entity_id: vacuum.roborock_vacuum_a15
+        data:
+          repeats: 3
+          zone:
+            - - 20426
+              - 21269
+              - 22046
+              - 23069
+  vacuum_entry:
+    alias: 'Vacuum: Entry'
+    mode: single
+    icon: mdi:door-open
+    sequence:
+      - service: xiaomi_miio.vacuum_clean_zone
+        target:
+          entity_id: vacuum.roborock_vacuum_a15
+        data:
+          repeats: 1
+          zone:
+            - - 22073
+              - 21048
+              - 25996
+              - 23077
+  vacuum_office:
+    alias: 'Vacuum: Office'
+    mode: single
+    icon: mdi:laptop
+    sequence:
+      - service: xiaomi_miio.vacuum_clean_zone
+        target:
+          entity_id: vacuum.roborock_vacuum_a15
+        data:
+          repeats: 1
+          zone:
+            - - 19366
+              - 23056
+              - 23405
+              - 26965
+  vacuum_living_room:
+    alias: 'Vacuum: Living Room'
+    mode: single
+    icon: mdi:sofa-outline
+    sequence:
+      - service: xiaomi_miio.vacuum_clean_zone
+        target:
+          entity_id: vacuum.roborock_vacuum_a15
+        data:
+          repeats: 1
+          zone:
+            - - 19300
+              - 15206
+              - 23301
+              - 21164
+  vacuum_apartment_except_office:
+    alias: 'Vacuum: Apartment except office'
+    mode: single
+    icon: mdi:home
+    sequence:
+      - service: xiaomi_miio.vacuum_clean_zone
+        target:
+          entity_id: vacuum.roborock_vacuum_a15
+        data:
+          repeats: 1
+          zone:
+            - - 19300
+              - 15206
+              - 23301
+              - 21164
+            - - 22073
+              - 21048
+              - 25996
+              - 23077
+            - - 20426
+              - 21269
+              - 22046
+              - 23069
+            - - 23568
+              - 23115
+              - 27543
+              - 26879 
 
+  # -------- Learn remotes -------- #
+  learn_hdmi_switch:
+    sequence:
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: hdmi_switch
+          command: one
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: hdmi_switch
+          command: two
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: hdmi_switch
+          command: three
+  learn_fan:
+    sequence:
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: fan
+          command: power
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: fan
+          command: speed
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: fan
+          command: rotation
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.ir_blaster_remote
+        data:
+          device: fan
+          command: timer
   learn_stereo:
-    sequence: 
+    sequence:
       - service: remote.learn_command
         target:
           entity_id: remote.ir_blaster_remote
         data:
           device: stereo
           command: power
-      - delay: 00:00:02    
+      - delay: 00:00:02
       - service: remote.learn_command
         target:
           entity_id: remote.ir_blaster_remote
         data:
           device: stereo
           command: amp-power
-      - delay: 00:00:02    
+      - delay: 00:00:02
       - service: remote.learn_command
         target:
           entity_id: remote.ir_blaster_remote
         data:
           device: stereo
           command: cd
-      - delay: 00:00:02    
+      - delay: 00:00:02
       - service: remote.learn_command
         target:
           entity_id: remote.ir_blaster_remote
         data:
           device: stereo
           command: recorder
-      - delay: 00:00:02    
+      - delay: 00:00:02
       - service: remote.learn_command
         target:
           entity_id: remote.ir_blaster_remote
         data:
           device: stereo
           command: network
-      - delay: 00:00:02    
+      - delay: 00:00:02
       - service: remote.learn_command
         target:
           entity_id: remote.ir_blaster_remote
         data:
           device: stereo
           command: phono
-      - delay: 00:00:02    
+      - delay: 00:00:02
       - service: remote.learn_command
         target:
           entity_id: remote.ir_blaster_remote
         data:
           device: stereo
           command: aux
-      - delay: 00:00:02    
+      - delay: 00:00:02
       - service: remote.learn_command
         target:
           entity_id: remote.ir_blaster_remote
         data:
           device: stereo
           command: tuner
-      - delay: 00:00:02    
+      - delay: 00:00:02
       - service: remote.learn_command
         target:
           entity_id: remote.ir_blaster_remote
         data:
           device: stereo
           command: volume-up
-      - delay: 00:00:02    
+      - delay: 00:00:02
       - service: remote.learn_command
         target:
           entity_id: remote.ir_blaster_remote
         data:
           device: stereo
           command: volume-down
-      - delay: 00:00:02    
+      - delay: 00:00:02
       - service: remote.learn_command
         target:
           entity_id: remote.ir_blaster_remote
@@ -149,14 +368,14 @@ script:
         data:
           device: projector
           command: off
-      - delay: 00:00:02    
+      - delay: 00:00:02
       - service: remote.learn_command
         target:
           entity_id: remote.ir_blaster_remote
         data:
           device: projector
           command: user1
-      - delay: 00:00:02          
+      - delay: 00:00:02
       - service: remote.learn_command
         target:
           entity_id: remote.ir_blaster_remote

@@ -1,0 +1,308 @@
+---
+button_card_templates: !include_dir_merge_named "../../custom_components/ui_lovelace_minimalist/__ui_minimalist__/ulm_templates/"
+
+title: "Main"
+theme: "minimalist-desktop"
+background: "var(--background-image)"
+views:
+
+  # -----------------------
+  # Main
+  # -----------------------
+  - title: "Main"
+    path: 0
+    icon: "mdi:home"
+    cards:
+      - type: vertical-stack
+        cards:
+
+          # -------- chips -------- #
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                color_type: blank-card
+              #- type: 'custom:button-card'
+              #  template: chip_temperature
+              #  variables:
+              #    ulm_chip_temperature_outside: sensor.openweathermap_temperature
+              #    ulm_chip_temperature_weather: weather.openweathermap
+              #                  ulm_custom_popup:
+              #                    template: "popup_weather_forecast"
+              #                    entity: weather.openweathermap
+              #                    popup_variables:
+              #                      ulm_weather_popup_surpress_first_forecast: false
+              - type: "custom:button-card"
+                color_type: blank-card
+
+          # -------- weather -------- #
+          - type: "custom:button-card"
+            template: card_weather
+            entity: weather.openweathermap
+            variables:
+              ulm_card_weather_name: " "
+              ulm_card_weather_primary_info:
+                - extrema
+              ulm_card_weather_secondary_info:
+                #- humidity
+                #- precipitation_probability
+                - wind_speed
+                - precipitation
+              ulm_card_weather_backdrop: false
+
+          # -------- scenes -------- #
+          - type: custom:button-card
+            template: card_scenes_welcome
+            variables:
+              entity_1:
+                entity_id: switch.scene_romantic
+                color: pink
+              entity_2:
+                entity_id: switch.scene_work
+                color: red
+              entity_3:
+                entity_id: switch.scene_cinema
+                color: green
+              entity_4:
+                entity_id: switch.scene_music
+                color: blue
+              entity_5:
+                entity_id: switch.scene_gaming
+                color: yellow
+              entity_6:
+                entity_id: switch.scene_off
+                color: purple
+
+          # -------- media player -------- #
+          - type: conditional
+            conditions:
+              - entity: media_player.stereo
+                state_not: "off"
+              - entity: media_player.stereo
+                state_not: "unavailable"
+            card:
+              type: "custom:button-card"
+              template: card_media_player
+              entity: media_player.stereo
+              variables:
+                ulm_card_media_player_name: "Stereo"
+                ulm_card_media_player_enable_art: true
+                ulm_card_media_player_power_button: true
+                ulm_card_media_player_enable_controls: false
+                ulm_card_media_player_more_info: false
+                ulm_card_media_player_enable_popup: false
+          - type: conditional
+            conditions:
+              - entity: media_player.chromecast_hd
+                state_not: "off"
+              - entity: media_player.chromecast_hd
+                state_not: "unavailable"
+            card:
+              type: "custom:button-card"
+              template: card_media_player
+              entity: media_player.chromecast_hd
+              variables:
+                ulm_card_media_player_name: "TV"
+                ulm_card_media_player_enable_art: true
+                ulm_card_media_player_power_button: true
+                ulm_card_media_player_enable_controls: false
+                ulm_card_media_player_more_info: false
+                ulm_card_media_player_enable_popup: false
+
+          # -------- controls -------- #
+          - type: conditional
+            conditions:
+              - entity: input_boolean.stereo
+                state_not: "off"
+            card:
+              type: horizontal-stack
+              cards:
+                - type: 'custom:button-card'
+                  template: card_script
+                  tap_action:
+                    action: call-service
+                    service: remote.send_command
+                    service_data:
+                      entity_id: remote.ir_blaster_remote
+                      device: stereo
+                      command: volume-down
+                  variables:
+                    ulm_card_script_title: Down
+                    ulm_card_script_icon: mdi:volume-minus
+                - type: 'custom:button-card'
+                  template: card_script
+                  tap_action:
+                    action: call-service
+                    service: remote.send_command
+                    service_data:
+                      entity_id: remote.ir_blaster_remote
+                      device: stereo
+                      command: mute
+                  variables:
+                    ulm_card_script_title: Mute
+                    ulm_card_script_icon: mdi:volume-off
+                - type: 'custom:button-card'
+                  template: card_script
+                  tap_action:
+                    action: call-service
+                    service: remote.send_command
+                    service_data:
+                      entity_id: remote.ir_blaster_remote
+                      device: stereo
+                      command: volume-up
+                  variables:
+                    ulm_card_script_title: Up
+                    ulm_card_script_icon: mdi:volume-plus
+
+          # -------- rooms -------- #
+          - type: grid
+            columns: 2
+            cards:
+              - type: "custom:button-card"
+                template:
+                  - card_room
+                  - yellow_on
+                name: "Wohnzimmer"
+                icon: >
+                  [[[
+                    return states['binary_sensor.window_sensor_wohnzimmer_contact'].state == 'on' ? 'mdi:weather-windy' : 'mdi:sofa'
+                  ]]]
+                tap_action:
+                  action: navigate
+                  navigation_path: "wohnzimmer"
+                entity: light.light_group_wohnzimmer
+                variables:
+                  label_use_temperature: false
+                  label_use_brightness: true
+                  entity_1:
+                    entity_id: light.light_group_wohnzimmer
+                    templates:
+                      - yellow_on
+                    tap_action:
+                      action: toggle
+                  #                  entity_2:
+                  #                    entity_id: switch.heating_wohnzimmer
+                  #                    templates:
+                  #                      - red_on
+                  #                    tap_action:
+                  #                      action: toggle
+                  entity_2:
+                    entity_id: switch.stereo
+                    templates:
+                      - green_on
+                    tap_action:
+                      action: toggle
+                  entity_3:
+                    entity_id: switch.projector
+                    templates:
+                      - blue_on
+                    tap_action:
+                      action: toggle
+                label: >
+                  [[[
+                    return (Math.round(states['sensor.temperature_humidity_wohnzimmer_temperature'].state * 10) / 10) + "°C" + "&nbsp; | &nbsp;" + (Math.round(states['sensor.temperature_humidity_wohnzimmer_humidity'].state * 10) / 10) + "%"
+                  ]]]
+              - type: "custom:button-card"
+                template:
+                  - card_room
+                  - blue_on
+                name: "Arbeitszimmer"
+                icon: >
+                  [[[
+                    return states['binary_sensor.window_sensor_arbeitszimmer_contact'].state == 'on' ? 'mdi:weather-windy' : 'mdi:desk'
+                  ]]]
+                tap_action:
+                  action: navigate
+                  navigation_path: "arbeitszimmer"
+                entity: light.light_group_arbeitszimmer
+                variables:
+                  label_use_temperature: false
+                  label_use_brightness: true
+                  entity_1:
+                    entity_id: light.light_group_arbeitszimmer
+                    templates:
+                      - yellow_on
+                    tap_action:
+                      action: toggle
+                #                  entity_2:
+                #                    entity_id: switch.heating_arbeitszimmer
+                #                    templates:
+                #                      - red_on
+                #                    tap_action:
+                #                      action: toggle
+                label: >
+                  [[[
+                    return (Math.round(states['sensor.temperature_humidity_arbeitszimmer_temperature'].state * 10) / 10) + "°C" + "&nbsp; | &nbsp;" + (Math.round(states['sensor.temperature_humidity_arbeitszimmer_humidity'].state * 10) / 10) + "%"
+                  ]]]
+              - type: "custom:button-card"
+                template:
+                  - card_room
+                  - pink_on
+                name: "Küche"
+                icon: >
+                  [[[
+                    return states['binary_sensor.window_sensor_kuche_contact'].state == 'on' ? 'mdi:weather-windy' : 'mdi:pot-steam'
+                  ]]]
+                tap_action:
+                  action: navigate
+                  navigation_path: "kuche"
+                entity: light.light_group_kuche
+                variables:
+                  label_use_temperature: false
+                  label_use_brightness: true
+                  entity_1:
+                    entity_id: light.light_group_kuche
+                    templates:
+                      - yellow_on
+                    tap_action:
+                      action: toggle
+                  #                  entity_2:
+                  #                    entity_id: switch.heating_kuche
+                  #                    templates:
+                  #                      - red_on
+                  #                    tap_action:
+                  #                      action: toggle
+                  entity_2:
+                    entity_id: switch.dehumidifier_kuche
+                    templates:
+                      - blue_on
+                    tap_action:
+                      action: toggle
+                label: >
+                  [[[
+                    return (Math.round(states['sensor.temperature_humidity_kuche_temperature'].state * 10) / 10) + "°C" + "&nbsp; | &nbsp;" + (Math.round(states['sensor.temperature_humidity_kuche_humidity'].state * 10) / 10) + "%"
+                  ]]]
+              - type: "custom:button-card"
+                template:
+                  - card_room
+                  - green_on
+                name: "Flur & Bad"
+                icon: "mdi:door"
+                tap_action:
+                  action: navigate
+                  navigation_path: "flur"
+                entity: light.light_group_flur
+                variables:
+                  label_use_temperature: false
+                  label_use_brightness: true
+                  entity_1:
+                    entity_id: light.light_group_flur
+                    templates:
+                      - yellow_on
+                    tap_action:
+                      action: toggle 
+
+  # -----------------------
+  # Rooms
+  # -----------------------
+  - !include "./rooms/wohnzimmer.yaml"
+  - !include "./rooms/arbeitszimmer.yaml"
+  - !include "./rooms/kuche.yaml"
+  - !include "./rooms/flur.yaml"
+
+  # -----------------------
+  # Pages
+  # -----------------------
+  - !include "./pages/notifications.yaml"
+  - !include "./pages/remotes.yaml"
+  - !include "./pages/monitoring.yaml"
+  - !include "./pages/settings.yaml"

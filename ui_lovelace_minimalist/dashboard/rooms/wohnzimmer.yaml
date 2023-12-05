@@ -1,0 +1,149 @@
+title: "Wohnzimmer"
+path: "wohnzimmer"
+icon: "mdi:sofa"
+subview: true
+cards:
+  - type: "vertical-stack"
+    cards:
+
+      # -------- climate -------- #
+      - type: 'custom:button-card'
+        template: card_title
+        name: Climate
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            template: card_graph
+            entity: sensor.temperature_humidity_wohnzimmer_temperature
+            variables:
+              ulm_card_graph_color: "var(--google-red)"
+              ulm_card_graph_name: Temperature Wohnzimmer
+              ulm_card_graph_entity: sensor.temperature_humidity_wohnzimmer_temperature
+              ulm_card_graph_type: fill
+              ulm_card_graph_hours: 24
+              ulm_card_graph_group_by: interval
+          - type: 'custom:button-card'
+            template: card_graph
+            entity: sensor.temperature_humidity_wohnzimmer_humidity
+            variables:
+              ulm_card_graph_color: "var(--google-blue)"
+              ulm_card_graph_name: Humidity Wohnzimmer
+              ulm_card_graph_entity: sensor.temperature_humidity_wohnzimmer_humidity
+              ulm_card_graph_type: fill
+              ulm_card_graph_hours: 24
+              ulm_card_graph_group_by: interval
+      #          - type: "custom:better-thermostat-ui-card"
+      #            entity: climate.climate_wohnzimmer
+      - type: "custom:button-card"
+        template: card_thermostat
+        entity: climate.climate_wohnzimmer
+        variables:
+          ulm_card_thermostat_enable_collapse: true
+          ulm_card_thermostat_enable_controls: true
+          ulm_card_thermostat_enable_hvac_modes: false
+          ulm_card_thermostat_enable_horizontal: true
+      - type: 'custom:button-card'
+        template: card_input_boolean
+        entity: switch.heating_wohnzimmer
+        variables:
+          ulm_card_input_boolean_name: >
+            [[[
+              return states['switch.heating_wohnzimmer'].state == 'on' ? 'Boosting for ' + states['number.trv_wohnzimmer_rechts_boost_timeset_countdown'].state + ' seconds' : 'Boost Temperature';
+            ]]]
+          ulm_card_input_boolean_force_background_color: true
+          ulm_card_input_boolean_color: yellow
+
+      # -------- devices -------- #
+      - type: 'custom:button-card'
+        template: card_title
+        name: Devices
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: 'custom:button-card'
+            template: card_input_boolean
+            entity: switch.projector
+          - type: 'custom:button-card'
+            template: card_input_boolean
+            entity: switch.stereo
+          - type: 'custom:button-card'
+            template: card_input_boolean
+            entity: switch.steam_link_wohnzimmer
+
+      # -------- lights -------- #
+      - type: 'custom:button-card'
+        template: card_title
+        name: Lights
+      - type: "custom:button-card"
+        template: card_light
+        entity: light.light_stehlampe_wohnzimmer
+        variables:
+          ulm_card_light_enable_slider: true
+          ulm_card_light_enable_color: true
+          ulm_card_light_enable_horizontal: true
+          ulm_card_light_enable_popup: true
+      - type: "custom:button-card"
+        template: card_light
+        entity: light.light_ambient_beamer
+        variables:
+          ulm_card_light_enable_slider: true
+          ulm_card_light_enable_color: true
+          ulm_card_light_enable_horizontal: true
+          ulm_card_light_enable_popup: true
+      - type: "custom:button-card"
+        template: card_light
+        entity: light.light_ambient_stereo
+        variables:
+          ulm_card_light_enable_slider: true
+          ulm_card_light_enable_color: true
+          ulm_card_light_enable_horizontal: true
+          ulm_card_light_enable_popup: true
+      - type: "custom:button-card"
+        template: card_light
+        entity: light.light_bett_oben
+        variables:
+          ulm_card_light_enable_slider: true
+          ulm_card_light_enable_color: true
+          ulm_card_light_enable_horizontal: true
+          ulm_card_light_enable_popup: true
+      - type: "custom:button-card"
+        template: card_light
+        entity: light.light_bett_unten
+        variables:
+          ulm_card_light_enable_slider: true
+          ulm_card_light_enable_color: true
+          ulm_card_light_enable_horizontal: true
+          ulm_card_light_enable_popup: true
+      - type: "custom:button-card"
+        template: card_light
+        entity: light.light_decke_wohnzimmer
+        variables:
+          ulm_card_light_enable_slider: true
+          ulm_card_light_enable_color: true
+          ulm_card_light_enable_horizontal: true
+          ulm_card_light_enable_popup: true
+
+      # -------- actions -------- #
+      #          - type: 'custom:button-card'
+      #            template: card_title
+      #            name: Actions
+      #          - type: grid
+      #            columns: 1
+      #            square: false
+      #            cards:
+
+      # -------- sensors -------- #
+      - type: 'custom:button-card'
+        template: card_title
+        name: Sensors
+      - type: grid
+        columns: 1
+        square: false
+        cards:
+          - type: 'custom:button-card'
+            template: card_binary_sensor
+            variables:
+              ulm_card_binary_sensor_alert: true
+              ulm_card_binary_sensor_show_last_changed: true
+            entity: binary_sensor.window_sensor_wohnzimmer_contact

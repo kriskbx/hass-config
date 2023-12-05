@@ -1,0 +1,232 @@
+title: "Monitoring"
+path: "monitoring"
+icon: "mdi:chart-line"
+cards:
+  - type: vertical-stack
+    cards:
+
+      # -------- internet -------- #
+      - type: 'custom:button-card'
+        template: card_title
+        name: Internet
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: 'custom:button-card'
+            template: card_graph
+            entity: sensor.192_168_50_1_upload_speed
+            variables:
+              ulm_card_graph_color: "var(--google-blue)"
+              ulm_card_graph_name: Upload
+              ulm_card_graph_entity: sensor.192_168_50_1_upload_speed
+              ulm_card_graph_type: fill
+              ulm_card_graph_hours: .5
+              ulm_card_graph_points: 48
+              ulm_card_graph_group_by: interval
+          - type: 'custom:button-card'
+            template: card_graph
+            entity: sensor.192_168_50_1_download_speed
+            variables:
+              ulm_card_graph_color: "var(--google-violet)"
+              ulm_card_graph_name: Download
+              ulm_card_graph_entity: sensor.192_168_50_1_download_speed
+              ulm_card_graph_type: fill
+              ulm_card_graph_hours: .5
+              ulm_card_graph_points: 48
+              ulm_card_graph_group_by: interval
+          - type: 'custom:button-card'
+            template: card_binary_sensor_alert
+            entity: binary_sensor.internet_connected
+            variables:
+              ulm_icon_alert_invert_state: true
+              ulm_card_binary_sensor_alert: true
+              ulm_card_binary_sensor_alert_force_background_color: false
+              ulm_card_binary_sensor_alert_show_last_changed: true
+              ulm_card_binary_sensor_alert_color: blue
+              ulm_card_binary_sensor_alert_icon: >
+                [[[
+                  return states['binary_sensor.internet_connected'].state == 'on' ? 'mdi:check-network' : 'mdi:close-network';
+                ]]]
+          - type: 'custom:button-card'
+            template: card_binary_sensor_alert
+            entity: binary_sensor.dns_working
+            variables:
+              ulm_icon_alert_invert_state: true
+              ulm_card_binary_sensor_alert: true
+              ulm_card_binary_sensor_alert_force_background_color: false
+              ulm_card_binary_sensor_alert_show_last_changed: true
+              ulm_card_binary_sensor_alert_color: blue
+              ulm_card_binary_sensor_alert_icon: >
+                [[[
+                  return states['binary_sensor.dns_working'].state == 'on' ? 'mdi:lan-check' : 'mdi:lan-disconnect';
+                ]]]
+
+      # -------- home server -------- #
+      - type: 'custom:button-card'
+        template: card_title
+        name: Home-Server
+      - type: vertical-stack
+        cards:
+          - type: grid
+            square: false
+            columns: 2
+            cards:
+              - type: 'custom:button-card'
+                template: card_graph
+                entity: sensor.home_assistant_glances_cpu_used
+                variables:
+                  ulm_card_graph_entity: sensor.home_assistant_glances_cpu_used
+                  ulm_card_graph_color: "var(--google-blue)"
+                  ulm_card_graph_name: CPU usage
+                  ulm_card_graph_type: fill
+                  ulm_card_graph_hours: .5
+                  ulm_card_graph_points: 48
+                  ulm_card_graph_group_by: interval
+              - type: 'custom:button-card'
+                template: card_graph
+                entity: sensor.home_assistant_glances_ram_used_percent
+                variables:
+                  ulm_card_graph_entity: sensor.home_assistant_glances_ram_used_percent
+                  ulm_card_graph_color: "var(--google-violet)"
+                  ulm_card_graph_name: Memory usage
+                  ulm_card_graph_hours: .5
+                  ulm_card_graph_points: 48
+                  ulm_card_graph_group_by: interval
+          - type: grid
+            columns: 1
+            square: false
+            cards:
+            - type: "custom:bar-card"
+              decimal: 0
+              severity:
+                - from: 0
+                  to: 2606
+                  color: "var(--google-green)"
+                - from: 2606
+                  to: 3351
+                  color: "var(--google-yellow)"
+                - from: 3351
+                  to: 3724
+                  color: "var(--google-red)"
+              positions:
+                name: outside
+                icon: outside
+                value: inside
+              style: |-
+                bar-card-value {
+                  margin-right: 15px;
+                  font-size: 13px;
+                  font-weight: bold;
+                  text-shadow: 1px 1px #0005;
+                }
+                bar-card-card {
+                  height: 35px;
+                  margin: 2px 0;
+                }
+                bar-card-background {
+                  height: calc(100% - 10px) !important;
+                  margin-left: 20px !important;
+                  margin-top: 5px !important;
+                }
+              entities:
+                - entity: sensor.home_assistant_glances_rootfs_mnt_disk1_used
+                  unit_of_measurement: "/ 3724 GB"
+                  name: Disk 1
+                  min: 0
+                  max: 3724
+                - entity: sensor.home_assistant_glances_rootfs_mnt_disk2_used
+                  unit_of_measurement: "/ 3724 GB"
+                  name: Disk 2
+                  min: 0
+                  max: 3724
+                - entity: sensor.home_assistant_glances_rootfs_mnt_disk3_used
+                  unit_of_measurement: "/ 3724 GB"
+                  name: Disk 3
+                  min: 0
+                  max: 3724
+                - entity: sensor.home_assistant_glances_rootfs_mnt_disk4_used
+                  unit_of_measurement: "/ 3724 GB"
+                  name: Disk 4
+                  min: 0
+                  max: 3724
+                - entity: sensor.home_assistant_glances_rootfs_mnt_cache_used
+                  unit_of_measurement: "/ 463 GB"
+                  name: Cache
+                  icon: mdi:memory
+                  min: 0
+                  max: 463
+                  severity:
+                  - from: 0
+                    to: 324
+                    color: "var(--google-green)"
+                  - from: 324
+                    to: 417
+                    color: "var(--google-yellow)"
+                  - from: 417
+                    to: 463
+                    color: "var(--google-red)"
+          - type: "custom:button-card"
+            template: custom_card_damix48_power_details
+            entity: sensor.home_server_plug_power
+            variables:
+              ulm_card_power_details_name: Power
+              ulm_card_power_details_entity: sensor.home_server_plug_power
+              ulm_card_power_details_hours: 24
+              ulm_card_power_details_24hour: true
+              ulm_card_power_details_height: 100
+              ulm_card_power_details_thresholds:
+                - value: 0
+                  color: "#43A047"
+                - value: 40
+                  color: "#43A047"
+                - value: 60
+                  color: "#FFA600"
+                - value: 70
+                  color: "#DB4437"
+
+  - type: vertical-stack
+    cards:
+
+      # -------- printers -------- #
+      - type: 'custom:button-card'
+        template: card_title
+        name: Printers
+      - type: vertical-stack
+        cards:
+          - type: "custom:button-card"
+            template: "custom_card_sisimomo_printer"
+            entity: sensor.mfc_l2740dw_status
+            variables:
+              printer_name: Brother MFC-L2740DW
+              cartridges:
+                - label: "BK"
+                  entity_id: sensor.mfc_l2740dw_black_toner_remaining
+                  type: unicolor
+                  color: "#121212"
+                - label: "DR"
+                  entity_id: sensor.mfc_l2740dw_drum_remaining_lifetime
+                  type: unicolor
+                  color: "#121212"
+          - type: "custom:button-card"
+            template: "custom_card_sisimomo_printer"
+            entity: sensor.dcp_j1050dw_status
+            variables:
+              printer_name: Brother DCP-J1050DW
+              cartridges:
+                - label: "C"
+                  entity_id: sensor.dcp_j1050dw_cyan_ink_remaining
+                  type: unicolor
+                  color: "#006974"
+                - label: "M"
+                  entity_id: sensor.dcp_j1050dw_magenta_ink_remaining
+                  type: unicolor
+                  color: "#6d1b7b"
+                - label: "Y"
+                  entity_id: sensor.dcp_j1050dw_yellow_ink_remaining
+                  type: unicolor
+                  color: "#b2a429"
+                - label: "K"
+                  entity_id: sensor.dcp_j1050dw_black_ink_remaining
+                  type: unicolor
+                  color: "#121212"

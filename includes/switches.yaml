@@ -1,9 +1,21 @@
+# -------- Switches -------- #
 switch:
   - platform: template
     switches:
 
+      # -------- flur button -------- #
+      flur_button:
+        value_template: "{{ is_state('light.light_group_arbeitszimmer', 'on') or is_state('light.light_group_kuche', 'on') or is_state('light.light_group_wohnzimmer', 'on') or is_state('switch.projector', 'on') or is_state('switch.stereo', 'on') or is_state('switch.steam_link_wohnzimmer', 'on') }}"
+        turn_on:
+          - service: switch.turn_on
+            entity_id: switch.scene_romantic
+        turn_off:
+          - service: switch.turn_on
+            entity_id: switch.scene_off
+
+      # -------- projector -------- #
       projector:
-        friendly_name: projector
+        friendly_name: Beamer
         icon_template: mdi:projector
         value_template: "{{ is_state('input_boolean.projector', 'on') }}"
         turn_on:
@@ -32,7 +44,21 @@ switch:
             data:
               device: projector
               command: off
-          - delay: 00:00:02
+          - delay: 00:00:01
+          - service: remote.send_command
+            target:
+              entity_id: remote.ir_blaster_remote
+            data:
+              device: projector
+              command: off
+          - delay: 00:00:01
+          - service: remote.send_command
+            target:
+              entity_id: remote.ir_blaster_remote
+            data:
+              device: projector
+              command: off
+          - delay: 00:00:01
           - service: remote.send_command
             target:
               entity_id: remote.ir_blaster_remote
@@ -40,8 +66,9 @@ switch:
               device: projector
               command: off
 
+      # -------- stereo -------- #
       stereo:
-        friendly_name: Stereo
+        friendly_name: Stereoanlage
         icon_template: mdi:speaker
         value_template: "{{ is_state('input_boolean.stereo', 'on') }}"
         turn_on:
@@ -71,6 +98,102 @@ switch:
               device: stereo
               command: amp-power
 
+      # -------- heating boost -------- #
+      heating_wohnzimmer:
+        friendly_name: Boost Heating Wohnzimmer
+        icon_template: mdi:thermometer-plus
+        value_template: "{{ states.number.trv_wohnzimmer_links_boost_timeset_countdown.state | int > 0 or states.number.trv_wohnzimmer_rechts_boost_timeset_countdown.state | int > 0 }}"
+        turn_on:
+          - service: number.set_value
+            data:
+              value: "300"
+            target:
+              entity_id: number.trv_wohnzimmer_links_boost_timeset_countdown
+          - service: number.set_value
+            data:
+              value: "300"
+            target:
+              entity_id: number.trv_wohnzimmer_rechts_boost_timeset_countdown
+        turn_off:
+          - service: number.set_value
+            data:
+              value: "0"
+            target:
+              entity_id: number.trv_wohnzimmer_boost_links_timeset_countdown
+          - service: number.set_value
+            data:
+              value: "300"
+            target:
+              entity_id: number.trv_wohnzimmer_rechts_boost_timeset_countdown
+      heating_kuche:
+        friendly_name: Boost Heating Küche
+        icon_template: mdi:thermometer-plus
+        value_template: "{{ states.number.trv_kuche_boost_timeset_countdown.state | int > 0 }}"
+        turn_on:
+          - service: number.set_value
+            data:
+              value: "300"
+            target:
+              entity_id: number.trv_kuche_boost_timeset_countdown
+        turn_off:
+          - service: number.set_value
+            data:
+              value: "0"
+            target:
+              entity_id: number.trv_kuche_boost_timeset_countdown
+      heating_arbeitszimmer:
+        friendly_name: Boost Heating Arbeitszimmer
+        icon_template: mdi:thermometer-plus
+        value_template: "{{ states.number.trv_arbeitszimmer_boost_timeset_countdown.state | int > 0 }}"
+        turn_on:
+          - service: number.set_value
+            data:
+              value: "300"
+            target:
+              entity_id: number.trv_arbeitszimmer_boost_timeset_countdown
+        turn_off:
+          - service: number.set_value
+            data:
+              value: "0"
+            target:
+              entity_id: number.trv_arbeitszimmer_boost_timeset_countdown
+
+      # -------- SCENE party -------- #
+      scene_party:
+        friendly_name: Party
+        icon_template: mdi:party-popper
+        value_template: "{{ is_state('input_boolean.party', 'on') }}"
+        turn_off:
+          - service: input_boolean.turn_off
+            data:
+              entity_id: input_boolean.party
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.party
+            state: "off"
+          - service: input_boolean.turn_on
+            data:
+              entity_id: input_boolean.party
+          - service: script.party_color
+
+       # -------- SCENE vacation -------- #
+      scene_vacation:
+        friendly_name: Vacation
+        icon_template: mdi:bag-suitcase
+        value_template: "{{ is_state('input_boolean.vacation', 'on') }}"
+        turn_off:
+          - service: input_boolean.turn_off
+            data:
+              entity_id: input_boolean.vacation
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.vacation
+            state: "off"
+          - service: input_boolean.turn_on
+            data:
+              entity_id: input_boolean.vacation
+
+      # -------- SCENE music -------- #
       scene_music:
         friendly_name: Music
         icon_template: mdi:music
@@ -104,26 +227,32 @@ switch:
               command: cd
           - service: script.normalize_volume
 
-      scene_dining:
-        friendly_name: Dining
-        icon_template: mdi:silverware-variant
-        value_template: false
-        turn_off:
-        turn_on:
-          - service: script.turn_on_scene
-            data:
-              entity: dining
-
+      # -------- SCENE cinema -------- #
       scene_cinema:
         friendly_name: Cinema
         icon_template: mdi:movie-open
-        value_template: "{{ is_state('input_boolean.projector', 'on') }}"
+        value_template: "{{ is_state('input_boolean.cinema', 'on') }}"
         turn_off:
+          - condition: state
+            entity_id: input_boolean.cinema
+            state: "on"
+          - service: input_boolean.turn_off
+            data:
+              entity_id: input_boolean.cinema
           - service: switch.turn_off
             entity_id: switch.stereo
           - service: switch.turn_off
             entity_id: switch.projector
         turn_on:
+          - condition: state
+            entity_id: input_boolean.cinema
+            state: "off"
+          - service: input_boolean.turn_off
+            data:
+              entity_id: input_boolean.cinema
+          #- service: script.turn_on_scene
+          #  data:
+          #    entity: cinema
           - service: switch.turn_on
             entity_id: switch.stereo
           - service: switch.turn_on
@@ -136,10 +265,64 @@ switch:
               device: stereo
               command: tuner
           - service: script.normalize_volume
-          - service: script.turn_on_scene
+          - service: remote.send_command
+            target:
+              entity_id: remote.ir_blaster_remote
             data:
-              entity: cinema
+              device: hdmi_switch
+              command: one
 
+      # -------- SCENE gaming -------- #
+      scene_gaming:
+        friendly_name: Gaming
+        icon_template: mdi:microsoft-xbox-controller
+        value_template: "{{ is_state('input_boolean.gaming', 'on') }}"
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.gaming
+            state: "on"
+          - service: input_boolean.turn_off
+            data:
+              entity_id: input_boolean.gaming
+          - service: switch.turn_off
+            entity_id: switch.stereo
+          - service: switch.turn_off
+            entity_id: switch.projector
+          - service: switch.turn_off
+            entity_id: switch.steam_link_wohnzimmer
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.gaming
+            state: "off"
+          - service: input_boolean.turn_off
+            data:
+              entity_id: input_boolean.gaming
+          #- service: script.turn_on_scene
+          #  data:
+          #    entity: cinema
+          - service: switch.turn_on
+            entity_id: switch.stereo
+          - service: switch.turn_on
+            entity_id: switch.projector
+          - delay: 00:00:01
+          - service: remote.send_command
+            target:
+              entity_id: remote.ir_blaster_remote
+            data:
+              device: stereo
+              command: tuner
+          - service: script.normalize_volume
+          - service: remote.send_command
+            target:
+              entity_id: remote.ir_blaster_remote
+            data:
+              device: hdmi_switch
+              command: three
+          - delay: 00:00:10
+          - service: switch.turn_on
+            entity_id: switch.steam_link_wohnzimmer
+
+      # -------- SCENE romantic -------- #
       scene_romantic:
         friendly_name: Romantic
         icon_template: mdi:cards-heart
@@ -150,6 +333,7 @@ switch:
             data:
               entity: romantic
 
+      # -------- SCENE work -------- #
       scene_work:
         friendly_name: Work
         icon_template: mdi:weather-sunny
@@ -160,49 +344,7 @@ switch:
             data:
               entity: work
 
-      scene_bath:
-        friendly_name: Bath
-        icon_template: mdi:hot-tub
-        value_template: "{{ is_state('input_boolean.bath', 'on') }}"
-        turn_off:
-          - condition: state
-            entity_id: input_boolean.bath
-            state: "on"
-          - service: input_boolean.turn_off
-            data:
-              entity_id: input_boolean.bath
-          - service: switch.turn_off
-            entity_id: switch.stereo
-          - service: media_player.turn_off
-            entity_id: media_player.stereo
-        turn_on:
-          - condition: state
-            entity_id: input_boolean.bath
-            state: "off"
-          - service: input_boolean.turn_on
-            data:
-              entity_id: input_boolean.bath
-          - service: script.turn_on_scene
-            data:
-              entity: bath
-          - service: spotcast.start
-            data:
-              uri: !secret bath_playlist
-              random_song: true
-              shuffle: true
-              start_volume: 50
-              entity_id: media_player.stereo
-          - service: switch.turn_on
-            entity_id: switch.stereo
-          - delay: 00:00:01
-          - service: remote.send_command
-            target:
-              entity_id: remote.ir_blaster_remote
-            data:
-              device: stereo
-              command: cd
-          - service: script.normalize_volume
-
+      # -------- SCENE off -------- #
       scene_off:
         friendly_name: "Off"
         icon_template: mdi:eye-off
@@ -210,12 +352,19 @@ switch:
         turn_off:
         turn_on:
           - service: switch.turn_off
+            entity_id: switch.scene_stereo
+          - service: switch.turn_off
+            entity_id: switch.scene_cinema
+          - service: switch.turn_off
+            entity_id: switch.scene_gaming
+          - service: switch.turn_off
             entity_id: switch.stereo
           - service: switch.turn_off
             entity_id: switch.projector
+          - service: switch.turn_off
+            entity_id: switch.steam_link_wohnzimmer
           - service: media_player.turn_off
             entity_id: media_player.stereo
           - service: script.turn_on_scene
             data:
               entity: "off"
-          

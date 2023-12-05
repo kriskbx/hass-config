@@ -1,0 +1,35 @@
+title: "Settings"
+path: "settings"
+icon: "mdi:cog"
+cards:
+
+  - type: vertical-stack
+    cards:
+
+      # -------- modes -------- #
+      - type: 'custom:button-card'
+        template: card_title
+        name: Modes
+      - type: vertical-stack
+        cards:
+          - type: 'custom:button-card'
+            template: card_input_boolean
+            entity: switch.scene_party
+            name: Party mode
+          - type: 'custom:button-card'
+            template: card_input_boolean
+            entity: switch.scene_vacation
+            name: Vacation mode
+
+  - type: vertical-stack
+    cards:
+
+      # -------- modes -------- #
+      - type: 'custom:button-card'
+        template: card_title
+        name: Options
+      - type: vertical-stack
+        cards:
+          - type: 'custom:button-card'
+            template: card_input_boolean
+            entity: input_boolean.heating
