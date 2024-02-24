@@ -1,0 +1,17 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Selecionar Integração",
+        "description": "Por favor, selecione a integração que deseja adicionar."
+      },
+      "wallets": {
+        "title": "Endreço da Carteira Solana",
+        "description": "Pode encontrar este endereço na aplicação Helium App (black icon) > Settings > Copiar Endereço > Solana. Após instalação é necessário reiniciar  o HA.",
+        "data": {
+          "wallet": "Adicionar o endreço da carteira Solana "
+        }
+      }
+    }
+  }
+}

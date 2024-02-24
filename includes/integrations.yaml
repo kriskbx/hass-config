@@ -1,80 +1,80 @@
 # -------- Integrations -------- #
-camera:
-  - platform: xiaomi_cloud_map_extractor
-    host: !secret xiaomi_vacuum_host
-    token: !secret xiaomi_vacuum_token
-    username: !secret xiaomi_cloud_username
-    password: !secret xiaomi_cloud_password
-    country: de
-    draw:
-      - charger
-      - cleaned_area
-      - goto_path
-      - ignored_obstacles
-      - ignored_obstacles_with_photo
-      - no_go_zones
-      - no_mopping_zones
-      - obstacles
-      - obstacles_with_photo
-      - path
-      - predicted_path
-      - room_names
-      - vacuum_position
-      - virtual_walls
-      - zones
-    colors:
-      color_map_inside: [ 32, 115, 185 ]
-      color_map_outside: [ 29, 29, 29 ]
-      color_map_wall: [ 255, 255, 255 ]
-      color_map_wall_v2: [ 255, 255, 255 ]
-      color_grey_wall: [ 29, 29, 29 ]
-      color_ignored_obstacle: [ 0, 0, 0, 127 ]
-      color_ignored_obstacle_with_photo: [ 0, 0, 0, 127 ]
-      color_obstacle: [ 0, 0, 0, 127 ]
-      color_obstacle_with_photo: [ 0, 0, 0, 127 ]
-      color_path: [ 128, 201, 148, 50 ]
-      color_goto_path: [ 0, 255, 0 ]
-      color_predicted_path: [ 255, 255, 0, 0 ]
-      color_cleaned_area: [ 127, 127, 127, 127 ]
-      color_zones: [ 0xAD, 0xD8, 0xFF, 0x8F ]
-      color_zones_outline: [ 0xAD, 0xD8, 0xFF ]
-      color_virtual_walls: [ 255, 0, 0 ]
-      color_new_discovered_area: [ 64, 64, 64 ]
-      color_no_go_zones: [ 255, 33, 55, 50 ]
-      color_no_go_zones_outline: [ 255, 0, 0, 150 ]
-      color_no_mop_zones: [ 163, 130, 211, 127 ]
-      color_no_mop_zones_outline: [ 163, 130, 211 ]
-      color_charger: [ 128, 201, 148 ]
-      color_robo: [ 18, 18, 18 ]
-      color_robo_outline: [ 128, 201, 148 ]
-      color_room_names: [ 0, 0, 0 ]
-      color_unknown: [ 0, 0, 0 ]
-      color_scan: [ 29, 29, 29 ]
-    room_colors:
-      1: [ 18, 18, 18 ]
-      2: [ 18, 18, 18 ]
-      3: [ 18, 18, 18 ]
-      4: [ 18, 18, 18 ]
-      5: [ 18, 18, 18 ]
-      6: [ 18, 18, 18 ]
-      7: [ 18, 18, 18 ]
-      8: [ 18, 18, 18 ]
-      9: [ 18, 18, 18 ]
-      10: [ 18, 18, 18 ]
-      11: [ 18, 18, 18 ]
-      12: [ 18, 18, 18 ]
-      13: [ 18, 18, 18 ]
-      14: [ 18, 18, 18 ]
-      15: [ 18, 18, 18 ]
-      16: [ 18, 18, 18 ]
-      17: [ 18, 18, 18 ]
-      18: [ 18, 18, 18 ]
-      19: [ 18, 18, 18 ]
-      20: [ 18, 18, 18 ]
-      21: [ 18, 18, 18 ]
-      22: [ 18, 18, 18 ]
-      23: [ 18, 18, 18 ]
-      24: [ 18, 18, 18 ]
-    attributes:
-      - calibration_points
+#camera:
+#  - platform: xiaomi_cloud_map_extractor
+#    host: !secret xiaomi_vacuum_host
+#    token: !secret xiaomi_vacuum_token
+#    username: !secret xiaomi_cloud_username
+#    password: !secret xiaomi_cloud_password
+#    country: de
+#    draw:
+#      - charger
+#      - cleaned_area
+#      - goto_path
+#      - ignored_obstacles
+#      - ignored_obstacles_with_photo
+#      - no_go_zones
+#      - no_mopping_zones
+#      - obstacles
+#      - obstacles_with_photo
+#      - path
+#      - predicted_path
+#      - room_names
+#      - vacuum_position
+#      - virtual_walls
+#      - zones
+#    colors:
+#      color_map_inside: [ 32, 115, 185 ]
+#      color_map_outside: [ 29, 29, 29 ]
+#      color_map_wall: [ 255, 255, 255 ]
+#      color_map_wall_v2: [ 255, 255, 255 ]
+#      color_grey_wall: [ 29, 29, 29 ]
+#      color_ignored_obstacle: [ 0, 0, 0, 127 ]
+#      color_ignored_obstacle_with_photo: [ 0, 0, 0, 127 ]
+#      color_obstacle: [ 0, 0, 0, 127 ]
+#      color_obstacle_with_photo: [ 0, 0, 0, 127 ]
+#      color_path: [ 128, 201, 148, 50 ]
+#      color_goto_path: [ 0, 255, 0 ]
+#      color_predicted_path: [ 255, 255, 0, 0 ]
+#      color_cleaned_area: [ 127, 127, 127, 127 ]
+#      color_zones: [ 0xAD, 0xD8, 0xFF, 0x8F ]
+#      color_zones_outline: [ 0xAD, 0xD8, 0xFF ]
+#      color_virtual_walls: [ 255, 0, 0 ]
+#      color_new_discovered_area: [ 64, 64, 64 ]
+#      color_no_go_zones: [ 255, 33, 55, 50 ]
+#      color_no_go_zones_outline: [ 255, 0, 0, 150 ]
+#      color_no_mop_zones: [ 163, 130, 211, 127 ]
+#      color_no_mop_zones_outline: [ 163, 130, 211 ]
+#      color_charger: [ 128, 201, 148 ]
+#      color_robo: [ 18, 18, 18 ]
+#      color_robo_outline: [ 128, 201, 148 ]
+#      color_room_names: [ 0, 0, 0 ]
+#      color_unknown: [ 0, 0, 0 ]
+#      color_scan: [ 29, 29, 29 ]
+#    room_colors:
+#      1: [ 18, 18, 18 ]
+#      2: [ 18, 18, 18 ]
+#      3: [ 18, 18, 18 ]
+#      4: [ 18, 18, 18 ]
+#      5: [ 18, 18, 18 ]
+#      6: [ 18, 18, 18 ]
+#      7: [ 18, 18, 18 ]
+#      8: [ 18, 18, 18 ]
+#      9: [ 18, 18, 18 ]
+#      10: [ 18, 18, 18 ]
+#      11: [ 18, 18, 18 ]
+#      12: [ 18, 18, 18 ]
+#      13: [ 18, 18, 18 ]
+#      14: [ 18, 18, 18 ]
+#      15: [ 18, 18, 18 ]
+#      16: [ 18, 18, 18 ]
+#      17: [ 18, 18, 18 ]
+#      18: [ 18, 18, 18 ]
+#      19: [ 18, 18, 18 ]
+#      20: [ 18, 18, 18 ]
+#      21: [ 18, 18, 18 ]
+#      22: [ 18, 18, 18 ]
+#      23: [ 18, 18, 18 ]
+#      24: [ 18, 18, 18 ]
+#    attributes:
+#      - calibration_points
 

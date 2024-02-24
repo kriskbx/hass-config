@@ -166,27 +166,141 @@ cards:
                   - from: 417
                     to: 463
                     color: "var(--google-red)"
-          - type: "custom:button-card"
-            template: custom_card_damix48_power_details
-            entity: sensor.home_server_plug_power
-            variables:
-              ulm_card_power_details_name: Power
-              ulm_card_power_details_entity: sensor.home_server_plug_power
-              ulm_card_power_details_hours: 24
-              ulm_card_power_details_24hour: true
-              ulm_card_power_details_height: 100
-              ulm_card_power_details_thresholds:
-                - value: 0
-                  color: "#43A047"
-                - value: 40
-                  color: "#43A047"
-                - value: 60
-                  color: "#FFA600"
-                - value: 70
-                  color: "#DB4437"
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: input_select.monitoring_range
+                state: "day"
+            card:
+              type: "custom:button-card"
+              template: custom_card_damix48_power_details
+              entity: sensor.home_server_plug_power
+              variables:
+                ulm_card_power_details_name: Power
+                ulm_card_power_details_entity: sensor.home_server_plug_power
+                ulm_card_power_details_hours: 24
+                ulm_card_power_details_24hour: true
+                ulm_card_power_details_height: 100
+                ulm_card_power_details_thresholds:
+                  - value: 0
+                    color: "#43A047"
+                  - value: 40
+                    color: "#43A047"
+                  - value: 60
+                    color: "#FFA600"
+                  - value: 70
+                    color: "#DB4437"
 
   - type: vertical-stack
     cards:
+
+      # -------- Miner -------- #
+      - type: 'custom:button-card'
+        template: card_title
+        name: Settings
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: entities
+            entities: 
+              - input_select.monitoring_range
+
+      - type: 'custom:button-card'
+        template: card_title
+        name: Miner
+      - type: conditional
+        conditions:
+          - condition: state
+            entity: input_select.monitoring_range
+            state: "day"
+        card:
+          type: grid
+          columns: 3
+          square: false
+          cards:
+            - type: 'custom:button-card'
+              template: card_generic
+              entity: sensor.miner_wallet_daily
+              variables:
+                ulm_card_generic_name: Earnings
+                ulm_card_generic_icon: mdi:currency-btc
+                ulm_card_generic_color:
+                ulm_card_generic_force_background_color: true
+            - type: 'custom:button-card'
+              template: card_generic
+              entity: sensor.miner_energy_spent_daily
+              variables:
+                ulm_card_generic_name: Energy spent
+                ulm_card_generic_icon: mdi:lightning-bolt
+                ulm_card_generic_color:
+                ulm_card_generic_force_background_color: true
+            - type: 'custom:button-card'
+              template: card_generic
+              entity: sensor.miner_earnings_daily
+              variables:
+                ulm_card_generic_name: Earnings
+                ulm_card_generic_icon: mdi:currency-eur
+                ulm_card_generic_color: >
+                  {% if sensor.miner_earnings_daily > 0 %}green{% else %}red{% endif %}
+                ulm_card_generic_force_background_color: true
+
+      # -------- climate -------- #
+      - type: 'custom:button-card'
+        template: card_title
+        name: Climate
+      - type: vertical-stack
+        cards:
+          - type: custom:apexcharts-card
+            graph_span: 1d
+            hours_12: false
+            apex_config:
+              stroke:
+                curve: "smooth"
+                width: 2
+              grid:
+                borderColor: "#303030"
+              legend:
+                position: top
+                height: 40
+                offsetY: 17
+                itemMargin:
+                  horizontal: 15
+            series:
+              - entity: sensor.temperature_humidity_arbeitszimmer_temperature
+                name: Arbeitszimmer
+                color: "#1976d2"
+              - entity: sensor.temperature_humidity_wohnzimmer_temperature
+                name: Wohnzimmer
+                color: "#fbc02d"
+              - entity: sensor.temperature_humidity_kuche_temperature
+                name: Küche
+                color: "#d32f2f"
+          - type: custom:apexcharts-card
+            graph_span: 1d
+            hours_12: false
+            apex_config:
+              stroke:
+                curve: "smooth"
+                width: 2
+              grid:
+                borderColor: "#303030"
+              legend:
+                position: top
+                height: 40
+                offsetY: 17
+                itemMargin:
+                  horizontal: 15
+            series:
+              - entity: sensor.temperature_humidity_arbeitszimmer_humidity
+                name: Arbeitszimmer
+                color: "#1976d2"
+              - entity: sensor.temperature_humidity_wohnzimmer_humidity
+                name: Wohnzimmer
+                color: "#fbc02d"
+              - entity: sensor.temperature_humidity_kuche_humidity
+                name: Küche
+                color: "#d32f2f"
 
       # -------- printers -------- #
       - type: 'custom:button-card'

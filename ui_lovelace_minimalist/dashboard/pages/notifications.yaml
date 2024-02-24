@@ -1,6 +1,6 @@
 title: "Notifications"
 path: 0
-icon: "mdi:bell-badge"
+icon: "mdi:bell"
 cards:
   - type: vertical-stack
     cards:
@@ -13,12 +13,20 @@ cards:
           - type: conditional
             conditions:
               - entity: binary_sensor.something_is_critical
+                state_not: "on"
+            card:
+              type: 'custom:button-card'
+              template: card_title
+              name: "System Health"
+          - type: conditional
+            conditions:
+              - entity: binary_sensor.something_is_critical
                 state_not: "off"
             card:
               type: 'custom:button-card'
               template: card_title
-              name: "⚠️ Warning"
-              label: 'Some parts of the system are in a critical state'
+              name: "⚠️ System Health"
+              label: "Some parts of the system are in a critical state"
           - type: conditional
             conditions:
               - entity: binary_sensor.temperatur_humidity_kuche_critical

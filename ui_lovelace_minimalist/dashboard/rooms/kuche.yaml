@@ -58,12 +58,15 @@ cards:
         template: card_title
         name: Devices
       - type: grid
-        columns: 1
+        columns: 2
         square: false
         cards:
           - type: 'custom:button-card'
             template: card_input_boolean
             entity: switch.dehumidifier_kuche
+          - type: 'custom:button-card'
+            template: card_input_boolean
+            entity: switch.plug_kitchen_speaker
 
       # -------- lights -------- #
       - type: 'custom:button-card'
@@ -80,6 +83,14 @@ cards:
       - type: "custom:button-card"
         template: card_light
         entity: light.light_decke_kuche
+        variables:
+          ulm_card_light_enable_slider: true
+          ulm_card_light_enable_color: true
+          ulm_card_light_enable_horizontal: true
+          ulm_card_light_enable_popup: true
+      - type: "custom:button-card"
+        template: card_light
+        entity: light.light_decke_abstellraum
         variables:
           ulm_card_light_enable_slider: true
           ulm_card_light_enable_color: true

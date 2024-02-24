@@ -1,7 +1,7 @@
 # -------- Config -------- #
 
 homeassistant:
-  name: Home
+  name: "127.0.0.1"
   country: DE
   latitude: !secret home_lat
   longitude: !secret home_lng
@@ -11,6 +11,8 @@ homeassistant:
   unit_system: metric
 
   customize:
+    binary_sensor.door_sensor_arbeitszimmer_contact:
+      friendly_name: Door Arbeitszimmer open
     binary_sensor.window_sensor_arbeitszimmer_contact:
       friendly_name: Window Arbeitszimmer open
     binary_sensor.window_sensor_wohnzimmer_contact:
@@ -27,6 +29,9 @@ homeassistant:
     switch.dehumidifier_kuche:
       friendly_name: Dehumidifier
       icon: mdi:air-humidifier
+    switch.plug_kitchen_speaker:
+      friendly_name: Kitchen speaker
+      icon: mdi:speaker
     vacuum.roborock_vacuum_a15:
       friendly_name: Marvin
     light.light_stehlampe_wohnzimmer:
@@ -41,6 +46,9 @@ homeassistant:
     light.light_bett_unten:
       friendly_name: Bett Unten
       icon: mdi:lamp
+    light.light_ambient_bett_unten:
+      friendly_name: Ambient Bett Unten
+      icon: mdi:led-strip-variant
     light.light_ambient_beamer:
       friendly_name: Ambient Beamer
       icon: mdi:led-strip-variant
@@ -50,6 +58,9 @@ homeassistant:
     light.light_kris_schreibtisch:
       friendly_name: Kris Schreibtisch
       icon: mdi:led-strip-variant
+    light.elgato_gw24l1a03117:
+      friendly_name: Kris Keylight
+      icon: mdi:light-flood-down
     light.light_hani_schreibtisch:
       friendly_name: Hani Schreibtisch
       icon: mdi:desk-lamp
@@ -121,4 +132,6 @@ lovelace:
     - url: /hacsfiles/better-thermostat-ui-card/better-thermostat-ui-card.js
       type: module
     - url: /hacsfiles/lovelace-xiaomi-vacuum-map-card/xiaomi-vacuum-map-card.js
+      type: module
+    - url: /hacsfiles/apexcharts-card/apexcharts-card.js?v=2.0.4
       type: module

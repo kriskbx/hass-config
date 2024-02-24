@@ -6,122 +6,6 @@ cards:
   - type: vertical-stack
     cards:
 
-      # -------- robot vacuum -------- #
-      - type: 'custom:button-card'
-        template: card_title
-        name: Robot Vacuum
-      - type: "custom:button-card"
-        template: "card_vacuum"
-        entity: "vacuum.roborock_vacuum_a15"
-      - type: horizontal-stack
-        cards:
-          - type: 'custom:button-card'
-            template: chip_icon_label
-            label: Wohnz.
-            icon: 'mdi:sofa'
-            tap_action:
-              action: call-service
-              service: script.vacuum_living_room
-          - type: 'custom:button-card'
-            template: chip_icon_label
-            label: Küche
-            icon: 'mdi:pot-steam'
-            tap_action:
-              action: call-service
-              service: script.vacuum_kitchen
-          - type: 'custom:button-card'
-            template: chip_icon_label
-            label: Flur
-            icon: 'mdi:door'
-            tap_action:
-              action: call-service
-              service: script.vacuum_entry
-          - type: 'custom:button-card'
-            template: chip_icon_label
-            label: Bad
-            icon: 'mdi:bathtub'
-            tap_action:
-              action: call-service
-              service: script.vacuum_bathroom
-          - type: 'custom:button-card'
-            template: chip_icon_label
-            label: Arbeitsz.
-            icon: 'mdi:desk'
-            tap_action:
-              action: call-service
-              service: script.vacuum_office
-      #      - type: custom:xiaomi-vacuum-map-card
-      #        entity: vacuum.roborock_vacuum_a15
-      #        map_locked: true
-      #        map_modes:
-      #          #          - template: vacuum_goto
-      #          - template: vacuum_clean_zone_predefined
-      #            predefined_selections:
-      #              # office
-      #              - zones:
-      #                  - - 19366
-      #                    - 23056
-      #                    - 23405
-      #                    - 26965
-      #              #                icon:
-      #              #                  name: "mdi:desk"
-      #              #                  x: 21188
-      #              #                  y: 25114
-      #              # kitchen
-      #              - zones:
-      #                  - - 23568
-      #                    - 23115
-      #                    - 27543
-      #                    - 26879
-      #              #                icon:
-      #              #                  name: "mdi:pot-steam"
-      #              #                  x: 24495
-      #              #                  y: 25973
-      #              # bath
-      #              - zones:
-      #                  - - 20426
-      #                    - 21269
-      #                    - 22046
-      #                    - 23069
-      #              #                icon:
-      #              #                  name: "mdi:bathtub"
-      #              #                  x: 21386
-      #              #                  y: 22160
-      #              # entry
-      #              - zones:
-      #                  - - 22073
-      #                    - 21048
-      #                    - 25996
-      #                    - 23077
-      #              #                icon:
-      #              #                  name: "mdi:door"
-      #              #                  x: 24010
-      #              #                  y: 22160
-      #              # living room
-      #              - zones:
-      #                  - - 19300
-      #                    - 15206
-      #                    - 23301
-      #                    - 21164
-      #        #                icon:
-      #        #                  name: "mdi:sofa"
-      #        #                  x: 21320
-      #        #                  y: 17993
-      #
-      #
-      #        map_source:
-      #          camera: camera.xiaomi_cloud_map_extractor
-      #          crop:
-      #            top: 180
-      #            left: 150
-      #            right: 120
-      #            bottom: 120
-      #        calibration_source:
-      #          camera: true
-
-  - type: vertical-stack
-    cards:
-
       # -------- projector control -------- #
       - type: 'custom:button-card'
         template: card_title
@@ -136,7 +20,7 @@ cards:
               action: call-service
               service: remote.send_command
               service_data:
-                entity_id: remote.ir_blaster_remote
+                entity_id: remote.ir_blaster
                 device: hdmi_switch
                 command: one
             variables:
@@ -148,7 +32,7 @@ cards:
               action: call-service
               service: remote.send_command
               service_data:
-                entity_id: remote.ir_blaster_remote
+                entity_id: remote.ir_blaster
                 device: hdmi_switch
                 command: two
             variables:
@@ -160,7 +44,7 @@ cards:
               action: call-service
               service: remote.send_command
               service_data:
-                entity_id: remote.ir_blaster_remote
+                entity_id: remote.ir_blaster
                 device: hdmi_switch
                 command: three
             variables:
@@ -181,7 +65,7 @@ cards:
               action: call-service
               service: remote.send_command
               service_data:
-                entity_id: remote.ir_blaster_remote
+                entity_id: remote.ir_blaster
                 device: stereo
                 command: cd
             variables:
@@ -193,7 +77,7 @@ cards:
               action: call-service
               service: remote.send_command
               service_data:
-                entity_id: remote.ir_blaster_remote
+                entity_id: remote.ir_blaster
                 device: stereo
                 command: phono
             variables:
@@ -205,7 +89,7 @@ cards:
               action: call-service
               service: remote.send_command
               service_data:
-                entity_id: remote.ir_blaster_remote
+                entity_id: remote.ir_blaster
                 device: stereo
                 command: tuner
             variables:
@@ -221,7 +105,7 @@ cards:
               action: call-service
               service: remote.send_command
               service_data:
-                entity_id: remote.ir_blaster_remote
+                entity_id: remote.ir_blaster
                 device: stereo
                 command: volume-down
             variables:
@@ -233,7 +117,7 @@ cards:
               action: call-service
               service: remote.send_command
               service_data:
-                entity_id: remote.ir_blaster_remote
+                entity_id: remote.ir_blaster
                 device: stereo
                 command: mute
             variables:
@@ -245,9 +129,68 @@ cards:
               action: call-service
               service: remote.send_command
               service_data:
-                entity_id: remote.ir_blaster_remote
+                entity_id: remote.ir_blaster
                 device: stereo
                 command: volume-up
             variables:
               ulm_card_script_title: Up
               ulm_card_script_icon: mdi:volume-plus
+
+  - type: vertical-stack
+    cards:
+
+      # -------- robot vacuum -------- #
+      - type: 'custom:button-card'
+        template: card_title
+        name: Robot Vacuum
+      - type: custom:xiaomi-vacuum-map-card
+        preset_name: Live map
+        entity: vacuum.roborock_s7
+        map_locked: true
+        vacuum_platform: humbertogontijo/homeassistant-roborock
+        tiles: []
+        icons: []
+        map_source:
+          camera: camera.roborock_s7_map
+          crop:
+            top: 180
+            left: 150
+            right: 120
+            bottom: 120
+        calibration_source:
+          camera: true
+        map_modes:
+          - template: vacuum_clean_zone
+          - template: vacuum_clean_zone_predefined
+            predefined_selections:
+              # office
+              - zones:
+                - - 19366
+                  - 23056
+                  - 23405
+                  - 26965
+              # kitchen
+              - zones:
+                  - - 23568
+                    - 23115
+                    - 27543
+                    - 26879
+              # bath
+              - zones:
+                  - - 20426
+                    - 21269
+                    - 22046
+                    - 23069
+              # entry
+              - zones:
+                  - - 22073
+                    - 21048
+                    - 25996
+                    - 23077
+              # living room
+              - zones:
+                  - - 19300
+                    - 15206
+                    - 23301
+                    - 21164
+

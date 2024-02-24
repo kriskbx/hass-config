@@ -75,6 +75,14 @@ cards:
           ulm_card_light_enable_popup: true
       - type: "custom:button-card"
         template: card_light
+        entity: light.elgato_gw24l1a03117
+        variables:
+          ulm_card_light_enable_slider: true
+          ulm_card_light_enable_color: true
+          ulm_card_light_enable_horizontal: true
+          ulm_card_light_enable_popup: true
+      - type: "custom:button-card"
+        template: card_light
         entity: light.light_hani_schreibtisch
         variables:
           ulm_card_light_enable_slider: true
@@ -111,3 +119,9 @@ cards:
               ulm_card_binary_sensor_alert: true
               ulm_card_binary_sensor_show_last_changed: true
             entity: binary_sensor.window_sensor_arbeitszimmer_contact
+          - type: 'custom:button-card'
+            template: card_binary_sensor
+            variables:
+              ulm_card_binary_sensor_alert: true
+              ulm_card_binary_sensor_show_last_changed: true
+            entity: binary_sensor.door_sensor_arbeitszimmer_contact

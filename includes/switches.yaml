@@ -27,7 +27,7 @@ switch:
               entity_id: input_boolean.projector
           - service: remote.send_command
             target:
-              entity_id: remote.ir_blaster_remote
+              entity_id: remote.ir_blaster
             data:
               device: projector
               command: on
@@ -40,28 +40,28 @@ switch:
               entity_id: input_boolean.projector
           - service: remote.send_command
             target:
-              entity_id: remote.ir_blaster_remote
+              entity_id: remote.ir_blaster
             data:
               device: projector
               command: off
           - delay: 00:00:01
           - service: remote.send_command
             target:
-              entity_id: remote.ir_blaster_remote
+              entity_id: remote.ir_blaster
             data:
               device: projector
               command: off
           - delay: 00:00:01
           - service: remote.send_command
             target:
-              entity_id: remote.ir_blaster_remote
+              entity_id: remote.ir_blaster
             data:
               device: projector
               command: off
           - delay: 00:00:01
           - service: remote.send_command
             target:
-              entity_id: remote.ir_blaster_remote
+              entity_id: remote.ir_blaster
             data:
               device: projector
               command: off
@@ -80,7 +80,7 @@ switch:
               entity_id: input_boolean.stereo
           - service: remote.send_command
             target:
-              entity_id: remote.ir_blaster_remote
+              entity_id: remote.ir_blaster
             data:
               device: stereo
               command: amp-power
@@ -93,7 +93,7 @@ switch:
               entity_id: input_boolean.stereo
           - service: remote.send_command
             target:
-              entity_id: remote.ir_blaster_remote
+              entity_id: remote.ir_blaster
             data:
               device: stereo
               command: amp-power
@@ -125,6 +125,7 @@ switch:
               value: "300"
             target:
               entity_id: number.trv_wohnzimmer_rechts_boost_timeset_countdown
+
       heating_kuche:
         friendly_name: Boost Heating Küche
         icon_template: mdi:thermometer-plus
@@ -141,6 +142,7 @@ switch:
               value: "0"
             target:
               entity_id: number.trv_kuche_boost_timeset_countdown
+              
       heating_arbeitszimmer:
         friendly_name: Boost Heating Arbeitszimmer
         icon_template: mdi:thermometer-plus
@@ -197,31 +199,17 @@ switch:
       scene_music:
         friendly_name: Music
         icon_template: mdi:music
-        value_template: "{{ is_state('input_boolean.music', 'on') }}"
+        value_template: "off"
         turn_off:
-          - condition: state
-            entity_id: input_boolean.music
-            state: "on"
-          - service: input_boolean.turn_off
-            data:
-              entity_id: input_boolean.music
-          - service: switch.turn_off
-            entity_id: switch.stereo
-          - service: media_player.turn_off
-            entity_id: media_player.stereo
         turn_on:
-          - condition: state
-            entity_id: input_boolean.music
-            state: "off"
-          - service: input_boolean.turn_on
-            data:
-              entity_id: input_boolean.music
           - service: switch.turn_on
             entity_id: switch.stereo
+          - service: switch.turn_on
+            entity_id: switch.plug_kitchen_speaker
           - delay: 00:00:01
           - service: remote.send_command
             target:
-              entity_id: remote.ir_blaster_remote
+              entity_id: remote.ir_blaster
             data:
               device: stereo
               command: cd
@@ -231,25 +219,9 @@ switch:
       scene_cinema:
         friendly_name: Cinema
         icon_template: mdi:movie-open
-        value_template: "{{ is_state('input_boolean.cinema', 'on') }}"
+        value_template: "off"
         turn_off:
-          - condition: state
-            entity_id: input_boolean.cinema
-            state: "on"
-          - service: input_boolean.turn_off
-            data:
-              entity_id: input_boolean.cinema
-          - service: switch.turn_off
-            entity_id: switch.stereo
-          - service: switch.turn_off
-            entity_id: switch.projector
         turn_on:
-          - condition: state
-            entity_id: input_boolean.cinema
-            state: "off"
-          - service: input_boolean.turn_off
-            data:
-              entity_id: input_boolean.cinema
           #- service: script.turn_on_scene
           #  data:
           #    entity: cinema
@@ -260,14 +232,14 @@ switch:
           - delay: 00:00:01
           - service: remote.send_command
             target:
-              entity_id: remote.ir_blaster_remote
+              entity_id: remote.ir_blaster
             data:
               device: stereo
               command: tuner
           - service: script.normalize_volume
           - service: remote.send_command
             target:
-              entity_id: remote.ir_blaster_remote
+              entity_id: remote.ir_blaster
             data:
               device: hdmi_switch
               command: one
@@ -276,27 +248,9 @@ switch:
       scene_gaming:
         friendly_name: Gaming
         icon_template: mdi:microsoft-xbox-controller
-        value_template: "{{ is_state('input_boolean.gaming', 'on') }}"
+        value_template: "off"
         turn_off:
-          - condition: state
-            entity_id: input_boolean.gaming
-            state: "on"
-          - service: input_boolean.turn_off
-            data:
-              entity_id: input_boolean.gaming
-          - service: switch.turn_off
-            entity_id: switch.stereo
-          - service: switch.turn_off
-            entity_id: switch.projector
-          - service: switch.turn_off
-            entity_id: switch.steam_link_wohnzimmer
         turn_on:
-          - condition: state
-            entity_id: input_boolean.gaming
-            state: "off"
-          - service: input_boolean.turn_off
-            data:
-              entity_id: input_boolean.gaming
           #- service: script.turn_on_scene
           #  data:
           #    entity: cinema
@@ -307,14 +261,14 @@ switch:
           - delay: 00:00:01
           - service: remote.send_command
             target:
-              entity_id: remote.ir_blaster_remote
+              entity_id: remote.ir_blaster
             data:
               device: stereo
               command: tuner
           - service: script.normalize_volume
           - service: remote.send_command
             target:
-              entity_id: remote.ir_blaster_remote
+              entity_id: remote.ir_blaster
             data:
               device: hdmi_switch
               command: three
@@ -363,8 +317,8 @@ switch:
             entity_id: switch.projector
           - service: switch.turn_off
             entity_id: switch.steam_link_wohnzimmer
-          - service: media_player.turn_off
-            entity_id: media_player.stereo
+          - service: switch.turn_off
+            entity_id: switch.plug_kitchen_speaker
           - service: script.turn_on_scene
             data:
               entity: "off"

@@ -6,9 +6,11 @@ automation:
     id: 'heating_work'
     mode: single
     trigger:
-      platform: state
-      entity_id: schedule.heating_work
-      to: "on"
+      - platform: state
+        entity_id: schedule.heating_work
+        to: "on"
+      - platform: homeassistant
+        event: start
     action:
       - repeat:
           while:
@@ -39,7 +41,7 @@ automation:
             - service: climate.set_temperature
               data:
                 hvac_mode: heat
-                temperature: 20
+                temperature: 19
               target:
                 entity_id: climate.climate_kuche
             - delay:
@@ -49,9 +51,11 @@ automation:
     id: 'heating_after_work'
     mode: single
     trigger:
-      platform: state
-      entity_id: schedule.heating_after_work
-      to: "on"
+      - platform: state
+        entity_id: schedule.heating_after_work
+        to: "on"
+      - platform: homeassistant
+        event: start
     action:
       - repeat:
           while:
@@ -82,7 +86,7 @@ automation:
             - service: climate.set_temperature
               data:
                 hvac_mode: heat
-                temperature: 19
+                temperature: 18
               target:
                 entity_id: climate.climate_kuche
             - delay:
@@ -92,9 +96,11 @@ automation:
     id: 'heating_night'
     mode: single
     trigger:
-      platform: state
-      entity_id: schedule.heating_night
-      to: "on"
+      - platform: state
+        entity_id: schedule.heating_night
+        to: "on"
+      - platform: homeassistant
+        event: start
     action:
       - repeat:
           while:
@@ -135,9 +141,11 @@ automation:
     id: 'heating_vacation'
     mode: single
     trigger:
-      platform: state
-      entity_id: input_boolean.vacation
-      to: "on"
+      - platform: state
+        entity_id: input_boolean.vacation
+        to: "on"
+      - platform: homeassistant
+        event: start
     action:
       - repeat:
           while:
@@ -175,9 +183,9 @@ automation:
   - alias: 'Turn on the lights in vacation mode'
     mode: single
     trigger:
-      platform: state
-      entity_id: schedule.vacation_lights
-      to: "on"
+      - platform: state
+        entity_id: schedule.vacation_lights
+        to: "on"
     action:
       - condition: state
         entity_id: input_boolean.vacation
@@ -266,6 +274,29 @@ automation:
       - service: switch.turn_off
         entity_id: switch.dehumidifier_kuche
 
+  # -------- abstellraum lights -------- #
+  - alias: 'Turn on the Abstellraum light on occupancy'
+    mode: single
+    trigger:
+      platform: state
+      entity_id: binary_sensor.motion_sensor_abstellraum_occupancy
+      from: "off"
+      to: "on"
+    action:
+      - service: light.turn_on
+        entity_id: light.light_decke_abstellraum
+        data:
+          brightness: 254
+      - repeat:
+          while:
+            condition: state
+            entity_id: binary_sensor.motion_sensor_abstellraum_occupancy
+            state: "on"
+          sequence:
+            - delay: 60
+      - service: light.turn_off
+        entity_id: light.light_decke_abstellraum
+
   # -------- flur lights -------- #
   - alias: 'Turn on the Flur light on occupancy'
     mode: single
@@ -290,7 +321,7 @@ automation:
 
   # -------- unter bett lights -------- #
   - alias: 'Turn on the Bett unten light on occupancy'
-    mode: single
+    mode: restart
     trigger:
       platform: state
       entity_id: binary_sensor.motion_sensor_bett_occupancy
@@ -298,18 +329,18 @@ automation:
       to: "on"
     action:
       - service: light.turn_on
-        entity_id: light.light_bett_unten
-  - alias: 'Turn off the light below bed after 30 minutes'
-    mode: restart
-    trigger:
-      platform: state
-      entity_id: light.light_bett_unten
-      from: "off"
-      to: "on"
-    action:
-      - delay: 1800
+        entity_id: light.light_ambient_bett_unten
+        data:
+          brightness: 254
+      - repeat:
+          while:
+            condition: state
+            entity_id: binary_sensor.motion_sensor_bett_occupancy
+            state: "on"
+          sequence:
+            - delay: 60
       - service: light.turn_off
-        entity_id: light.light_bett_unten
+        entity_id: light.light_ambient_bett_unten
 
   # -------- set brightness automatically -------- #
   - alias: 'Crank up the brightness for the projector ambient light to prevent hissing'
@@ -322,18 +353,6 @@ automation:
     action:
       - service: light.turn_on
         entity_id: light.light_ambient_beamer
-        data:
-          brightness: 255
-  - alias: 'Crank up the brightness for the light below bed when turning on'
-    mode: restart
-    trigger:
-      platform: state
-      entity_id: light.light_bett_unten
-      from: "off"
-      to: "on"
-    action:
-      - service: light.turn_on
-        entity_id: light.light_bett_unten
         data:
           brightness: 255
 
