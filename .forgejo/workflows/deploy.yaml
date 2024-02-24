@@ -1,0 +1,16 @@
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: docker
+    steps:
+      - uses: https://code.kris.pizza/actions/deploy@main
+        with:
+          ssh-key: ${{ secrets.DOCKER_DEPLOY_SSH_KEY }}
+          ssh-fingerprint: ${{ vars.DOCKER_DEPLOY_SSH_FINGERPRINT }}
+          host: ${{ vars.DOCKER_DEPLOY_HOST }}
+          port: ${{ vars.DOCKER_DEPLOY_PORT }}
+          root: ${{ vars.DOCKER_DEPLOY_ROOT }}
+          dir: home-assistant/config
