@@ -197,13 +197,13 @@ cards:
       # -------- Miner -------- #
       - type: 'custom:button-card'
         template: card_title
-        name: Settings
+        name: Settings!
       - type: grid
         columns: 2
         square: false
         cards:
           - type: entities
-            entities: 
+            entities:
               - input_select.monitoring_range
 
       - type: 'custom:button-card'
