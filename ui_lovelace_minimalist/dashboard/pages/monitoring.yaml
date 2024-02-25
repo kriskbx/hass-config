@@ -141,30 +141,6 @@ cards:
                   - from: 417
                     to: 463
                     color: "var(--google-red)"
-          - type: conditional
-            conditions:
-              - condition: state
-                entity: input_select.monitoring_range
-                state: "day"
-            card:
-              type: "custom:button-card"
-              template: custom_card_damix48_power_details
-              entity: sensor.home_server_plug_power
-              variables:
-                ulm_card_power_details_name: Power
-                ulm_card_power_details_entity: sensor.home_server_plug_power
-                ulm_card_power_details_hours: 24
-                ulm_card_power_details_24hour: true
-                ulm_card_power_details_height: 100
-                ulm_card_power_details_thresholds:
-                  - value: 0
-                    color: "#43A047"
-                  - value: 40
-                    color: "#43A047"
-                  - value: 60
-                    color: "#FFA600"
-                  - value: 70
-                    color: "#DB4437"
 
   - type: vertical-stack
     cards:
