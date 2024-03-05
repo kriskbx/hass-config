@@ -114,7 +114,7 @@ script:
         data:
           device: stereo
           command: volume-up
-          num_repeats: 11
+          num_repeats: 13
           delay_secs: 1
 
   # -------- Vacuum cleaning -------- #
