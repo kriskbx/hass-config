@@ -21,6 +21,5 @@ views:
   # -----------------------
   - !include "./pages/notifications.yaml"
   - !include "./pages/remotes.yaml"
-  - !include "./pages/monitoring.yaml"
   - !include "./pages/settings.yaml"
   - !include "./pages/security.yaml"
