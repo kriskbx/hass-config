@@ -13,7 +13,7 @@ automation:
     condition:
       - condition: state
         entity_id: binary_sensor.window_sensor_wohnzimmer_contact
-        state: "off"
+        state: "on"
     action:
       - service: cover.stop_cover
         target:
