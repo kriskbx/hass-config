@@ -12,3 +12,4 @@ home-assistant*
 zigbee.db
 tts
 .HA_VERSION
+custom_components
