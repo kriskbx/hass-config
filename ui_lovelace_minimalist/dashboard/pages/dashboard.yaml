@@ -216,12 +216,6 @@ cards:
                   - yellow_on
                 tap_action:
                   action: toggle
-            #                  entity_2:
-            #                    entity_id: switch.heating_arbeitszimmer
-            #                    templates:
-            #                      - red_on
-            #                    tap_action:
-            #                      action: toggle
             label: >
               [[[
                 return (Math.round(states['sensor.temperature_humidity_arbeitszimmer_temperature'].state * 10) / 10) + "°C" + "&nbsp; | &nbsp;" + (Math.round(states['sensor.temperature_humidity_arbeitszimmer_humidity'].state * 10) / 10) + "%"
@@ -248,12 +242,6 @@ cards:
                   - yellow_on
                 tap_action:
                   action: toggle
-              #                  entity_2:
-              #                    entity_id: switch.heating_kuche
-              #                    templates:
-              #                      - red_on
-              #                    tap_action:
-              #                      action: toggle
               entity_3:
                 entity_id: switch.dehumidifier_kuche
                 templates:

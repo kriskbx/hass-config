@@ -142,7 +142,7 @@ switch:
               value: "0"
             target:
               entity_id: number.trv_kuche_boost_timeset_countdown
-              
+
       heating_arbeitszimmer:
         friendly_name: Boost Heating Arbeitszimmer
         icon_template: mdi:thermometer-plus
@@ -178,7 +178,7 @@ switch:
               entity_id: input_boolean.party
           - service: script.party_color
 
-       # -------- SCENE vacation -------- #
+        # -------- SCENE vacation -------- #
       scene_vacation:
         friendly_name: Vacation
         icon_template: mdi:bag-suitcase
@@ -225,6 +225,14 @@ switch:
           #- service: script.turn_on_scene
           #  data:
           #    entity: cinema
+          - condition:
+              - condition: state
+                entity_id: binary_sensor.window_sensor_wohnzimmer_contact
+                state: "off"
+            sequence:
+              - service: cover.open_cover
+                target:
+                  entity_id: cover.blinds_wohnzimmer
           - service: switch.turn_on
             entity_id: switch.stereo
           - service: switch.turn_on
