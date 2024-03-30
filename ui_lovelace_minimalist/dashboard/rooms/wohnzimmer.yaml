@@ -57,19 +57,29 @@ cards:
       - type: 'custom:button-card'
         template: card_title
         name: Devices
-      - type: grid
-        columns: 2
-        square: false
+      - type: horizontal-stack
         cards:
-          - type: 'custom:button-card'
-            template: card_input_boolean
-            entity: switch.projector
-          - type: 'custom:button-card'
-            template: card_input_boolean
-            entity: switch.stereo
-          - type: 'custom:button-card'
-            template: card_input_boolean
-            entity: switch.steam_link_wohnzimmer
+          - type: grid
+            columns: 2
+            square: false
+            cards:
+              - type: 'custom:button-card'
+                template: card_input_boolean
+                entity: switch.projector
+              - type: 'custom:button-card'
+                template: card_input_boolean
+                entity: switch.stereo
+              - type: 'custom:button-card'
+                template: card_input_boolean
+                entity: switch.steam_link_wohnzimmer
+          - type: "custom:button-card"
+            template: card_cover
+            entity: cover.blinds_wohnzimmer
+            variables:
+              ulm_card_cover_enable_controls: true
+              ulm_card_cover_enable_slider: true
+              ulm_card_cver_favorite_percentage: 45
+              ulm_card_cover_color: "green"
 
       # -------- lights -------- #
       - type: 'custom:button-card'
