@@ -226,13 +226,14 @@ switch:
           #  data:
           #    entity: cinema
           - condition:
-              - condition: state
-                entity_id: binary_sensor.window_sensor_wohnzimmer_contact
-                state: "off"
-            sequence:
-              - service: cover.open_cover
-                target:
-                  entity_id: cover.blinds_wohnzimmer
+              conditions:
+                - condition: state
+                  entity_id: binary_sensor.window_sensor_wohnzimmer_contact
+                  state: "off"
+              sequence:
+                - service: cover.open_cover
+                  target:
+                    entity_id: cover.blinds_wohnzimmer
           - service: switch.turn_on
             entity_id: switch.stereo
           - service: switch.turn_on
