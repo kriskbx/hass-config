@@ -178,12 +178,6 @@ cards:
                   - yellow_on
                 tap_action:
                   action: toggle
-              #                  entity_2:
-              #                    entity_id: switch.heating_wohnzimmer
-              #                    templates:
-              #                      - red_on
-              #                    tap_action:
-              #                      action: toggle
               entity_2:
                 entity_id: switch.stereo
                 templates:
@@ -194,6 +188,12 @@ cards:
                 entity_id: switch.projector
                 templates:
                   - blue_on
+                tap_action:
+                  action: toggle
+              entity_4:
+                entity_id: cover.blinds_wohnzimmer
+                templates:
+                  - red_on
                 tap_action:
                   action: toggle
             label: >
