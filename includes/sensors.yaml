@@ -26,6 +26,11 @@ input_boolean:
     name: Automated Heating
     icon: mdi:thermostat-auto
     initial: on
+  vacuum:
+    name: Vacuum
+    icon: mdi:robot-vacuum
+    initial: on
+
 
 # -------- light groups -------- #
 light:

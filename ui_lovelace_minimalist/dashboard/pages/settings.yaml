@@ -21,9 +21,6 @@ cards:
             entity: switch.scene_vacation
             name: Vacation mode
 
-  - type: vertical-stack
-    cards:
-
       # -------- modes -------- #
       - type: 'custom:button-card'
         template: card_title
@@ -33,3 +30,6 @@ cards:
           - type: 'custom:button-card'
             template: card_input_boolean
             entity: input_boolean.heating
+          - type: 'custom:button-card'
+            template: card_input_boolean
+            entity: input_boolean.vacuum
