@@ -27,7 +27,7 @@ input_boolean:
     icon: mdi:thermostat-auto
     initial: on
   vacuum:
-    name: Vacuum
+    name: Automated Vacuum
     icon: mdi:robot-vacuum
     initial: on
 

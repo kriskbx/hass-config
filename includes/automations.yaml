@@ -213,7 +213,7 @@ automation:
         state: "on"
       - service: scene.turn_on
         entity_id: scene.vacation
-  - alias: 'Turn off the lights in vacation mode'
+  - alias: '[LIGHTS] Turn off the lights in vacation mode'
     mode: single
     trigger:
       platform: state
@@ -237,6 +237,9 @@ automation:
       - condition: state
         entity_id: input_boolean.vacation
         state: "off"
+      - condition: state
+        entity_id: input_boolean.vacuum
+        state: "on"
       - service: script.vacuum_apartment_except_office
   - alias: '[VACUUM] Run the vacuum on workdays in the office'
     mode: single
@@ -248,6 +251,9 @@ automation:
       - condition: state
         entity_id: input_boolean.vacation
         state: "off"
+      - condition: state
+        entity_id: input_boolean.vacuum
+        state: "on"
       - service: script.vacuum_office
   - alias: '[VACUUM] Run the vacuum on weekends'
     mode: single
@@ -259,9 +265,12 @@ automation:
       - condition: state
         entity_id: input_boolean.vacation
         state: "off"
+      - condition: state
+        entity_id: input_boolean.vacuum
+        state: "on"
       - service: vacuum.start
         target:
-          device_id: 8a78da2ca7c4af162d1b8f1313fc95ac
+          device_id: vacuum.roborock_s7
 
   # -------- flur button toggle -------- #
   - alias: '[BUTTON] Toggle everything with the flur button'
