@@ -120,3 +120,9 @@ cards:
               ulm_card_binary_sensor_alert: true
               ulm_card_binary_sensor_show_last_changed: true
             entity: binary_sensor.window_sensor_kuche_contact
+          - type: 'custom:button-card'
+            template: card_binary_sensor
+            variables:
+              ulm_card_binary_sensor_alert: true
+              ulm_card_binary_sensor_show_last_changed: true
+            entity: binary_sensor.motion_sensor_abstellraum_occupancy
