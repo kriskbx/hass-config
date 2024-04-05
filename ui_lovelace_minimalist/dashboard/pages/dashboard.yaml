@@ -181,6 +181,12 @@ cards:
                   - blue_on
                 tap_action:
                   action: toggle
+              entity_4:
+                entity_id: switch.steam_link_wohnzimmer
+                templates:
+                  - red_on
+                tap_action:
+                  action: toggle
             label: >
               [[[
                 return (Math.round(states['sensor.temperature_humidity_wohnzimmer_temperature'].state * 10) / 10) + "°C" + "&nbsp; | &nbsp;" + (Math.round(states['sensor.temperature_humidity_wohnzimmer_humidity'].state * 10) / 10) + "%"
