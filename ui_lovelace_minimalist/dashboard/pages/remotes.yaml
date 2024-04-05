@@ -136,9 +136,6 @@ cards:
               ulm_card_script_title: Up
               ulm_card_script_icon: mdi:volume-plus
 
-  - type: vertical-stack
-    cards:
-
       # -------- robot vacuum -------- #
       - type: 'custom:button-card'
         template: card_title
@@ -148,8 +145,8 @@ cards:
         entity: vacuum.roborock_s7
         map_locked: true
         vacuum_platform: humbertogontijo/homeassistant-roborock
-        tiles: []
-        icons: []
+        tiles: [ ]
+        icons: [ ]
         map_source:
           camera: camera.roborock_s7_map
           crop:
@@ -164,10 +161,10 @@ cards:
             predefined_selections:
               # office
               - zones:
-                - - 19366
-                  - 23056
-                  - 23405
-                  - 26965
+                  - - 19366
+                    - 23056
+                    - 23405
+                    - 26965
               # kitchen
               - zones:
                   - - 23568
@@ -192,4 +189,5 @@ cards:
                     - 15206
                     - 23301
                     - 21164
+
 
