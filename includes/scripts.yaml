@@ -114,8 +114,17 @@ script:
         data:
           device: stereo
           command: volume-up
-          num_repeats: 13
-          delay_secs: 1
+          num_repeats: 7
+          delay_secs: 0
+      - delay: 00:00:02
+      - service: remote.send_command
+        target:
+          entity_id: remote.ir_blaster
+        data:
+          device: stereo
+          command: volume-up
+          num_repeats: 6
+          delay_secs: 0
 
   # -------- Vacuum cleaning -------- #
   vacuum_kitchen:

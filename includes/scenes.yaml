@@ -90,31 +90,6 @@ scene:
         state: on
         color_temp: 153
 
-  # -------- cinema -------- #
-  - name: cinema
-    entities:
-      light.light_decke_arbeitszimmer: off
-      light.light_kris_schreibtisch: off
-      light.light_decke_flur: off
-      light.light_decke_wohnzimmer: off
-      light.light_decke_kuche: off
-      light.light_stehlampe_wohnzimmer: off
-      light.light_stehlampe_arbeitszimmer: off
-      light.light_arbeitslicht_kuche: off
-      light.light_bett_oben: off
-      light.light_bett_unten: off
-      light.light_ambient_bett_unten: off
-      light.light_hani_schreibtisch: off
-      light.light_ambient_beamer:
-        state: on
-        brightness: 50
-      light.light_ambient_stereo: off
-  - name: cinema_temp
-    entities:
-      light.light_ambient_beamer:
-        state: on
-        color_temp: 700
-
   # -------- romantic -------- #
   - name: romantic
     entities:

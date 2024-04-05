@@ -21,10 +21,6 @@ homeassistant:
       friendly_name: Window Wohnzimmer open
     binary_sensor.window_sensor_kuche_contact:
       friendly_name: Window Küche open
-    binary_sensor.internet_connected:
-      friendly_name: Internet connected
-    binary_sensor.dns_working:
-      friendly_name: DNS working
     switch.steam_link_wohnzimmer:
       friendly_name: Steam Link
       icon: mdi:steam
