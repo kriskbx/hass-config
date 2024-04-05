@@ -2,7 +2,7 @@
 automation:
 
   # -------- heating -------- #
-  - alias: 'Prevent blinds from opening when window is open'
+  - alias: '[BLINDS] Prevent blinds from opening when window is open'
     id: 'blinds_prevent_opening'
     mode: parallel
     trigger:
@@ -23,7 +23,7 @@ automation:
           entity_id: cover.blinds_wohnzimmer
 
   # -------- heating -------- #
-  - alias: 'Turn on heating for work'
+  - alias: '[HEATING] Turn on heating for work'
     id: 'heating_work'
     mode: single
     trigger:
@@ -68,7 +68,7 @@ automation:
             - delay:
                 minutes: 10
 
-  - alias: 'Turn on heating after work'
+  - alias: '[HEATING] Turn on heating after work'
     id: 'heating_after_work'
     mode: single
     trigger:
@@ -113,7 +113,7 @@ automation:
             - delay:
                 minutes: 10
 
-  - alias: 'Turn on heating for night'
+  - alias: '[HEATING] Turn on heating for night'
     id: 'heating_night'
     mode: single
     trigger:
@@ -158,7 +158,7 @@ automation:
             - delay:
                 minutes: 10
 
-  - alias: 'Turn on heating for vacation mode'
+  - alias: '[HEATING] Turn on heating for vacation mode'
     id: 'heating_vacation'
     mode: single
     trigger:
@@ -201,7 +201,7 @@ automation:
                 minutes: 10
 
   # -------- vacation mode -------- #
-  - alias: 'Turn on the lights in vacation mode'
+  - alias: '[LIGHTS] Turn on the lights in vacation mode'
     mode: single
     trigger:
       - platform: state
@@ -227,7 +227,7 @@ automation:
         entity_id: scene.off
 
   # -------- vacuum -------- #
-  - alias: 'Run the vacuum on workdays in the apartment except the office'
+  - alias: '[VACUUM] Run the vacuum on workdays in the apartment except the office'
     mode: single
     trigger:
       platform: state
@@ -238,7 +238,7 @@ automation:
         entity_id: input_boolean.vacation
         state: "off"
       - service: script.vacuum_apartment_except_office
-  - alias: 'Run the vacuum on workdays in the office'
+  - alias: '[VACUUM] Run the vacuum on workdays in the office'
     mode: single
     trigger:
       platform: state
@@ -249,7 +249,7 @@ automation:
         entity_id: input_boolean.vacation
         state: "off"
       - service: script.vacuum_office
-  - alias: 'Run the vacuum on weekends'
+  - alias: '[VACUUM] Run the vacuum on weekends'
     mode: single
     trigger:
       platform: state
@@ -264,7 +264,7 @@ automation:
           device_id: 8a78da2ca7c4af162d1b8f1313fc95ac
 
   # -------- flur button toggle -------- #
-  - alias: 'Toggle everything with the flur button'
+  - alias: '[BUTTON] Toggle everything with the flur button'
     mode: single
     trigger:
       platform: state
@@ -276,7 +276,7 @@ automation:
           entity_id: switch.flur_button
 
   # -------- humidifier -------- #
-  - alias: 'Turn on the humidifier when the humidity gets too high'
+  - alias: '[CLIMATE] Turn on the humidifier when the humidity gets too high'
     mode: single
     trigger:
       platform: numeric_state
@@ -285,7 +285,7 @@ automation:
     action:
       - service: switch.turn_on
         entity_id: switch.dehumidifier_kuche
-  - alias: 'Turn off the humidifier when the humidity is okay'
+  - alias: '[CLIMATE] Turn off the humidifier when the humidity is okay'
     mode: single
     trigger:
       - platform: numeric_state
@@ -296,7 +296,7 @@ automation:
         entity_id: switch.dehumidifier_kuche
 
   # -------- abstellraum lights -------- #
-  - alias: 'Turn on the Abstellraum light on occupancy'
+  - alias: '[LIGHTS] Turn on the Abstellraum light on occupancy'
     mode: single
     trigger:
       platform: state
@@ -319,7 +319,7 @@ automation:
         entity_id: light.light_decke_abstellraum
 
   # -------- flur lights -------- #
-  - alias: 'Turn on the Flur light on occupancy'
+  - alias: '[LIGHTS] Turn on the Flur light on occupancy'
     mode: single
     trigger:
       platform: state
@@ -329,7 +329,7 @@ automation:
     action:
       - service: light.turn_on
         entity_id: light.light_decke_flur
-  - alias: 'Turn off the Flur light if there is no occupancy'
+  - alias: '[LIGHTS] Turn off the Flur light if there is no occupancy'
     mode: single
     trigger:
       platform: state
@@ -341,7 +341,7 @@ automation:
         entity_id: light.light_decke_flur
 
   # -------- unter bett lights -------- #
-  - alias: 'Turn on the Bett unten light on occupancy'
+  - alias: '[LIGHTS] Turn on the Bett unten light on occupancy'
     mode: restart
     trigger:
       platform: state
@@ -364,7 +364,7 @@ automation:
         entity_id: light.light_ambient_bett_unten
 
   # -------- set brightness automatically -------- #
-  - alias: 'Crank up the brightness for the projector ambient light to prevent hissing'
+  - alias: '[LIGHTS] Crank up the brightness for the projector ambient light to prevent hissing'
     mode: restart
     trigger:
       platform: state
@@ -378,7 +378,7 @@ automation:
           brightness: 255
 
   # -------- system stuff -------- #
-  - alias: 'Set default theme at startup'
+  - alias: '[SYSTEM] Set default theme at startup'
     trigger:
       platform: homeassistant
       event: start
@@ -386,7 +386,7 @@ automation:
       service: frontend.set_theme
       data:
         name: minimalist-mobile-tapbar
-  - alias: "Backup Home Assistant every night at 3 AM"
+  - alias: "[SYSTEM] Backup Home Assistant every night at 3 AM"
     trigger:
       platform: time
       at: "03:00:00"

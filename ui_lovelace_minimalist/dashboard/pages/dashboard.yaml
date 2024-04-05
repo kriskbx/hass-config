@@ -6,17 +6,8 @@ cards:
     cards:
 
       # -------- chips -------- #
-      - type: horizontal-stack
-        cards:
-          - type: conditional
-            conditions:
-              - entity: binary_sensor.something_is_critical
-                state_not: "off"
-            card:
-              type: 'custom:button-card'
-              template: chip_icon_label
-              label: System state critical
-              icon: 'mdi:alert'
+#      - type: horizontal-stack
+#        cards:
 #          - type: "custom:button-card"
 #            color_type: blank-card
 #          - type: "custom:button-card"
