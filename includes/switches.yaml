@@ -229,6 +229,9 @@ switch:
               - condition: state
                 entity_id: binary_sensor.window_sensor_wohnzimmer_contact
                 state: "off"
+              - condition: state
+                entity_id: sun.sun
+                state: "above_horizon"
             then:
               - service: cover.close_cover
                 target:
@@ -266,6 +269,9 @@ switch:
               - condition: state
                 entity_id: binary_sensor.window_sensor_wohnzimmer_contact
                 state: "off"
+              - condition: state
+                entity_id: sun.sun
+                state: "above_horizon"
             then:
               - service: cover.close_cover
                 target:
