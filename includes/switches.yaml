@@ -33,6 +33,17 @@ switch:
               command: on
           - if:
               - condition: state
+                entity_id: binary_sensor.window_sensor_wohnzimmer_contact
+                state: "off"
+              - condition: state
+                entity_id: sun.sun
+                state: "above_horizon"
+            then:
+              - service: cover.close_cover
+                target:
+                  entity_id: cover.blinds_wohnzimmer
+          - if:
+              - condition: state
                 entity_id: light.light_ambient_stereo
                 state: "on"
             then:
@@ -243,17 +254,6 @@ switch:
           #- service: script.turn_on_scene
           #  data:
           #    entity: cinema
-          - if:
-              - condition: state
-                entity_id: binary_sensor.window_sensor_wohnzimmer_contact
-                state: "off"
-              - condition: state
-                entity_id: sun.sun
-                state: "above_horizon"
-            then:
-              - service: cover.close_cover
-                target:
-                  entity_id: cover.blinds_wohnzimmer
           - service: switch.turn_on
             entity_id: switch.stereo
           - service: switch.turn_on
@@ -283,17 +283,6 @@ switch:
           #- service: script.turn_on_scene
           #  data:
           #    entity: cinema
-          - if:
-              - condition: state
-                entity_id: binary_sensor.window_sensor_wohnzimmer_contact
-                state: "off"
-              - condition: state
-                entity_id: sun.sun
-                state: "above_horizon"
-            then:
-              - service: cover.close_cover
-                target:
-                  entity_id: cover.blinds_wohnzimmer
           - service: switch.turn_on
             entity_id: switch.stereo
           - service: switch.turn_on
