@@ -58,8 +58,8 @@ switch:
               - service: light.turn_on
                 target:
                   entity_id: light.light_stehlampe_wohnzimmer
-                  data:
-                    brightness: 50
+                data:
+                  brightness: 50
         turn_off:
           - condition: state
             entity_id: input_boolean.projector
