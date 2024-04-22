@@ -107,23 +107,41 @@ script:
           command: volume-down
           num_repeats: 25
           delay_secs: 0
-      - delay: 00:00:05
+      - delay: 00:00:01
       - service: remote.send_command
         target:
           entity_id: remote.ir_blaster
         data:
           device: stereo
           command: volume-up
-          num_repeats: 7
+          num_repeats: 4
           delay_secs: 0
-      - delay: 00:00:02
+      - delay: 00:00:01
       - service: remote.send_command
         target:
           entity_id: remote.ir_blaster
         data:
           device: stereo
           command: volume-up
-          num_repeats: 6
+          num_repeats: 4
+          delay_secs: 0
+      - delay: 00:00:01
+      - service: remote.send_command
+        target:
+          entity_id: remote.ir_blaster
+        data:
+          device: stereo
+          command: volume-up
+          num_repeats: 4
+          delay_secs: 0
+      - delay: 00:00:01
+      - service: remote.send_command
+        target:
+          entity_id: remote.ir_blaster
+        data:
+          device: stereo
+          command: volume-up
+          num_repeats: 2
           delay_secs: 0
 
   # -------- Vacuum cleaning -------- #
