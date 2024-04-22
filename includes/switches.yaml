@@ -330,7 +330,7 @@ switch:
             data:
               device: hdmi_switch
               command: three
-          - delay: 00:00:10
+          - delay: 00:00:02
           - service: switch.turn_on
             entity_id: switch.steam_link_wohnzimmer
 
