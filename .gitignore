@@ -3,6 +3,7 @@
 .storage
 backup
 backups
+blueprints
 dashboards/backup
 deps
 image

@@ -31,6 +31,24 @@ switch:
             data:
               device: projector
               command: on
+          - if:
+              - condition: state
+                entity_id: light.light_ambient_stereo
+                state: "on"
+            then:
+              - service: light.turn_off
+                target:
+                  entity_id: light.light_ambient_stereo
+          - if:
+              - condition: state
+                entity_id: light.light_stehlampe_wohnzimmer
+                state: "on"
+            then:
+              - service: light.turn_on
+                target:
+                  entity_id: light.light_stehlampe_wohnzimmer
+                  data:
+                    brightness: 50
         turn_off:
           - condition: state
             entity_id: input_boolean.projector
