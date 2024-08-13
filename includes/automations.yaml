@@ -7,7 +7,7 @@ automation:
     mode: parallel
     trigger:
       - platform: numeric_state
-        entity_id: cover.blinds_wohnzimmer_left
+        entity_id: cover.blinds_wohnzimmer_links
         attribute: current_position
         below: 100
     condition:
@@ -17,10 +17,10 @@ automation:
     action:
       - service: cover.stop_cover
         target:
-          entity_id: cover.blinds_wohnzimmer_left
+          entity_id: cover.blinds_wohnzimmer_links
       - service: cover.open_cover
         target:
-          entity_id: cover.blinds_wohnzimmer_left
+          entity_id: cover.blinds_wohnzimmer_links
 
   # -------- heating -------- #
   - alias: '[HEATING] Turn on heating for work'

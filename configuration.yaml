@@ -11,6 +11,10 @@ homeassistant:
   unit_system: metric
 
   customize:
+    cover.blinds_wohnzimmer_links:
+      icon: mdi:roller-shade
+    cover.blinds_wohnzimmer_rechts:
+      icon: mdi:roller-shade
     binary_sensor.door_sensor_arbeitszimmer_contact:
       friendly_name: Door Arbeitszimmer open
     binary_sensor.window_sensor_arbeitszimmer_contact:
