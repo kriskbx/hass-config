@@ -235,7 +235,7 @@ switch:
             then:
               - service: cover.close_cover
                 target:
-                  entity_id: cover.blinds_wohnzimmer
+                  entity_id: group.wohnzimmer_blinds
           - if:
               - condition: state
                 entity_id: light.light_ambient_stereo
@@ -293,7 +293,7 @@ switch:
             then:
               - service: cover.close_cover
                 target:
-                  entity_id: cover.blinds_wohnzimmer
+                  entity_id: group.wohnzimmer_blinds
           - if:
               - condition: state
                 entity_id: light.light_ambient_stereo

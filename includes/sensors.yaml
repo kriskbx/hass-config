@@ -1,5 +1,13 @@
 # -------- Sensors -------- #
 group:
+  wohnzimmer_blinds:
+    name: Wohnzimmer Blinds
+    icon: mdi:roller-shade
+    all: false
+    entities:
+      - cover.blinds_wohnzimmer_links
+      - cover.blinds_wohnzimmer_rechts
+
   arbeitszimmer_windows:
     name: Arbeitszimmer Windows
     icon: mdi:window-open

@@ -61,7 +61,15 @@ cards:
         cards:
           - type: "custom:button-card"
             template: card_cover
-            entity: cover.blinds_wohnzimmer
+            entity: cover.blinds_wohnzimmer_links
+            variables:
+              ulm_card_cover_enable_controls: true
+              ulm_card_cover_enable_slider: false
+              ulm_card_cver_favorite_percentage: 45
+              ulm_card_cover_color: "green"
+          - type: "custom:button-card"
+            template: card_cover
+            entity: cover.blinds_wohnzimmer_rechts
             variables:
               ulm_card_cover_enable_controls: true
               ulm_card_cover_enable_slider: false
