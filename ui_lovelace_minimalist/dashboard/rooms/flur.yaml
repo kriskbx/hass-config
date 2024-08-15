@@ -42,3 +42,9 @@ cards:
               ulm_card_binary_sensor_alert: true
               ulm_card_binary_sensor_show_last_changed: true
             entity: binary_sensor.motion_sensor_flur_occupancy
+          - type: 'custom:button-card'
+            template: card_binary_sensor
+            variables:
+              ulm_card_binary_sensor_alert: true
+              ulm_card_binary_sensor_show_last_changed: true
+            entity: binary_sensor.door_sensor_eingang_contact
