@@ -176,7 +176,7 @@ cards:
             variables:
               ulm_card_binary_sensor_alert: true
               ulm_card_binary_sensor_show_last_changed: true
-            entity: binary_sensor.window_sensor_wohnzimmer_contact
+            entity: binary_sensor.window_sensor_wohnzimmer_links_contact
           - type: 'custom:button-card'
             template: card_binary_sensor
             variables:

@@ -227,7 +227,7 @@ switch:
           #    entity: cinema
           - if:
               - condition: state
-                entity_id: binary_sensor.window_sensor_wohnzimmer_contact
+                entity_id: binary_sensor.window_sensor_wohnzimmer_links_contact
                 state: "off"
               - condition: state
                 entity_id: sun.sun
@@ -285,7 +285,7 @@ switch:
           #    entity: cinema
           - if:
               - condition: state
-                entity_id: binary_sensor.window_sensor_wohnzimmer_contact
+                entity_id: binary_sensor.window_sensor_wohnzimmer_links_contact
                 state: "off"
               - condition: state
                 entity_id: sun.sun

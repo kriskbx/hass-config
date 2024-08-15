@@ -12,7 +12,7 @@ automation:
         below: 100
     condition:
       - condition: state
-        entity_id: binary_sensor.window_sensor_wohnzimmer_contact
+        entity_id: binary_sensor.window_sensor_wohnzimmer_links_contact
         state: "on"
     action:
       - service: cover.stop_cover
