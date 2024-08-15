@@ -39,6 +39,7 @@ script:
       - repeat:
           count: 30
           sequence:
+            - delay: 10
             - action: media_player.play_media
               target:
                 entity_id: media_player.music_player_daemon
