@@ -8,7 +8,7 @@ script:
         target:
           entity_id: switch.plug_kitchen_speaker
       - delay:
-          seconds: 5
+          seconds: 15
       - action: media_player.select_source
         target:
           entity_id: media_player.snapcast_default
