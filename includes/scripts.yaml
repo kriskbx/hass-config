@@ -38,13 +38,13 @@ script:
                 entity_id: tts.piper
       - repeat:
           count: 30
-        sequence:
-          - action: media_player.play_media
-            target:
-              entity_id: media_player.music_player_daemon
-            data:
-              media_content_type: audio/mpeg
-              media_content_id: media-source://media_source/local/alarm.mp3
+          sequence:
+            - action: media_player.play_media
+              target:
+                entity_id: media_player.music_player_daemon
+              data:
+                media_content_type: audio/mpeg
+                media_content_id: media-source://media_source/local/alarm.mp3
 
   # -------- lights -------- #
   party_color:
