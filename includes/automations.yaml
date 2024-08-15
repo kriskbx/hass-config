@@ -1,9 +1,9 @@
 # -------- Automations -------- #
 automation:
 
-  # -------- heating -------- #
-  - alias: '[BLINDS] Prevent blinds from opening when window is open'
-    id: 'blinds_prevent_opening'
+  # -------- blinds -------- #
+  - alias: '[BLINDS] Prevent blinds from opening when window links is open'
+    id: 'blinds_prevent_opening_left'
     mode: parallel
     trigger:
       - platform: numeric_state
@@ -21,6 +21,25 @@ automation:
       - service: cover.open_cover
         target:
           entity_id: cover.blinds_wohnzimmer_links
+  - alias: '[BLINDS] Prevent blinds from opening when window rechts is open'
+    id: 'blinds_prevent_opening_right'
+    mode: parallel
+    trigger:
+      - platform: numeric_state
+        entity_id: cover.blinds_wohnzimmer_rechts
+        attribute: current_position
+        below: 100
+    condition:
+      - condition: state
+        entity_id: binary_sensor.window_sensor_wohnzimmer_rechts_contact
+        state: "on"
+    action:
+      - service: cover.stop_cover
+        target:
+          entity_id: cover.blinds_wohnzimmer_rechts
+      - service: cover.open_cover
+        target:
+          entity_id: cover.blinds_wohnzimmer_rechts
 
   # -------- heating -------- #
   - alias: '[HEATING] Turn on heating for work'
