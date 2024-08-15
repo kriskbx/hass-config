@@ -11,7 +11,7 @@ automation:
         to: "off"
     condition:
       - condition: state
-        entity_id: binary_sensor.alarm_armed
+        entity_id: input_boolean.alarm_armed
         state: "on"
     action:
       - service: script.activate_alarm_sequence
