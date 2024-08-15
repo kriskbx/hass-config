@@ -1,6 +1,27 @@
 # -------- Scripts -------- #
 script:
 
+  # -------- alarm -------- #
+  activate_alarm_sequence:
+    sequence:
+      - action: switch.turn_on
+        target:
+          entity_id: switch.plug_kitchen_speaker
+      - delay:
+          seconds: 5
+      - action: media_player.select_source
+        target:
+          entity_id: media_player.snapcast_default
+        data:
+          source: mpd
+      - action: tts.speak
+        data:
+          cache: true
+          message: attention! intruder alarm will be activated in 1 minute!
+          media_player_entity_id: media_player.music_player_daemon
+        target:
+          entity_id: tts.piper
+
   # -------- lights -------- #
   party_color:
     sequence:
