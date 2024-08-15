@@ -21,7 +21,7 @@ cards:
             entity: switch.scene_vacation
             name: Vacation mode
 
-      # -------- modes -------- #
+      # -------- options -------- #
       - type: 'custom:button-card'
         template: card_title
         name: Options
@@ -33,3 +33,6 @@ cards:
           - type: 'custom:button-card'
             template: card_input_boolean
             entity: input_boolean.vacuum
+          - type: 'custom:button-card'
+            template: card_input_boolean
+            entity: input_boolean.alarm_armed
