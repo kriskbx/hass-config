@@ -260,7 +260,10 @@ cards:
               - card_room
               - green_on
             name: "Flur & Bad"
-            icon: "mdi:door"
+            icon: >
+              [[[
+                return states['binary_sensor.door_sensor_eingang_contact'].state == 'on' ? 'mdi:door-open' : 'mdi:door'
+              ]]]
             tap_action:
               action: navigate
               navigation_path: "flur"
