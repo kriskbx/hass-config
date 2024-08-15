@@ -154,7 +154,7 @@ cards:
             name: "Wohnzimmer"
             icon: >
               [[[
-                return states['binary_sensor.window_sensor_wohnzimmer_links_contact'].state == 'on' ? 'mdi:weather-windy' : 'mdi:sofa'
+                return states['group.wohnzimmer_windows'].state == 'on' ? 'mdi:weather-windy' : 'mdi:sofa'
               ]]]
             tap_action:
               action: navigate

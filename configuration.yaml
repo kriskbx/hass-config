@@ -21,6 +21,8 @@ homeassistant:
       friendly_name: Window Arbeitszimmer open
     binary_sensor.window_sensor_wohnzimmer_links_contact:
       friendly_name: Window Wohnzimmer Links open
+    binary_sensor.window_sensor_wohnzimmer_rechts_contact:
+      friendly_name: Window Wohnzimmer Rechts open
     binary_sensor.window_sensor_kuche_contact:
       friendly_name: Window Küche open
     switch.steam_link_wohnzimmer:
