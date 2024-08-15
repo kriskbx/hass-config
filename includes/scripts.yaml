@@ -43,7 +43,7 @@ script:
               target:
                 entity_id: tts.piper
       - repeat:
-          count: 30
+          count: 18
           sequence:
             - delay: 5
             - action: media_player.play_media
@@ -52,6 +52,14 @@ script:
               data:
                 media_content_type: audio/mpeg
                 media_content_id: media-source://media_source/local/alarm.mp3
+            - service: remote.send_command
+              target:
+                entity_id: remote.ir_blaster
+              data:
+                device: stereo
+                command: volume-up
+                num_repeats: 1
+                delay_secs: 0
 
   # -------- lights -------- #
   party_color:
