@@ -7,8 +7,7 @@ script:
       - action: switch.turn_on
         target:
           entity_id: switch.plug_kitchen_speaker
-      - delay:
-          seconds: 15
+      - delay: 15
       - action: media_player.select_source
         target:
           entity_id: media_player.snapcast_default
@@ -21,6 +20,22 @@ script:
           media_player_entity_id: media_player.music_player_daemon
         target:
           entity_id: tts.piper
+      - repeat:
+          for_each:
+            - 50
+            - 40
+            - 30
+            - 20
+            - 10
+          sequence:
+            - delay: 10
+            - action: tts.speak
+              data:
+                cache: true
+                message: "{{ repeat.item }} seconds remaining!"
+                media_player_entity_id: media_player.music_player_daemon
+              target:
+                entity_id: tts.piper
 
   # -------- lights -------- #
   party_color:
