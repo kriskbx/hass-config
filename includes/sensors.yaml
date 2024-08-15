@@ -43,7 +43,7 @@ input_boolean:
     icon: mdi:thermostat-auto
     initial: on
   alarm_armed:
-    name: Alarm armed
+    name: Arm intruder alarm
     icon: mdi:shield-home
     initial: off
   vacuum:

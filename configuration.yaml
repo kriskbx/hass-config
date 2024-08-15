@@ -9,6 +9,8 @@ homeassistant:
   allowlist_external_dirs: [ /config/ ]
   time_zone: Europe/Berlin
   unit_system: metric
+  external_url: "https://home.kris.pizza"
+  internal_url: "http://home-assistant:8123"
 
   customize:
     cover.blinds_wohnzimmer_links:
