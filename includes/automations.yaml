@@ -1,6 +1,21 @@
 # -------- Automations -------- #
 automation:
 
+  # -------- alarm -------- #
+  - alias: '[ALARM] Activate alarm when front door is opened'
+    id: 'alarm_activation'
+    mode: single
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.door_sensor_eingang_contact
+        state: "off"
+    condition:
+      - condition: state
+        entity_id: binary_sensor.alarm_armed
+        state: "on"
+    action:
+      - service: script.activate_alarm_sequence
+
   # -------- blinds -------- #
   - alias: '[BLINDS] Prevent blinds from opening when window links is open'
     id: 'blinds_prevent_opening_left'
