@@ -136,6 +136,37 @@ cards:
               ulm_card_script_title: Up
               ulm_card_script_icon: mdi:volume-plus
 
+      # -------- snapcast control -------- #
+      - type: 'custom:button-card'
+        template: card_title
+        name: Snapcast
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: 'custom:button-card'
+            template: card_script
+            tap_action:
+              action: media_player.select_source
+              data:
+                source: mpd
+              target:
+                entity_id: media_player.snapcast_default
+            variables:
+              ulm_card_script_title: mpd
+              ulm_card_script_icon: mdi:volume-high
+          - type: 'custom:button-card'
+            template: card_script
+            tap_action:
+              action: media_player.select_source
+              data:
+                source: Airplay
+              target:
+                entity_id: media_player.snapcast_default
+            variables:
+              ulm_card_script_title: Airplay
+              ulm_card_script_icon: mdi:cast-variant
+
       # -------- robot vacuum -------- #
       - type: 'custom:button-card'
         template: card_title
