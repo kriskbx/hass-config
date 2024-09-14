@@ -17,7 +17,7 @@ automation:
       - service: script.activate_alarm_sequence
 
   # -------- blinds -------- #
-  - alias: '[BLINDS] Prevent blinds from opening when window links is open'
+  - alias: '[BLINDS] Prevent blinds from opening when window left is open'
     id: 'blinds_prevent_opening_left'
     mode: parallel
     trigger:
@@ -36,7 +36,7 @@ automation:
       - service: cover.open_cover
         target:
           entity_id: cover.blinds_wohnzimmer_links
-  - alias: '[BLINDS] Prevent blinds from opening when window rechts is open'
+  - alias: '[BLINDS] Prevent blinds from opening when window right is open'
     id: 'blinds_prevent_opening_right'
     mode: parallel
     trigger:
@@ -307,7 +307,7 @@ automation:
           device_id: vacuum.roborock_s7
 
   # -------- flur button toggle -------- #
-  - alias: '[BUTTON] Toggle everything with the flur button'
+  - alias: '[BUTTON] Toggle everything with the button in the hallway'
     mode: single
     trigger:
       platform: state
@@ -324,7 +324,7 @@ automation:
     trigger:
       platform: numeric_state
       entity_id: sensor.temperature_humidity_kuche_humidity
-      above: 65
+      above: 68
     action:
       - service: switch.turn_on
         entity_id: switch.dehumidifier_kuche
@@ -362,7 +362,7 @@ automation:
         entity_id: light.light_decke_abstellraum
 
   # -------- flur lights -------- #
-  - alias: '[LIGHTS] Turn on the Flur light on occupancy'
+  - alias: '[LIGHTS] Turn on the hallway light on occupancy'
     mode: single
     trigger:
       platform: state
@@ -372,7 +372,7 @@ automation:
     action:
       - service: light.turn_on
         entity_id: light.light_decke_flur
-  - alias: '[LIGHTS] Turn off the Flur light if there is no occupancy'
+  - alias: '[LIGHTS] Turn off the hallway light if there is no occupancy'
     mode: single
     trigger:
       platform: state
