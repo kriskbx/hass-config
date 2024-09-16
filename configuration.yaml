@@ -95,17 +95,17 @@ http:
   trusted_proxies:
     - 10.0.1.0/24
 
-auth_header:
-  username_header: X-authentik-username
-  # Optionally set this if you don't want to bypass the login prompt
-  # allow_bypass_login: false
-  # Optionally enable debug mode to see the headers Home-Assistant gets
-  debug: true
-
-logger:
-  default: info
-  logs:
-    custom_components.auth_header: debug
+#auth_header:
+#  username_header: X-authentik-username
+#  # Optionally set this if you don't want to bypass the login prompt
+#  # allow_bypass_login: false
+#  # Optionally enable debug mode to see the headers Home-Assistant gets
+#  debug: true
+#
+#logger:
+#  default: info
+#  logs:
+#    custom_components.auth_header: debug
 
 frontend:
   themes: !include_dir_merge_named themes
