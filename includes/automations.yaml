@@ -307,16 +307,24 @@ automation:
           device_id: vacuum.roborock_s7
 
   # -------- flur button toggle -------- #
-  - alias: '[BUTTON] Toggle everything with the button in the hallway'
+  - alias: '[REMOTE] Activate romantic scene with flur remote'
     mode: single
     trigger:
       platform: state
-      entity_id: sensor.button_flur_action
-      to: "on"
+      entity_id: sensor.remote_flur_action
+      to: "open"
     action:
-      - service: switch.toggle
-        target:
-          entity_id: switch.flur_button
+      - service: switch.turn_on
+        entity_id: switch.scene_romantic
+  - alias: '[REMOTE] Shut everything off with the flur remote'
+    mode: single
+    trigger:
+      platform: state
+      entity_id: sensor.remote_flur_action
+      to: "close"
+    action:
+      - service: switch.turn_on
+        entity_id: switch.scene_off
 
   # -------- humidifier -------- #
   - alias: '[CLIMATE] Turn on the humidifier when the humidity gets too high'

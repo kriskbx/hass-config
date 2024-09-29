@@ -3,16 +3,6 @@ switch:
   - platform: template
     switches:
 
-      # -------- flur button -------- #
-      flur_button:
-        value_template: "{{ is_state('light.light_group_arbeitszimmer', 'on') or is_state('light.light_group_kuche', 'on') or is_state('light.light_group_wohnzimmer', 'on') or is_state('switch.projector', 'on') or is_state('switch.stereo', 'on') or is_state('switch.steam_link_wohnzimmer', 'on') }}"
-        turn_on:
-          - service: switch.turn_on
-            entity_id: switch.scene_romantic
-        turn_off:
-          - service: switch.turn_on
-            entity_id: switch.scene_off
-
       # -------- projector -------- #
       projector:
         friendly_name: Beamer
