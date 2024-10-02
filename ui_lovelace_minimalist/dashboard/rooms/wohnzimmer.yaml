@@ -34,14 +34,12 @@ cards:
               ulm_card_graph_group_by: interval
       #          - type: "custom:better-thermostat-ui-card"
       #            entity: climate.climate_wohnzimmer
-      - type: "custom:button-card"
+      - type: "custom:mushroom-climate-card"
         template: card_thermostat
         entity: climate.climate_wohnzimmer
-        variables:
-          ulm_card_thermostat_enable_collapse: true
-          ulm_card_thermostat_enable_controls: true
-          ulm_card_thermostat_enable_hvac_modes: false
-          ulm_card_thermostat_enable_horizontal: true
+        layout: horizontal
+        fill_container: true
+        collapsible_controls: true
       - type: 'custom:button-card'
         template: card_input_boolean
         entity: switch.heating_wohnzimmer
