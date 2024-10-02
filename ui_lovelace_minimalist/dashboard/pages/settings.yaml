@@ -46,3 +46,12 @@ cards:
           - type: "custom:button-card"
             template: card_input_number
             entity: input_number.high_comfort_temperature
+          - type: "custom:button-card"
+            template: card_input_number
+            entity: input_number.comfort_temperature
+          - type: "custom:button-card"
+            template: card_input_number
+            entity: input_number.room_temperature
+          - type: "custom:button-card"
+            template: card_input_number
+            entity: input_number.night_temperature
