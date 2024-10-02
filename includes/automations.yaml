@@ -84,19 +84,19 @@ automation:
             - service: climate.set_temperature
               data:
                 hvac_mode: heat
-                temperature: 23
+                temperature: "{{ states('input_number.high_comfort_temperature') | int }}"
               target:
                 entity_id: climate.climate_arbeitszimmer
             - service: climate.set_temperature
               data:
                 hvac_mode: heat
-                temperature: 22
+                temperature: "{{ states('input_number.comfort_temperature') | int }}"
               target:
                 entity_id: climate.climate_wohnzimmer
             - service: climate.set_temperature
               data:
                 hvac_mode: heat
-                temperature: 19
+                temperature: "{{ states('input_number.room_temperature') | int }}"
               target:
                 entity_id: climate.climate_kuche
             - delay:
@@ -129,19 +129,19 @@ automation:
             - service: climate.set_temperature
               data:
                 hvac_mode: heat
-                temperature: 22
+                temperature: "{{ states('input_number.comfort_temperature') | int }}"
               target:
                 entity_id: climate.climate_arbeitszimmer
             - service: climate.set_temperature
               data:
                 hvac_mode: heat
-                temperature: 23
+                temperature: "{{ states('input_number.high_comfort_temperature') | int }}"
               target:
                 entity_id: climate.climate_wohnzimmer
             - service: climate.set_temperature
               data:
                 hvac_mode: heat
-                temperature: 18
+                temperature: "{{ states('input_number.night_temperature') | int }}"
               target:
                 entity_id: climate.climate_kuche
             - delay:
@@ -174,19 +174,19 @@ automation:
             - service: climate.set_temperature
               data:
                 hvac_mode: heat
-                temperature: 18
+                temperature: "{{ states('input_number.night_temperature') | int }}"
               target:
                 entity_id: climate.climate_arbeitszimmer
             - service: climate.set_temperature
               data:
                 hvac_mode: heat
-                temperature: 18
+                temperature: "{{ states('input_number.night_temperature') | int }}"
               target:
                 entity_id: climate.climate_wohnzimmer
             - service: climate.set_temperature
               data:
                 hvac_mode: heat
-                temperature: 18
+                temperature: "{{ states('input_number.night_temperature') | int }}"
               target:
                 entity_id: climate.climate_kuche
             - delay:
@@ -216,19 +216,19 @@ automation:
             - service: climate.set_temperature
               data:
                 hvac_mode: heat
-                temperature: 18
+                temperature: "{{ states('input_number.night_temperature') | int }}"
               target:
                 entity_id: climate.climate_arbeitszimmer
             - service: climate.set_temperature
               data:
                 hvac_mode: heat
-                temperature: 18
+                temperature: "{{ states('input_number.night_temperature') | int }}"
               target:
                 entity_id: climate.climate_wohnzimmer
             - service: climate.set_temperature
               data:
                 hvac_mode: heat
-                temperature: 18
+                temperature: "{{ states('input_number.night_temperature') | int }}"
               target:
                 entity_id: climate.climate_kuche
             - delay:

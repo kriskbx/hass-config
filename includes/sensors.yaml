@@ -51,6 +51,32 @@ input_boolean:
     icon: mdi:robot-vacuum
     initial: on
 
+# -------- number inputs -------- #
+input_number:
+  high_comfort_temperature:
+    name: High comfort temperature
+    initial: 23
+    min: 0
+    max: 40
+    step: 1
+  comfort_temperature:
+    name: Comfort temperature
+    initial: 22
+    min: 0
+    max: 40
+    step: 1
+  room_temperature:
+    name: Room temperature
+    initial: 20
+    min: 0
+    max: 40
+    step: 1
+  night_temperature:
+    name: Night temperature
+    initial: 18
+    min: 0
+    max: 40
+    step: 1
 
 # -------- light groups -------- #
 light:
