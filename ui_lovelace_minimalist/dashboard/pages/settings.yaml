@@ -36,3 +36,13 @@ cards:
           - type: 'custom:button-card'
             template: card_input_boolean
             entity: input_boolean.alarm_armed
+
+      # -------- temperatures -------- #
+      - type: 'custom:button-card'
+        template: card_title
+        name: Automated heating temperatures
+      - type: vertical-stack
+        cards:
+          - type: "custom:button-card"
+            template: card_input_number
+            entity: input_number.high_comfort_temperature
