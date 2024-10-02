@@ -88,6 +88,38 @@ switch:
               device: stereo
               command: amp-power
 
+      # -------- blind group -------- #
+      blinds_wohnzimmer:
+        friendly_name: Blinds Wohnzimmer
+        icon_template: "{% if states.group.wohnzimmer_blinds.state == 'open' %}mdi:roller-shade{% else %}mdi:roller-shade-closed{% endif %}"
+        value_template: "{{ states.group.wohnzimmer_blinds.state }}"
+        turn_on:
+          - service: cover.stop_cover
+            target:
+              entity_id: cover.blinds_wohnzimmer_links
+          - service: cover.stop_cover
+            target:
+              entity_id: cover.blinds_wohnzimmer_rechts
+          - service: cover.open_cover
+            target:
+              entity_id: cover.blinds_wohnzimmer_links
+          - service: cover.open_cover
+            target:
+              entity_id: cover.blinds_wohnzimmer_rechts
+        turn_off:
+          - service: cover.stop_cover
+            target:
+              entity_id: cover.blinds_wohnzimmer_links
+          - service: cover.stop_cover
+            target:
+              entity_id: cover.blinds_wohnzimmer_rechts
+          - service: cover.close_cover
+            target:
+              entity_id: cover.blinds_wohnzimmer_links
+          - service: cover.close_cover
+            target:
+              entity_id: cover.blinds_wohnzimmer_rechts
+
       # -------- heating boost -------- #
       heating_wohnzimmer:
         friendly_name: Boost Heating Wohnzimmer
@@ -212,9 +244,6 @@ switch:
         value_template: "off"
         turn_off:
         turn_on:
-          #- service: script.turn_on_scene
-          #  data:
-          #    entity: cinema
           - if:
               - condition: state
                 entity_id: binary_sensor.window_sensor_wohnzimmer_links_contact
@@ -270,9 +299,6 @@ switch:
         value_template: "off"
         turn_off:
         turn_on:
-          #- service: script.turn_on_scene
-          #  data:
-          #    entity: cinema
           - if:
               - condition: state
                 entity_id: binary_sensor.window_sensor_wohnzimmer_links_contact

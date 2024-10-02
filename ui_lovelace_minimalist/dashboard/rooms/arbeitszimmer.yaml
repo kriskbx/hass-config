@@ -54,6 +54,7 @@ sections:
       - features:
           - type: target-temperature
         type: tile
+        name: Radiator
         entity: climate.climate_arbeitszimmer
         layout_options:
           grid_columns: full
