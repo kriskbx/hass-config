@@ -37,7 +37,6 @@ cards:
       - type: "custom:mushroom-climate-card"
         template: card_thermostat
         entity: climate.climate_wohnzimmer
-        layout: horizontal
         fill_container: true
         show_temperature_control: true
         collapsible_controls: true
