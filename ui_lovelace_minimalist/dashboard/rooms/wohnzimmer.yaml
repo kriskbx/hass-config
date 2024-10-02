@@ -39,6 +39,7 @@ cards:
         entity: climate.climate_wohnzimmer
         layout: horizontal
         fill_container: true
+        show_temperature_control: true
         collapsible_controls: true
       - type: 'custom:button-card'
         template: card_input_boolean
