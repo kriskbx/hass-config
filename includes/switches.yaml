@@ -92,7 +92,7 @@ switch:
       blinds_wohnzimmer:
         friendly_name: Blinds Wohnzimmer
         icon_template: "{% if states.group.wohnzimmer_blinds.state == 'open' %}mdi:roller-shade{% else %}mdi:roller-shade-closed{% endif %}"
-        value_template: "{{ states.group.wohnzimmer_blinds.state }}"
+        value_template: "{{ states.group.wohnzimmer_blinds.state == 'open' }}"
         turn_on:
           - service: cover.stop_cover
             target:
