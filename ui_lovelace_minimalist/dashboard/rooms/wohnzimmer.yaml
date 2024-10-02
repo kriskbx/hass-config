@@ -26,6 +26,15 @@ badges:
     name: Lights
     tap_action:
       action: toggle
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: switch.blinds_wohnzimmer
+    state_content: state
+    name: Blinds
+    tap_action:
+      action: toggle
 
 sections:
 
