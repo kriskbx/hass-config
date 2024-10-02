@@ -31,10 +31,7 @@ badges:
       {% if state_attr('cover.blinds_wohnzimmer_links', 'current_position')
       | int == 100 and state_attr('cover.blinds_wohnzimmer_rechts',
       'current_position') | int == 100 %}Open{% else %}{% if
-      is_state('group.wohnzimmer_blinds', 'open') %}{{
-      state_attr('cover.blinds_wohnzimmer_links', 'current_position') }}% /
-      {{ state_attr('cover.blinds_wohnzimmer_rechts', 'current_position')
-      }}%{% else %}Closed{% endif %}{% endif %}
+      is_state('group.wohnzimmer_blinds', 'open') %}Partly closed{% else %}Closed{% endif %}{% endif %}
     icon: >-
       {% if state_attr('cover.blinds_wohnzimmer_links', 'current_position')
       | int == 100 and state_attr('cover.blinds_wohnzimmer_rechts',
