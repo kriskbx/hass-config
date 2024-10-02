@@ -49,40 +49,6 @@ badges:
 sections:
 
   - type: grid
-    title: Climate
-    column_span: 1
-    cards:
-      - graph: line
-        type: sensor
-        entity: sensor.temperature_humidity_wohnzimmer_temperature
-        detail: 2
-        name: Temperature
-        layout_options:
-          grid_columns: 2
-          grid_rows: 3
-        hours_to_show: 6
-      - graph: line
-        type: sensor
-        entity: sensor.temperature_humidity_wohnzimmer_humidity
-        detail: 2
-        name: Humidity
-        layout_options:
-          grid_columns: 2
-          grid_rows: 3
-        hours_to_show: 6
-      - features:
-          - type: target-temperature
-        type: tile
-        name: Radiator
-        entity: climate.climate_wohnzimmer
-        layout_options:
-          grid_columns: full
-          grid_rows: 2
-        show_entity_picture: false
-        hide_state: false
-        vertical: false
-
-  - type: grid
     title: Lights
     column_span: 1
     cards:
@@ -147,6 +113,40 @@ sections:
         entity: switch.stereo
       - type: tile
         entity: switch.steam_link_wohnzimmer
+
+  - type: grid
+    title: Climate
+    column_span: 1
+    cards:
+      - graph: line
+        type: sensor
+        entity: sensor.temperature_humidity_wohnzimmer_temperature
+        detail: 2
+        name: Temperature
+        layout_options:
+          grid_columns: 2
+          grid_rows: 3
+        hours_to_show: 6
+      - graph: line
+        type: sensor
+        entity: sensor.temperature_humidity_wohnzimmer_humidity
+        detail: 2
+        name: Humidity
+        layout_options:
+          grid_columns: 2
+          grid_rows: 3
+        hours_to_show: 6
+      - features:
+          - type: target-temperature
+        type: tile
+        name: Radiator
+        entity: climate.climate_wohnzimmer
+        layout_options:
+          grid_columns: full
+          grid_rows: 2
+        show_entity_picture: false
+        hide_state: false
+        vertical: false
 
   - type: grid
     title: Sensors
