@@ -35,11 +35,12 @@ cards:
       #          - type: "custom:better-thermostat-ui-card"
       #            entity: climate.climate_wohnzimmer
       - type: "custom:mushroom-climate-card"
-        template: card_thermostat
         entity: climate.climate_wohnzimmer
         fill_container: true
         show_temperature_control: true
         collapsible_controls: true
+        icon: mdi:thermometer
+        layout: horizontal
       - type: 'custom:button-card'
         template: card_input_boolean
         entity: switch.heating_wohnzimmer
