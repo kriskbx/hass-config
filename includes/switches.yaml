@@ -92,7 +92,7 @@ switch:
       blinds_wohnzimmer:
         friendly_name: Blinds Wohnzimmer
         icon_template: "{% if state_attr('cover.blinds_wohnzimmer_links', 'current_position') | int == 100 and state_attr('cover.blinds_wohnzimmer_links', 'current_position') | int == 100 %}mdi:roller-shade{% else %}mdi:roller-shade-closed{% endif %}"
-        value_template: "{% if state_attr('cover.blinds_wohnzimmer_links', 'current_position') | int == 100 and state_attr('cover.blinds_wohnzimmer_links', 'current_position') | int == 100 %}On{% else %}Off{% endif %}"
+        value_template: "{% if state_attr('cover.blinds_wohnzimmer_links', 'current_position') | int == 100 and state_attr('cover.blinds_wohnzimmer_links', 'current_position') | int == 100 %}nn{% else %}off{% endif %}"
         turn_on:
           - service: cover.stop_cover
             target:
