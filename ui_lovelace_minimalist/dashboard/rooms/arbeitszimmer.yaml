@@ -8,15 +8,15 @@ cards: [ ]
 badges:
   - type: custom:mushroom-template-badge
     content: >-
-      {% if is_state('switch.heating_wohnzimmer', 'on') %}{{
-      states['number.trv_wohnzimmer_rechts_boost_timeset_countdown'].state
+      {% if is_state('switch.heating_arbeitszimmer', 'on') %}{{
+      states['number.trv_arbeitszimmer_boost_timeset_countdown'].state
       }}s remaining{% else %}Off{% endif %}
     icon: mdi:thermometer-plus
-    color: '{% if is_state(''switch.heating_wohnzimmer'', ''on'') %}orange{% endif %}'
+    color: '{% if is_state(''switch.heating_arbeitszimmer'', ''on'') %}orange{% endif %}'
     label: Boost temperature
     tap_action:
       action: toggle
-    entity: switch.heating_wohnzimmer
+    entity: switch.heating_arbeitszimmer
   - type: entity
     show_name: true
     show_state: true
