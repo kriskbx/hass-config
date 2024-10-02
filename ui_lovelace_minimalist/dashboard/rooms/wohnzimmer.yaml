@@ -26,13 +26,26 @@ badges:
     name: Lights
     tap_action:
       action: toggle
-  - type: entity
-    show_name: true
-    show_state: true
-    show_icon: true
+  - type: custom:mushroom-template-badge
+    content: >-
+      {% if state_attr('cover.blinds_wohnzimmer_links', 'current_position')
+      | int == 100 and state_attr('cover.blinds_wohnzimmer_links',
+      'current_position') | int == 100 %}Open{% else %}{% if
+      is_state('group.wohnzimmer_blinds', 'open') %}{{
+      state_attr('cover.blinds_wohnzimmer_links', 'current_position') }}% /
+      {{ state_attr('cover.blinds_wohnzimmer_rechts', 'current_position')
+      }}%{% else %}Closed{% endif %}{% endif %}
+    icon: >-
+      {% if state_attr('cover.blinds_wohnzimmer_links', 'current_position')
+      | int == 100 and state_attr('cover.blinds_wohnzimmer_links',
+      'current_position') | int == 100 %}mdi:roller-shade{% else
+      %}mdi:roller-shade-closed{% endif %}
+    color: >-
+      {% if state_attr('cover.blinds_wohnzimmer_links', 'current_position')
+      | int == 100 and state_attr('cover.blinds_wohnzimmer_links',
+      'current_position') | int == 100 %}{% else %}purple{% endif %}
     entity: switch.blinds_wohnzimmer
-    state_content: state
-    name: Blinds
+    label: Window blinds
     tap_action:
       action: toggle
 
