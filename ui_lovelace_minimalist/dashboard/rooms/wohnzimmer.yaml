@@ -156,11 +156,20 @@ sections:
         entity: binary_sensor.window_sensor_wohnzimmer_links_contact
         layout_options:
           grid_columns: full
+        state_content:
+          - state
+          - last_changed
       - type: tile
         entity: binary_sensor.window_sensor_wohnzimmer_rechts_contact
         layout_options:
           grid_columns: full
+        state_content:
+          - state
+          - last_changed
       - type: tile
         entity: binary_sensor.motion_sensor_bett_occupancy
         layout_options:
           grid_columns: full
+        state_content:
+          - state
+          - last_changed

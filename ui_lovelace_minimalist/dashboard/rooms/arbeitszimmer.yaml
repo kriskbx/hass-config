@@ -106,7 +106,13 @@ sections:
         entity: binary_sensor.window_sensor_arbeitszimmer_contact
         layout_options:
           grid_columns: full
+        state_content:
+          - state
+          - last_changed
       - type: tile
         entity: binary_sensor.door_sensor_arbeitszimmer_contact
         layout_options:
           grid_columns: full
+        state_content:
+          - state
+          - last_changed
