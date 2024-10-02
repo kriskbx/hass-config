@@ -64,15 +64,6 @@ sections:
         vertical: false
 
   - type: grid
-    title: Devices
-    column_span: 1
-    cards:
-      - type: tile
-        entity: switch.dehumidifier_kuche
-      - type: tile
-        entity: switch.plug_kitchen_speaker
-
-  - type: grid
     title: Lights
     column_span: 1
     cards:
@@ -95,6 +86,14 @@ sections:
         vertical: false
         hide_state: false
 
+  - type: grid
+    title: Devices
+    column_span: 1
+    cards:
+      - type: tile
+        entity: switch.dehumidifier_kuche
+      - type: tile
+        entity: switch.plug_kitchen_speaker
 
   - type: grid
     title: Sensors
