@@ -2,126 +2,109 @@ title: "Küche"
 path: "kuche"
 icon: "mdi:pot-steam"
 subview: true
-cards:
-  - type: "vertical-stack"
+type: sections
+max_columns: 3
+cards: [ ]
+badges:
+  - type: custom:mushroom-template-badge
+    content: >-
+      {% if is_state('switch.heating_kuche', 'on') %}{{
+      states['number.trv_kuche_boost_timeset_countdown'].state
+      }}s remaining{% else %}Off{% endif %}
+    icon: mdi:thermometer-plus
+    color: '{% if is_state(''switch.heating_kuche'', ''on'') %}orange{% endif %}'
+    label: Boost temperature
+    tap_action:
+      action: toggle
+    entity: switch.heating_kuche
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: light.light_group_kuche
+    state_content: state
+    name: Lights
+    tap_action:
+      action: toggle
+
+sections:
+
+  - type: grid
+    title: Climate
+    column_span: 1
     cards:
-
-      # -------- climate -------- #
-      - type: 'custom:button-card'
-        template: card_title
-        name: Climate
-      - type: horizontal-stack
-        cards:
-          - type: 'custom:button-card'
-            template: card_graph
-            entity: sensor.temperature_humidity_kuche_temperature
-            variables:
-              ulm_card_graph_color: "var(--google-red)"
-              ulm_card_graph_name: Temperature Küche
-              ulm_card_graph_entity: sensor.temperature_humidity_kuche_temperature
-              ulm_card_graph_type: fill
-              ulm_card_graph_hours: 24
-              ulm_card_graph_group_by: interval
-          - type: 'custom:button-card'
-            template: card_graph
-            entity: sensor.temperature_humidity_kuche_humidity
-            variables:
-              ulm_card_graph_color: "var(--google-blue)"
-              ulm_card_graph_name: Humidity Küche
-              ulm_card_graph_entity: sensor.temperature_humidity_kuche_humidity
-              ulm_card_graph_type: fill
-              ulm_card_graph_hours: 24
-              ulm_card_graph_group_by: interval
-      #          - type: "custom:better-thermostat-ui-card"
-      #            entity: climate.climate_kuche
-      - type: "custom:mushroom-climate-card"
+      - graph: line
+        type: sensor
+        entity: sensor.temperature_humidity_kuche_temperature
+        detail: 2
+        name: Temperature
+        layout_options:
+          grid_columns: 2
+          grid_rows: 3
+        hours_to_show: 6
+      - graph: line
+        type: sensor
+        entity: sensor.temperature_humidity_kuche_humidity
+        detail: 2
+        name: Humidity
+        layout_options:
+          grid_columns: 2
+          grid_rows: 3
+        hours_to_show: 6
+      - features:
+          - type: target-temperature
+        type: tile
+        name: Radiator
         entity: climate.climate_kuche
-        fill_container: true
-        show_temperature_control: true
-        collapsible_controls: true
-        icon: mdi:thermometer
-        layout: horizontal
-      - type: 'custom:button-card'
-        template: card_input_boolean
-        entity: switch.heating_kuche
-        variables:
-          ulm_card_input_boolean_name: >
-            [[[
-              return states['switch.heating_kuche'].state == 'on' ? 'Boosting for ' + states['number.trv_kuche_boost_timeset_countdown'].state + ' seconds' : 'Boost Temperature';
-            ]]]
-          ulm_card_input_boolean_force_background_color: true
-          ulm_card_input_boolean_color: yellow
+        layout_options:
+          grid_columns: full
+          grid_rows: 2
+        show_entity_picture: false
+        hide_state: false
+        vertical: false
 
-      # -------- devices -------- #
-      - type: 'custom:button-card'
-        template: card_title
-        name: Devices
-      - type: grid
-        columns: 2
-        square: false
-        cards:
-          - type: 'custom:button-card'
-            template: card_input_boolean
-            entity: switch.dehumidifier_kuche
-          - type: 'custom:button-card'
-            template: card_input_boolean
-            entity: switch.plug_kitchen_speaker
+  - type: grid
+    title: Devices
+    column_span: 1
+    cards:
+      - type: tile
+        entity: switch.dehumidifier_kuche
+      - type: tile
+        entity: switch.plug_kitchen_speaker
 
-      # -------- lights -------- #
-      - type: 'custom:button-card'
-        template: card_title
-        name: Lights
-      - type: "custom:button-card"
-        template: card_light
+  - type: grid
+    title: Lights
+    column_span: 1
+    cards:
+      - features:
+          - type: light-brightness
+        type: tile
         entity: light.light_arbeitslicht_kuche
-        variables:
-          ulm_card_light_enable_slider: true
-          ulm_card_light_enable_color: true
-          ulm_card_light_enable_horizontal: true
-          ulm_card_light_enable_popup: true
-      - type: "custom:button-card"
-        template: card_light
+        vertical: false
+        hide_state: false
+      - features:
+          - type: light-brightness
+        type: tile
         entity: light.light_decke_kuche
-        variables:
-          ulm_card_light_enable_slider: true
-          ulm_card_light_enable_color: true
-          ulm_card_light_enable_horizontal: true
-          ulm_card_light_enable_popup: true
-      - type: "custom:button-card"
-        template: card_light
+        vertical: false
+        hide_state: false
+      - features:
+          - type: light-brightness
+        type: tile
         entity: light.light_decke_abstellraum
-        variables:
-          ulm_card_light_enable_slider: true
-          ulm_card_light_enable_color: true
-          ulm_card_light_enable_horizontal: true
-          ulm_card_light_enable_popup: true
+        vertical: false
+        hide_state: false
 
-      # -------- actions -------- #
-      #          - type: 'custom:button-card'
-      #            template: card_title
-      #            name: Actions
-      #          - type: grid
-      #            columns: 1
-      #            square: false
-      #            cards:
 
-      # -------- sensors -------- #
-      - type: 'custom:button-card'
-        template: card_title
-        name: Sensors
-      - type: grid
-        columns: 1
-        square: false
-        cards:
-          - type: 'custom:button-card'
-            template: card_binary_sensor
-            variables:
-              ulm_card_binary_sensor_alert: true
-              ulm_card_binary_sensor_show_last_changed: true
-            entity: binary_sensor.window_sensor_kuche_contact
-          - type: 'custom:button-card'
-            template: card_binary_sensor
-            variables:
-              ulm_card_binary_sensor_alert: true
-              ulm_card_binary_sensor_show_last_changed: true
-            entity: binary_sensor.motion_sensor_abstellraum_occupancy
+  - type: grid
+    title: Sensors
+    column_span: 1
+    cards:
+      - type: tile
+        entity: binary_sensor.window_sensor_kuche_contact
+        layout_options:
+          grid_columns: full
+      - type: tile
+        entity: binary_sensor.motion_sensor_abstellraum_occupancy
+        layout_options:
+          grid_columns: full
