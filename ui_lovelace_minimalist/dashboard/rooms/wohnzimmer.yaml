@@ -70,16 +70,16 @@ sections:
         entity: cover.blinds_wohnzimmer_links
         features:
           - type: cover-open-close
-          - type: tile
-            entity: cover.blinds_wohnzimmer_rechts
-            features:
-              - type: cover-open-close
-          - type: tile
-            entity: switch.projector
-          - type: tile
-            entity: switch.stereo
-          - type: tile
-            entity: switch.steam_link_wohnzimmer
+      - type: tile
+        entity: cover.blinds_wohnzimmer_rechts
+        features:
+          - type: cover-open-close
+      - type: tile
+        entity: switch.projector
+      - type: tile
+        entity: switch.stereo
+      - type: tile
+        entity: switch.steam_link_wohnzimmer
 
   - type: grid
     title: Lights
