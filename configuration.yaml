@@ -117,6 +117,9 @@ default_config:
 lovelace:
   mode: yaml
   resources:
+    # - mushrooms - #
+    - url: /hacsfiles/lovelace-mushroom/mushroom.js
+      type: module
     # - for minimalist UI - #
     - url: /hacsfiles/button-card/button-card.js
       type: module
