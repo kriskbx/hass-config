@@ -26,7 +26,9 @@ badges:
     name: Lights
     tap_action:
       action: toggle
+
 sections:
+
   - type: grid
     title: Climate
     column_span: 1
@@ -59,6 +61,7 @@ sections:
         show_entity_picture: false
         hide_state: false
         vertical: false
+
   - type: grid
     title: Lights
     column_span: 1
@@ -93,6 +96,7 @@ sections:
         entity: light.light_decke_arbeitszimmer
         vertical: false
         hide_state: false
+
   - type: grid
     title: Sensors
     column_span: 1
