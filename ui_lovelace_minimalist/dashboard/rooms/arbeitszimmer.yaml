@@ -5,6 +5,26 @@ subview: true
 type: sections
 max_columns: 3
 cards: [ ]
+badges:
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: switch.heating_arbeitszimmer
+    name: Boost heating
+    show_entity_picture: false
+    state_content: state
+    tap_action:
+      action: toggle
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: light.light_group_arbeitszimmer
+    state_content: state
+    name: Lights
+    tap_action:
+      action: toggle
 sections:
   - type: grid
     title: Climate
@@ -38,13 +58,6 @@ sections:
         show_entity_picture: false
         hide_state: false
         vertical: false
-      - type: tile
-        entity: switch.heating_arbeitszimmer
-        tap_action:
-          action: toggle
-        layout_options:
-          grid_columns: full
-          grid_rows: 1
   - type: grid
     title: Lights
     column_span: 1
