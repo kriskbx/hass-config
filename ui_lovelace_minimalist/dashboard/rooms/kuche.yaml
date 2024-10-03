@@ -58,8 +58,12 @@ sections:
     cards:
       - type: tile
         entity: switch.dehumidifier_kuche
+        layout_options:
+          grid_columns: full
       - type: tile
         entity: switch.plug_kitchen_speaker
+        layout_options:
+          grid_columns: full
 
   - type: grid
     title: Climate
