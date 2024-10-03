@@ -97,6 +97,10 @@ sections:
         show_entity_picture: false
         hide_state: false
         vertical: false
+        tap_action:
+          action: toggle
+        icon_tap_action:
+          action: toggle
 
   - type: grid
     title: Sensors
