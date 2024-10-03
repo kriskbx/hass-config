@@ -2,49 +2,48 @@ title: "Flur & Bad"
 path: "flur"
 icon: "mdi:door"
 subview: true
-cards:
-  - type: "vertical-stack"
+type: sections
+max_columns: 4
+cards: [ ]
+badges:
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: light.light_group_flur
+    state_content: state
+    name: Lights
+    tap_action:
+      action: toggle
+
+sections:
+
+  - type: grid
+    title: Lights
+    column_span: 1
     cards:
-
-      # -------- lights -------- #
-      - type: 'custom:button-card'
-        template: card_title
-        name: Lights
-      - type: "custom:button-card"
-        template: card_light
+      - features:
+          - type: light-brightness
+        type: tile
         entity: light.light_decke_flur
-        variables:
-          ulm_card_light_enable_slider: true
-          ulm_card_light_enable_color: true
-          ulm_card_light_enable_horizontal: true
-          ulm_card_light_enable_popup: true
+        vertical: false
+        hide_state: false
 
-      # -------- devices -------- #
-      #          - type: 'custom:button-card'
-      #            template: card_title
-      #            name: Actions
-      #          - type: grid
-      #            columns: 1
-      #            square: false
-      #            cards:
-
-      # -------- sensors -------- #
-      - type: 'custom:button-card'
-        template: card_title
-        name: Sensors
-      - type: grid
-        columns: 1
-        square: false
-        cards:
-          - type: 'custom:button-card'
-            template: card_binary_sensor
-            variables:
-              ulm_card_binary_sensor_alert: true
-              ulm_card_binary_sensor_show_last_changed: true
-            entity: binary_sensor.motion_sensor_flur_occupancy
-          - type: 'custom:button-card'
-            template: card_binary_sensor
-            variables:
-              ulm_card_binary_sensor_alert: true
-              ulm_card_binary_sensor_show_last_changed: true
-            entity: binary_sensor.door_sensor_eingang_contact
+  - type: grid
+    title: Sensors
+    column_span: 1
+    cards:
+      - type: tile
+        entity: binary_sensor.motion_sensor_flur_occupancy
+        layout_options:
+          grid_columns: full
+        state_content:
+          - state
+          - last_changed
+      - type: tile
+        entity: binary_sensor.door_sensor_eingang_contact
+        layout_options:
+          grid_columns: full
+        state_content:
+          - state
+          - last_changed
