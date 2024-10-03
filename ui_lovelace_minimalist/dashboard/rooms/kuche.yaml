@@ -60,10 +60,16 @@ sections:
         entity: switch.dehumidifier_kuche
         layout_options:
           grid_columns: full
+        state_content:
+          - state
+          - last_changed
       - type: tile
         entity: switch.plug_kitchen_speaker
         layout_options:
           grid_columns: full
+        state_content:
+          - state
+          - last_changed
 
   - type: grid
     title: Climate

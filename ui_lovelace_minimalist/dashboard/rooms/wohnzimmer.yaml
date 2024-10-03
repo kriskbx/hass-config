@@ -111,14 +111,23 @@ sections:
         entity: switch.projector
         layout_options:
           grid_columns: full
+        state_content:
+          - state
+          - last_changed
       - type: tile
         entity: switch.stereo
         layout_options:
           grid_columns: full
+        state_content:
+          - state
+          - last_changed
       - type: tile
         entity: switch.steam_link_wohnzimmer
         layout_options:
           grid_columns: full
+        state_content:
+          - state
+          - last_changed
 
   - type: grid
     title: Climate
