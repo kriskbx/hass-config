@@ -3,7 +3,7 @@ path: "wohnzimmer"
 icon: "mdi:sofa"
 subview: true
 type: sections
-max_columns: 3
+max_columns: 4
 cards: [ ]
 badges:
   - type: custom:mushroom-template-badge
