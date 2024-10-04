@@ -114,7 +114,7 @@ sections:
         visibility:
           - condition: state
             entity: media_player.chromecast_hd
-            state_not: off
+            state_not: 'off'
       - square: false
         type: grid
         cards:
