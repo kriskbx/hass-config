@@ -295,7 +295,7 @@ switch:
       # -------- SCENE gaming -------- #
       scene_gaming:
         friendly_name: Gaming
-        icon_template: mdi:microsoft-xbox-controller
+        icon_template: mdi:controller
         value_template: "off"
         turn_off:
         turn_on:
@@ -364,7 +364,7 @@ switch:
       # -------- SCENE work -------- #
       scene_work:
         friendly_name: Work
-        icon_template: mdi:weather-sunny
+        icon_template: mdi:brightness-7
         value_template: false
         turn_off:
         turn_on:
