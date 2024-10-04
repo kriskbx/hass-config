@@ -180,46 +180,46 @@ cards:
         icons: [ ]
         map_source:
           camera: camera.roborock_s7_map
-          crop:
-            top: 180
-            left: 150
-            right: 120
-            bottom: 120
+#          crop:
+#            top: 180
+#            left: 150
+#            right: 120
+#            bottom: 120
         calibration_source:
           camera: true
         map_modes:
           - template: vacuum_clean_zone_predefined
-            predefined_selections:
+            predefined_selections: []
               # office
-              - zones:
-                  - - 19366
-                    - 23056
-                    - 23405
-                    - 26965
-              # kitchen
-              - zones:
-                  - - 23568
-                    - 23115
-                    - 27543
-                    - 26879
-              # bath
-              - zones:
-                  - - 20426
-                    - 21269
-                    - 22046
-                    - 23069
-              # entry
-              - zones:
-                  - - 22073
-                    - 21048
-                    - 25996
-                    - 23077
-              # living room
-              - zones:
-                  - - 19300
-                    - 15206
-                    - 23301
-                    - 21164
+#              - zones:
+#                  - - 19366
+#                    - 23056
+#                    - 23405
+#                    - 26965
+#              # kitchen
+#              - zones:
+#                  - - 23568
+#                    - 23115
+#                    - 27543
+#                    - 26879
+#              # bath
+#              - zones:
+#                  - - 20426
+#                    - 21269
+#                    - 22046
+#                    - 23069
+#              # entry
+#              - zones:
+#                  - - 22073
+#                    - 21048
+#                    - 25996
+#                    - 23077
+#              # living room
+#              - zones:
+#                  - - 19300
+#                    - 15206
+#                    - 23301
+#                    - 21164
           - template: vacuum_goto
 
 
