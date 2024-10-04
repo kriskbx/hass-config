@@ -188,6 +188,7 @@ cards:
         calibration_source:
           camera: true
         map_modes:
+          - template: vacuum_goto
           - template: vacuum_clean_zone_predefined
             predefined_selections:
               # office
