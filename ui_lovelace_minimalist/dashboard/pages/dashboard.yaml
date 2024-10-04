@@ -4,34 +4,22 @@ icon: "mdi:home"
 type: sections
 max_columns: 4
 cards: [ ]
-badges:
-  - type: custom:mushroom-template-badge
-    content: >-
-      {% if is_state('switch.heating_arbeitszimmer', 'on') %}{{
-      states['number.trv_arbeitszimmer_boost_timeset_countdown'].state
-      }}s remaining{% else %}Off{% endif %}
-    icon: mdi:thermometer-plus
-    color: '{% if is_state(''switch.heating_arbeitszimmer'', ''on'') %}orange{% endif %}'
-    label: Boost temperature
-    tap_action:
-      action: toggle
-    entity: switch.heating_arbeitszimmer
-  - type: entity
-    show_name: true
-    show_state: true
-    show_icon: true
-    entity: light.light_group_arbeitszimmer
-    state_content: state
-    name: Lights
-    tap_action:
-      action: toggle
-
+badges: [ ]
 sections:
+
   - type: grid
     cards:
+
+      # -------- scenes -------- #
       - square: true
         type: grid
         column_span: 1
+        columns: 6
+        card_mod:
+          style: |
+            ha-card {
+              background: var(--ha-card-background,var(--card-background-color,#fff));
+            }
         cards:
           - type: custom:mushroom-template-card
             primary: ''
@@ -99,8 +87,8 @@ sections:
             tap_action:
               action: toggle
             entity: scene.off
-        columns: 6
 
+      # -------- controls -------- #
       - type: custom:mushroom-vacuum-card
         entity: vacuum.roborock_s7
         icon_animation: true
@@ -116,7 +104,6 @@ sections:
             state_not: docked
         layout_options:
           grid_columns: full
-
       - square: false
         type: grid
         cards:
