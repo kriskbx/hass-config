@@ -117,16 +117,20 @@ default_config:
 lovelace:
   mode: yaml
   resources:
+
     # - mushrooms - #
     - url: /hacsfiles/lovelace-mushroom/mushroom.js
       type: module
-    # - for minimalist UI - #
     - url: /hacsfiles/button-card/button-card.js
       type: module
     - url: /hacsfiles/lovelace-card-mod/card-mod.js
       type: module
     - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
       type: module
+    - url: /hacsfiles/lovelace-xiaomi-vacuum-map-card/xiaomi-vacuum-map-card.js
+      type: module
+
+    # - for minimalist UI - #
     - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
       type: module
     - url: /hacsfiles/my-cards/my-cards.js
@@ -146,11 +150,4 @@ lovelace:
     - url: /hacsfiles/lovelace-state-switch/state-switch.js
       type: module
     - url: /hacsfiles/bar-card/bar-card.js
-      type: module
-    # - own extensions - #
-    - url: /hacsfiles/better-thermostat-ui-card/better-thermostat-ui-card.js
-      type: module
-    - url: /hacsfiles/lovelace-xiaomi-vacuum-map-card/xiaomi-vacuum-map-card.js
-      type: module
-    - url: /hacsfiles/apexcharts-card/apexcharts-card.js?v=2.0.4
       type: module
