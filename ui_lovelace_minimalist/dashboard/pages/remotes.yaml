@@ -189,7 +189,12 @@ cards:
           camera: true
         map_modes:
           - template: vacuum_clean_zone_predefined
-            predefined_selections: []
+            predefined_selections:
+              # bathroom
+              - zones: [[22324, 24789, 23988, 26570]]
+              # hallway
+              - zones: [[22060, 20890, 24055, 24819]]
+
               # office
 #              - zones:
 #                  - - 19366
