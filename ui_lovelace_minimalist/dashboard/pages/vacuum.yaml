@@ -1,15 +1,19 @@
 title: "Vacuum"
 path: "vacuum"
 icon: "mdi:robot-vacuum"
-cards:
+type: sections
+max_columns: 4
+cards: [ ]
+badges: [ ]
+sections:
 
-  - type: vertical-stack
+  - type: grid
+    column_span: 1
     cards:
-
-      # -------- robot vacuum -------- #
-      - type: 'custom:button-card'
-        template: card_title
-        name: Robot Vacuum
+      - type: heading
+        heading_style: title
+        heading: Roborock S7
+        icon: mdi:robot-vacuum
       - type: custom:xiaomi-vacuum-map-card
         preset_name: Live map
         entity: vacuum.roborock_s7
@@ -19,26 +23,26 @@ cards:
         icons: [ ]
         map_source:
           camera: camera.roborock_s7_map
-#          crop:
-#            top: 180
-#            left: 0
-#            right: 140
-#            bottom: 130
+        #          crop:
+        #            top: 180
+        #            left: 0
+        #            right: 140
+        #            bottom: 130
         calibration_source:
           camera: true
         map_modes:
           - template: vacuum_clean_zone_predefined
             predefined_selections:
               # bathroom
-              - zones: [[22324, 24789, 23988, 26570]]
+              - zones: [ [ 22324, 24789, 23988, 26570 ] ]
               # hallway
-              - zones: [[22060, 20890, 24055, 24819]]
+              - zones: [ [ 22060, 20890, 24055, 24819 ] ]
               # kitchen
-              - zones: [[24076, 19667, 27889, 23331]]
+              - zones: [ [ 24076, 19667, 27889, 23331 ] ]
               # office
-              - zones: [[24043, 23632, 27922, 27627]]
+              - zones: [ [ 24043, 23632, 27922, 27627 ] ]
               # living room
-              - zones: [[16145, 23599, 22073, 27660]]
+              - zones: [ [ 16145, 23599, 22073, 27660 ] ]
           - template: vacuum_goto
 
 
