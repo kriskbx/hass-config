@@ -10,7 +10,12 @@ script:
       - delay: 15
       - action: media_player.select_source
         target:
-          entity_id: media_player.kriss_macbook_pro_local_kriss_macbook_pro_local_kris_book_kris_machine_pispeaker_kitchen_pispeaker_living_room_snapcast_group
+          entity_id: media_player.pispeaker_kitchen_snapcast_client
+        data:
+          source: mpd
+      - action: media_player.select_source
+        target:
+          entity_id: media_player.pispeaker_living_room_snapcast_client
         data:
           source: mpd
       - repeat:
