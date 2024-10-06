@@ -10,38 +10,9 @@ script:
       - delay: 15
       - action: media_player.select_source
         target:
-          entity_id: media_player.snapcast_default
+          entity_id: media_player.kriss_macbook_pro_local_kriss_macbook_pro_local_kris_book_kris_machine_pispeaker_kitchen_pispeaker_living_room_snapcast_group
         data:
           source: mpd
-      - action: tts.speak
-        data:
-          cache: true
-          message: attention! intruder alarm will be activated in 1 minute!
-          media_player_entity_id: media_player.music_player_daemon
-        target:
-          entity_id: tts.piper
-      - repeat:
-          for_each:
-            - 55
-            - 50
-            - 45
-            - 40
-            - 35
-            - 30
-            - 25
-            - 20
-            - 15
-            - 10
-            - 5
-          sequence:
-            - delay: 5
-            - action: tts.speak
-              data:
-                cache: true
-                message: "{{ repeat.item }} seconds remaining!"
-                media_player_entity_id: media_player.music_player_daemon
-              target:
-                entity_id: tts.piper
       - repeat:
           count: 18
           sequence:
@@ -51,7 +22,7 @@ script:
                 entity_id: media_player.music_player_daemon
               data:
                 media_content_type: audio/mpeg
-                media_content_id: media-source://media_source/local/alarm.mp3
+                media_content_id: media-source://media_source/local/local/alarm.mp3
             - service: remote.send_command
               target:
                 entity_id: remote.ir_blaster
