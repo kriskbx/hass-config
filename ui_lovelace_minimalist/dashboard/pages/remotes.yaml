@@ -1,170 +1,334 @@
 title: "Remotes"
 path: "remotes"
 icon: "mdi:remote-tv"
-cards:
+type: sections
+max_columns: 4
+cards: [ ]
+badges: [ ]
+sections:
 
-  - type: vertical-stack
+  - type: grid
     cards:
-
-      # -------- projector control -------- #
-      - type: 'custom:button-card'
-        template: card_title
-        name: Beamer
-      - type: grid
+      - type: heading
+        heading_style: title
+        heading: Beamer
+        icon: mdi:projector
+      - square: false
+        type: grid
+        cards: []
         columns: 3
-        square: false
+      - type: custom:mushroom-template-card
+        primary: 'On'
+        secondary: ''
+        icon: mdi:power-standby
+        tap_action:
+          action: perform-action
+          perform_action: remote.send_command
+          target:
+            entity_id: remote.ir_blaster
+          data:
+            device: projector
+            command: 'on'
+      - type: custom:mushroom-template-card
+        primary: 'Off'
+        secondary: ''
+        icon: mdi:power-cycle
+        tap_action:
+          action: perform-action
+          perform_action: remote.send_command
+          target:
+            entity_id: remote.ir_blaster
+          data:
+            device: projector
+            command: 'off'
+      - square: false
+        type: grid
         cards:
-          - type: 'custom:button-card'
-            template: card_script
+          - type: custom:mushroom-template-card
+            primary: Menu
+            secondary: ''
+            icon: mdi:menu
             tap_action:
-              action: call-service
-              service: remote.send_command
-              service_data:
+              action: perform-action
+              perform_action: remote.send_command
+              target:
                 entity_id: remote.ir_blaster
+              data:
+                device: projector
+                command: brightness
+          - type: custom:mushroom-template-card
+            primary: Mode
+            secondary: ''
+            icon: mdi:invert-colors
+            tap_action:
+              action: perform-action
+              perform_action: remote.send_command
+              target:
+                entity_id: remote.ir_blaster
+              data:
+                device: projector
+                command: mode
+          - type: custom:mushroom-template-card
+            primary: Lamp
+            secondary: ''
+            icon: mdi:lightbulb-on
+            tap_action:
+              action: perform-action
+              perform_action: remote.send_command
+              target:
+                entity_id: remote.ir_blaster
+              data:
+                device: projector
+                command: db
+        columns: 3
+      - type: heading
+        icon: ''
+        heading_style: subtitle
+        heading: ' '
+      - square: false
+        type: grid
+        cards:
+          - type: custom:mushroom-template-card
+            primary: Chromecast
+            secondary: HDMI 1
+            icon: mdi:cast
+            tap_action:
+              action: perform-action
+              perform_action: remote.send_command
+              target:
+                entity_id: remote.ir_blaster
+              data:
                 device: hdmi_switch
                 command: one
-            variables:
-              ulm_card_script_title: Cast
-              ulm_card_script_icon: mdi:cast
-          - type: 'custom:button-card'
-            template: card_script
+          - type: custom:mushroom-template-card
+            primary: Cable
+            secondary: HDMI 2
+            icon: mdi:hdmi-port
             tap_action:
-              action: call-service
-              service: remote.send_command
-              service_data:
+              action: perform-action
+              perform_action: remote.send_command
+              target:
                 entity_id: remote.ir_blaster
+              data:
                 device: hdmi_switch
                 command: two
-            variables:
-              ulm_card_script_title: Cable
-              ulm_card_script_icon: mdi:video-input-hdmi
-          - type: 'custom:button-card'
-            template: card_script
+          - type: custom:mushroom-template-card
+            primary: Steamlink
+            secondary: HDMI 3
+            icon: mdi:steam
             tap_action:
-              action: call-service
-              service: remote.send_command
-              service_data:
+              action: perform-action
+              perform_action: remote.send_command
+              target:
                 entity_id: remote.ir_blaster
+              data:
                 device: hdmi_switch
                 command: three
-            variables:
-              ulm_card_script_title: Steam Link
-              ulm_card_script_icon: mdi:steam
-
-      # -------- hifi control -------- #
-      - type: 'custom:button-card'
-        template: card_title
-        name: Stereoanlage
-      - type: grid
-        columns: 3
-        square: false
+      - type: heading
+        icon: ''
+        heading_style: subtitle
+        heading: ' '
+      - square: false
+        type: grid
+        cards: []
+        columns: 1
+      - square: false
+        type: grid
         cards:
-          - type: 'custom:button-card'
-            template: card_script
+          - type: heading
+            icon: ''
+            heading_style: title
+          - type: custom:mushroom-template-card
+            primary: Up
+            secondary: Volume+
+            icon: mdi:menu-up-outline
             tap_action:
-              action: call-service
-              service: remote.send_command
-              service_data:
+              action: perform-action
+              perform_action: remote.send_command
+              target:
                 entity_id: remote.ir_blaster
+              data:
+                device: projector
+                command: up
+        columns: 3
+        layout_options:
+          grid_columns: 4
+          grid_rows: 1
+      - square: false
+        type: grid
+        cards:
+          - type: custom:mushroom-template-card
+            primary: Left
+            secondary: Source
+            icon: mdi:menu-left-outline
+            tap_action:
+              action: perform-action
+              perform_action: remote.send_command
+              target:
+                entity_id: remote.ir_blaster
+              data:
+                device: projector
+                command: left
+          - type: custom:mushroom-template-card
+            primary: Enter
+            secondary: ''
+            icon: mdi:radiobox-blank
+            tap_action:
+              action: perform-action
+              perform_action: remote.send_command
+              target:
+                entity_id: remote.ir_blaster
+              data:
+                device: projector
+                command: enter
+          - type: custom:mushroom-template-card
+            primary: Right
+            secondary: Re-sync
+            icon: mdi:menu-right-outline
+            tap_action:
+              action: perform-action
+              perform_action: remote.send_command
+              target:
+                entity_id: remote.ir_blaster
+              data:
+                device: projector
+                command: right
+        columns: 3
+        layout_options:
+          grid_columns: 4
+          grid_rows: 1
+      - square: false
+        type: grid
+        cards:
+          - type: heading
+            icon: ''
+            heading_style: subtitle
+          - type: custom:mushroom-template-card
+            primary: Down
+            secondary: Volume-
+            icon: mdi:menu-down-outline
+            tap_action:
+              action: perform-action
+              perform_action: remote.send_command
+              target:
+                entity_id: remote.ir_blaster
+              data:
+                device: projector
+                command: down
+        columns: 3
+        layout_options:
+          grid_columns: 4
+          grid_rows: 1
+  - type: grid
+    cards:
+      - type: heading
+        heading: Stereoanlage
+        heading_style: title
+        icon: mdi:speaker
+      - type: custom:mushroom-template-card
+        primary: Power
+        secondary: ''
+        icon: mdi:power-standby
+        tap_action:
+          action: perform-action
+          perform_action: remote.send_command
+          target:
+            entity_id: remote.ir_blaster
+          data:
+            device: stereo
+            command: power
+      - &ref_0
+        type: heading
+        icon: ''
+        heading: ' '
+        heading_style: subtitle
+      - square: false
+        type: grid
+        cards:
+          - type: custom:mushroom-template-card
+            primary: Snapcast
+            secondary: CD
+            icon: mdi:cast-audio
+            tap_action:
+              action: perform-action
+              perform_action: remote.send_command
+              target:
+                entity_id: remote.ir_blaster
+              data:
                 device: stereo
                 command: cd
-            variables:
-              ulm_card_script_title: Cast Audio
-              ulm_card_script_icon: mdi:cast
-          - type: 'custom:button-card'
-            template: card_script
+          - type: custom:mushroom-template-card
+            primary: Record player
+            secondary: Phono
+            icon: mdi:album
             tap_action:
-              action: call-service
-              service: remote.send_command
-              service_data:
+              action: perform-action
+              perform_action: remote.send_command
+              target:
                 entity_id: remote.ir_blaster
+              data:
                 device: stereo
                 command: phono
-            variables:
-              ulm_card_script_title: Phono
-              ulm_card_script_icon: mdi:album
-          - type: 'custom:button-card'
-            template: card_script
+          - type: custom:mushroom-template-card
+            primary: Beamer
+            secondary: Tuner
+            icon: mdi:projector
             tap_action:
-              action: call-service
-              service: remote.send_command
-              service_data:
+              action: perform-action
+              perform_action: remote.send_command
+              target:
                 entity_id: remote.ir_blaster
+              data:
                 device: stereo
                 command: tuner
-            variables:
-              ulm_card_script_title: Beamer
-              ulm_card_script_icon: mdi:projector
-      - type: grid
         columns: 3
-        square: false
+      - *ref_0
+      - square: false
+        type: grid
         cards:
-          - type: 'custom:button-card'
-            template: card_script
+          - type: custom:mushroom-template-card
+            primary: Down
+            secondary: ''
+            icon: mdi:volume-minus
             tap_action:
-              action: call-service
-              service: remote.send_command
-              service_data:
+              action: perform-action
+              perform_action: remote.send_command
+              target:
                 entity_id: remote.ir_blaster
+              data:
                 device: stereo
                 command: volume-down
-            variables:
-              ulm_card_script_title: Down
-              ulm_card_script_icon: mdi:volume-minus
-          - type: 'custom:button-card'
-            template: card_script
+          - type: custom:mushroom-template-card
+            primary: Mute
+            secondary: ''
+            icon: mdi:volume-off
             tap_action:
-              action: call-service
-              service: remote.send_command
-              service_data:
+              action: perform-action
+              perform_action: remote.send_command
+              target:
                 entity_id: remote.ir_blaster
+              data:
                 device: stereo
                 command: mute
-            variables:
-              ulm_card_script_title: Mute
-              ulm_card_script_icon: mdi:volume-off
-          - type: 'custom:button-card'
-            template: card_script
+          - type: custom:mushroom-template-card
+            primary: Up
+            secondary: ''
+            icon: mdi:volume-plus
             tap_action:
-              action: call-service
-              service: remote.send_command
-              service_data:
+              action: perform-action
+              perform_action: remote.send_command
+              target:
                 entity_id: remote.ir_blaster
+              data:
                 device: stereo
                 command: volume-up
-            variables:
-              ulm_card_script_title: Up
-              ulm_card_script_icon: mdi:volume-plus
+        columns: 3
+  - type: grid
+    cards:
+      - type: heading
+        heading: Snapcast
+        heading_style: title
+        icon: mdi:speaker-multiple
 
-      # -------- snapcast control -------- #
-      - type: 'custom:button-card'
-        template: card_title
-        name: Snapcast
-      - type: grid
-        columns: 2
-        square: false
-        cards:
-          - type: 'custom:button-card'
-            template: card_script
-            tap_action:
-              action: media_player.select_source
-              data:
-                source: mpd
-              target:
-                entity_id: media_player.snapcast_default
-            variables:
-              ulm_card_script_title: mpd
-              ulm_card_script_icon: mdi:volume-high
-          - type: 'custom:button-card'
-            template: card_script
-            tap_action:
-              action: media_player.select_source
-              data:
-                source: Airplay
-              target:
-                entity_id: media_player.snapcast_default
-            variables:
-              ulm_card_script_title: Airplay
-              ulm_card_script_icon: mdi:cast-variant
 
 
