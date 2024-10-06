@@ -180,11 +180,11 @@ cards:
         icons: [ ]
         map_source:
           camera: camera.roborock_s7_map
-          crop:
-            top: 180
-            left: 0
-            right: 140
-            bottom: 130
+#          crop:
+#            top: 180
+#            left: 0
+#            right: 140
+#            bottom: 130
         calibration_source:
           camera: true
         map_modes:
