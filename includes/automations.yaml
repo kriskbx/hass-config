@@ -56,12 +56,12 @@ automation:
     action:
       - service: script.activate_alarm_sequence
       - repeat:
-        count: 10
-        sequence:
-          - delay: 3
-          - action: button.press
-            target:
-              entity_id: button.camera1_camera1_siren
+          count: 10
+          sequence:
+            - delay: 3
+            - action: button.press
+              target:
+                entity_id: button.camera1_camera1_siren
 
   # -------- blinds -------- #
   - alias: '[BLINDS] Prevent blinds from opening when window left is open'
