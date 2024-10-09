@@ -8,8 +8,8 @@ script:
           count: 20
           sequence:
             - condition: state
-              entity_id: input_boolean.alarm_armed
-              state: "on"
+              entity_id: alarm_control_panel.alarm
+              state: "armed_away"
             - delay: 2
             - action: button.press
               target:
@@ -34,8 +34,8 @@ script:
           count: 30
           sequence:
             - condition: state
-              entity_id: input_boolean.alarm_armed
-              state: "on"
+              entity_id: alarm_control_panel.alarm
+              state: "armed_away"
             - delay: 5
             - action: media_player.play_media
               target:

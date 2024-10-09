@@ -33,9 +33,6 @@ cards:
           - type: 'custom:button-card'
             template: card_input_boolean
             entity: input_boolean.vacuum
-          - type: 'custom:button-card'
-            template: card_input_boolean
-            entity: input_boolean.alarm_armed
 
       # -------- temperatures -------- #
       - type: 'custom:button-card'

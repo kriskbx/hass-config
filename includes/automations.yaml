@@ -7,8 +7,8 @@ automation:
     mode: single
     trigger:
       - platform: state
-        entity_id: input_boolean.alarm_armed
-        to: "on"
+        entity_id: alarm_control_panel.alarm
+        to: "armed_away"
     action:
       - action: switch.turn_on
         target:
@@ -27,8 +27,8 @@ automation:
     mode: single
     trigger:
       - platform: state
-        entity_id: input_boolean.alarm_armed
-        to: "off"
+        entity_id: alarm_control_panel.alarm
+        to: "disarmed"
     action:
       - action: switch.turn_off
         target:
@@ -51,8 +51,8 @@ automation:
         to: "off"
     condition:
       - condition: state
-        entity_id: input_boolean.alarm_armed
-        state: "on"
+        entity_id: alarm_control_panel.alarm
+        state: "armed_away"
     action:
       - action: notify.pushover
         data:

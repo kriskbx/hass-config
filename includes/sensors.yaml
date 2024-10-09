@@ -1,3 +1,16 @@
+# -------- Alarm -------- #
+alarm_control_panel:
+  - platform: manual
+    name: Alarm
+    unique_id: intruder_alarm
+    code: !secret alarm_code
+    arming_time: 20
+    delay_time: 10
+    arming_states:
+      - armed_away
+    disarmed:
+      trigger_time: 0
+
 # -------- Sensors -------- #
 group:
   wohnzimmer_blinds:
@@ -42,10 +55,6 @@ input_boolean:
     name: Automated Heating
     icon: mdi:thermostat-auto
     initial: on
-  alarm_armed:
-    name: Arm intruder alarm
-    icon: mdi:shield-home
-    initial: off
   vacuum:
     name: Automated Vacuum
     icon: mdi:robot-vacuum
