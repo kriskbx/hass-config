@@ -25,9 +25,6 @@ script:
           count: 18
           sequence:
             - delay: 5
-            - action: button.press
-              target:
-                entity_id: button.camera1_camera1_siren
             - action: media_player.play_media
               target:
                 entity_id: media_player.music_player_daemon
