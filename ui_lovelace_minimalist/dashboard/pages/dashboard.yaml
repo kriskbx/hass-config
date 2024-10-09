@@ -17,6 +17,14 @@ badges:
       - humidity
       - wind_speed
     name: Weather
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: alarm_control_panel.alarm
+    color: ''
+    show_entity_picture: false
+    state_content: state
 
 sections:
   - type: grid
