@@ -302,9 +302,7 @@ automation:
       - condition: state
         entity_id: input_boolean.vacuum
         state: "on"
-      - service: vacuum.start
-        target:
-          device_id: vacuum.roborock_s7
+      - service: script.vacuum_apartment
 
   # -------- flur button toggle -------- #
   - alias: '[REMOTE] Activate romantic scene with flur remote'

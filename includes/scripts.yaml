@@ -191,11 +191,7 @@ script:
           entity_id: vacuum.roborock_s7
         data:
           repeats: 2
-          zone:
-            - - 23568
-              - 23115
-              - 27543
-              - 26879
+          zone: [ [ 24076, 19667, 27889, 23331 ] ]
 
   vacuum_bathroom:
     alias: 'Vacuum: Bathroom'
@@ -207,11 +203,7 @@ script:
           entity_id: vacuum.roborock_s7
         data:
           repeats: 3
-          zone:
-            - - 20426
-              - 21269
-              - 22046
-              - 23069
+          zone: [ [ 22324, 24789, 23988, 26570 ] ]
 
   vacuum_entry:
     alias: 'Vacuum: Entry'
@@ -223,11 +215,7 @@ script:
           entity_id: vacuum.roborock_s7
         data:
           repeats: 1
-          zone:
-            - - 22073
-              - 21048
-              - 25996
-              - 23077
+          zone: [ [ 22060, 20890, 24055, 24819 ] ]
 
   vacuum_office:
     alias: 'Vacuum: Office'
@@ -239,11 +227,7 @@ script:
           entity_id: vacuum.roborock_s7
         data:
           repeats: 1
-          zone:
-            - - 19366
-              - 23056
-              - 23405
-              - 26965
+          zone: [ [ 24043, 23632, 27922, 27627 ] ]
 
   vacuum_living_room:
     alias: 'Vacuum: Living Room'
@@ -256,10 +240,7 @@ script:
         data:
           repeats: 1
           zone:
-            - - 19300
-              - 15206
-              - 23301
-              - 21164
+            - [ [ 16145, 23599, 22073, 27660 ] ]
 
   vacuum_apartment_except_office:
     alias: 'Vacuum: Apartment except office'
@@ -272,22 +253,27 @@ script:
         data:
           repeats: 1
           zone:
-            - - 19300
-              - 15206
-              - 23301
-              - 21164
-            - - 22073
-              - 21048
-              - 25996
-              - 23077
-            - - 20426
-              - 21269
-              - 22046
-              - 23069
-            - - 23568
-              - 23115
-              - 27543
-              - 26879
+            - [ 22324, 24789, 23988, 26570 ]
+            - [ 22060, 20890, 24055, 24819 ]
+            - [ 24076, 19667, 27889, 23331 ]
+            - [ 16145, 23599, 22073, 27660 ]
+
+  vacuum_apartment:
+    alias: 'Vacuum: Apartment'
+    mode: single
+    icon: mdi:home
+    sequence:
+      - service: roborock.vacuum_clean_zone
+        target:
+          entity_id: vacuum.roborock_s7
+        data:
+          repeats: 1
+          zone:
+            - [ 22324, 24789, 23988, 26570 ]
+            - [ 22060, 20890, 24055, 24819 ]
+            - [ 24076, 19667, 27889, 23331 ]
+            - [ 16145, 23599, 22073, 27660 ]
+            - [ 24043, 23632, 27922, 27627 ]
 
   # -------- Learn remotes -------- #
   learn_hdmi_switch:
