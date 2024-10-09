@@ -54,14 +54,12 @@ automation:
         entity_id: input_boolean.alarm_armed
         state: "on"
     action:
-      - service: script.activate_alarm_sequence
-      - repeat:
-          count: 10
-          sequence:
-            - delay: 2
-            - action: button.press
-              target:
-                entity_id: button.camera1_camera1_siren
+      - action: script.turn_on
+        target:
+          entity_id:
+            - script.activate_alarm_sequence
+            - script.activate_pre_alarm_warning_sequence
+
 
   # -------- blinds -------- #
   - alias: '[BLINDS] Prevent blinds from opening when window left is open'

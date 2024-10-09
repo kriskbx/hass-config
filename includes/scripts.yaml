@@ -5,7 +5,7 @@ script:
   activate_pre_alarm_warning_sequence:
     sequence:
       - repeat:
-          count: 10
+          count: 15
           sequence:
             - delay: 2
             - action: button.press
@@ -33,7 +33,6 @@ script:
       - repeat:
           count: 30
           sequence:
-            - delay: 5
             - action: media_player.play_media
               target:
                 entity_id: media_player.music_player_daemon
@@ -48,6 +47,7 @@ script:
                 command: volume-up
                 num_repeats: 1
                 delay_secs: 0
+            - delay: 5
 
   # -------- lights -------- #
   party_color:
