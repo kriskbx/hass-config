@@ -1,22 +1,20 @@
 title: "Security"
 path: "security"
 icon: mdi:security
-cards:
-
-  - type: vertical-stack
+type: sections
+sections:
+  - type: grid
     cards:
-
-      # -------- cameras -------- #
-      - type: 'custom:button-card'
-        template: card_title
-        name: Cameras
-
-      - type: 'custom:button-card'
-        entity: camera.192_168_3_218
-        template: custom_card_camera
-        show_icon: true
-        variables:
-          ulm_custom_card_camera_title: true
-          ulm_custom_card_camera_name: "Arbeitszimmer"
-          ulm_custom_card_camera_label: "Kris Webcam"
-          ulm_custom_card_camera_aspect_ratio: '16:9'
+      - type: custom:frigate-card
+        cameras:
+          - camera_entity: camera.hallway
+            hide: false
+        view:
+          default: live
+          camera_select: live
+          dark_mode: 'on'
+          timeout_seconds: 30
+        menu:
+          style: outside
+        performance:
+          profile: high
