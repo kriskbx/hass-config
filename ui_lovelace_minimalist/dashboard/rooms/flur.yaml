@@ -35,7 +35,7 @@ sections:
           dark_mode: 'on'
           timeout_seconds: 30
         menu:
-          style: outside
+          style: none
           buttons:
             microphone:
               enabled: false
