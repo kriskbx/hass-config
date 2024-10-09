@@ -54,6 +54,10 @@ automation:
         entity_id: input_boolean.alarm_armed
         state: "on"
     action:
+      - action: notify.pushover
+        data:
+          title: ALARM
+          message: Door has been opened and alarm has been activated
       - action: script.turn_on
         target:
           entity_id:
