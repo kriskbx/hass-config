@@ -23,6 +23,60 @@ sections:
     cards:
       - type: heading
         heading_style: title
+        heading: Camera
+        icon: mdi:camera
+      - type: custom:frigate-card
+        cameras:
+            - camera_entity: camera.hallway
+              hide: false
+        view:
+          default: live
+          camera_select: live
+          dark_mode: 'on'
+          timeout_seconds: 30
+        menu:
+          style: outside
+          buttons:
+            microphone:
+              enabled: false
+            media_player:
+              enabled: false
+            cameras:
+              enabled: false
+            frigate:
+              enabled: false
+            substreams:
+              enabled: false
+            snapshots:
+              enabled: false
+            image:
+              enabled: false
+            download:
+              enabled: false
+            camera_ui:
+              enabled: false
+            timeline:
+              enabled: false
+            mute:
+              enabled: true
+        performance:
+          profile: high
+        live:
+          draggable: false
+          zoomable: false
+          controls:
+            timeline:
+              show_recordings: true
+            thumbnails:
+              mode: none
+        media_viewer:
+          draggable: true
+
+  - type: grid
+    column_span: 1
+    cards:
+      - type: heading
+        heading_style: title
         heading: Lights
         icon: mdi:lightbulb-group
       - features:
