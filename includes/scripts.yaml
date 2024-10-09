@@ -7,6 +7,9 @@ script:
       - repeat:
           count: 20
           sequence:
+            - condition: state
+              entity_id: input_boolean.alarm_armed
+              state: "on"
             - delay: 2
             - action: button.press
               target:
