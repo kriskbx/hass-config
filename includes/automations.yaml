@@ -58,7 +58,7 @@ automation:
       - repeat:
           count: 10
           sequence:
-            - delay: 3
+            - delay: 2
             - action: button.press
               target:
                 entity_id: button.camera1_camera1_siren

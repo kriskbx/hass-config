@@ -2,12 +2,20 @@
 script:
 
   # -------- alarm -------- #
+  activate_pre_alarm_warning_sequence:
+    sequence:
+      - repeat:
+          count: 10
+          sequence:
+            - delay: 2
+            - action: button.press
+              target:
+                entity_id: button.camera1_camera1_siren
   activate_alarm_sequence:
     sequence:
       - action: switch.turn_on
         target:
           entity_id: switch.scene_music
-      - delay: 15
       - action: media_player.select_source
         target:
           entity_id: media_player.pispeaker_kitchen_snapcast_client
@@ -18,11 +26,12 @@ script:
           entity_id: media_player.pispeaker_living_room_snapcast_client
         data:
           source: mpd
+      - delay: 30
       - condition: state
         entity_id: input_boolean.alarm_armed
         state: "on"
       - repeat:
-          count: 18
+          count: 30
           sequence:
             - delay: 5
             - action: media_player.play_media
