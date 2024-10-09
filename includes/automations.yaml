@@ -23,7 +23,7 @@ automation:
         target:
           entity_id: switch.hallway_snapshots
   - alias: '[ALARM] Disable video recordings when alarm is unarmed'
-    id: 'alarm_activate_video'
+    id: 'alarm_deactivate_video'
     mode: single
     trigger:
       - platform: state
