@@ -18,12 +18,11 @@ script:
           entity_id: media_player.pispeaker_living_room_snapcast_client
         data:
           source: mpd
+      - condition: state
+        entity_id: input_boolean.alarm_armed
+        state: "on"
       - repeat:
           count: 18
-          while:
-            - condition: state
-              entity_id: input_boolean.alarm_armed
-              state: "on"
           sequence:
             - delay: 5
             - action: button.press
