@@ -6,6 +6,12 @@ automation:
     id: 'alarm_toggle_video_recordings'
     mode: single
     trigger:
+      - platform: state
+        entity_id: alarm_control_panel.alarm
+        to: "armed_away"
+      - platform: state
+        entity_id: alarm_control_panel.alarm
+        to: "disarmed"
       - trigger: time_pattern
         minutes: "*"
     action:
