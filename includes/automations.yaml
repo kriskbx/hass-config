@@ -2,46 +2,49 @@
 automation:
 
   # -------- alarm -------- #
-  - alias: '[ALARM] Activate video recordings when alarm is armed'
-    id: 'alarm_activate_video'
+  - alias: '[ALARM] Toggle video recordings whether alarm is armed'
+    id: 'alarm_toggle_video_recordings'
     mode: single
     trigger:
-      - platform: state
-        entity_id: alarm_control_panel.alarm
-        to: "armed_away"
+      - trigger: time_pattern
+        minutes: "*"
     action:
-      - action: switch.turn_on
-        target:
-          entity_id: switch.hallway_detect
-      - action: switch.turn_on
-        target:
-          entity_id: switch.hallway_motion
-      - action: switch.turn_on
-        target:
-          entity_id: switch.hallway_recordings
-      - action: switch.turn_on
-        target:
-          entity_id: switch.hallway_snapshots
-  - alias: '[ALARM] Disable video recordings when alarm is unarmed'
-    id: 'alarm_deactivate_video'
-    mode: single
-    trigger:
-      - platform: state
-        entity_id: alarm_control_panel.alarm
-        to: "disarmed"
-    action:
-      - action: switch.turn_off
-        target:
-          entity_id: switch.hallway_detect
-      - action: switch.turn_off
-        target:
-          entity_id: switch.hallway_motion
-      - action: switch.turn_off
-        target:
-          entity_id: switch.hallway_recordings
-      - action: switch.turn_off
-        target:
-          entity_id: switch.hallway_snapshots
+      - if:
+          - alias: "Alarm is armed"
+            condition: state
+            entity_id: alarm_control_panel.alarm
+            state: "armed_away"
+        then:
+          - action: switch.turn_on
+            target:
+              entity_id: switch.hallway_detect
+          - action: switch.turn_on
+            target:
+              entity_id: switch.hallway_motion
+          - action: switch.turn_on
+            target:
+              entity_id: switch.hallway_recordings
+          - action: switch.turn_on
+            target:
+              entity_id: switch.hallway_snapshots
+      - if:
+          - alias: "Alarm is disarmed"
+            condition: state
+            entity_id: alarm_control_panel.alarm
+            state: "disarmed"
+        then:
+          - action: switch.turn_off
+            target:
+              entity_id: switch.hallway_detect
+          - action: switch.turn_off
+            target:
+              entity_id: switch.hallway_motion
+          - action: switch.turn_off
+            target:
+              entity_id: switch.hallway_recordings
+          - action: switch.turn_off
+            target:
+              entity_id: switch.hallway_snapshots
   - alias: '[ALARM] Activate alarm when front door is opened'
     id: 'alarm_activation'
     mode: single
