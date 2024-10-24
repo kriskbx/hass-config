@@ -55,7 +55,7 @@ sections:
                 entity_id: remote.ir_blaster
               data:
                 device: projector
-                command: brightness
+                command: 'brightness'
           - type: custom:mushroom-template-card
             primary: Mode
             secondary: ''
