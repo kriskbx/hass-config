@@ -6,15 +6,23 @@ sections:
   - type: grid
     cards:
       - type: custom:frigate-card
-        cameras:
-          - camera_entity: camera.hallway
-            hide: false
         view:
-          default: live
-          camera_select: live
+          default: clips
           dark_mode: 'on'
           timeout_seconds: 30
         menu:
-          style: outside
+          style: none
         performance:
           profile: high
+        live:
+          draggable: false
+          zoomable: false
+          controls:
+            timeline:
+              show_recordings: true
+            thumbnails:
+              mode: none
+        media_viewer:
+          draggable: true
+        layout_options:
+          grid_columns: full
