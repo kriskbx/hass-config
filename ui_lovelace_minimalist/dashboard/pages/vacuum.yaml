@@ -23,11 +23,11 @@ sections:
         icons: [ ]
         map_source:
           camera: camera.roborock_s7_map
-        #          crop:
-        #            top: 180
-        #            left: 0
-        #            right: 140
-        #            bottom: 130
+          crop:
+            top: 100
+            left: 100
+            right: 100
+            bottom: 100
         calibration_source:
           camera: true
         map_modes:
