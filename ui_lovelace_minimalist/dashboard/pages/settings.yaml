@@ -1,54 +1,58 @@
 title: "Settings"
 path: "settings"
 icon: "mdi:cog"
-cards:
-
-  - type: vertical-stack
+cards: []
+type: sections
+sections:
+  - type: grid
     cards:
-
-      # -------- modes -------- #
-      - type: 'custom:button-card'
-        template: card_title
-        name: Modes
-      - type: vertical-stack
-        cards:
-          - type: 'custom:button-card'
-            template: card_input_boolean
-            entity: switch.scene_party
-            name: Party mode
-          - type: 'custom:button-card'
-            template: card_input_boolean
-            entity: switch.scene_vacation
-            name: Vacation mode
-
-      # -------- options -------- #
-      - type: 'custom:button-card'
-        template: card_title
-        name: Options
-      - type: vertical-stack
-        cards:
-          - type: 'custom:button-card'
-            template: card_input_boolean
-            entity: input_boolean.heating
-          - type: 'custom:button-card'
-            template: card_input_boolean
-            entity: input_boolean.vacuum
-
-      # -------- temperatures -------- #
-      - type: 'custom:button-card'
-        template: card_title
-        name: Automated heating temperatures
-      - type: vertical-stack
-        cards:
-          - type: "custom:button-card"
-            template: card_input_number
-            entity: input_number.high_comfort_temperature
-          - type: "custom:button-card"
-            template: card_input_number
-            entity: input_number.comfort_temperature
-          - type: "custom:button-card"
-            template: card_input_number
-            entity: input_number.room_temperature
-          - type: "custom:button-card"
-            template: card_input_number
-            entity: input_number.night_temperature
+      - type: heading
+        heading: Modes
+        heading_style: title
+        icon: mdi:auto-mode
+      - type: tile
+        entity: switch.scene_party
+      - type: tile
+        entity: switch.scene_vacation
+      - type: heading
+        icon: mdi:cog
+        heading: Options
+        heading_style: title
+      - type: tile
+        entity: input_boolean.heating
+      - type: tile
+        entity: input_boolean.vacuum
+  - type: grid
+    cards:
+      - type: heading
+        heading: Settings
+        heading_style: title
+        icon: mdi:gauge
+      - type: custom:mushroom-number-card
+        entity: input_number.high_comfort_temperature
+        icon_type: none
+        display_mode: buttons
+        layout: horizontal
+        secondary_info: last-updated
+        fill_container: true
+      - type: custom:mushroom-number-card
+        entity: input_number.comfort_temperature
+        icon_type: none
+        display_mode: buttons
+        layout: horizontal
+        secondary_info: last-updated
+        fill_container: true
+      - type: custom:mushroom-number-card
+        entity: input_number.room_temperature
+        icon_type: none
+        display_mode: buttons
+        layout: horizontal
+        secondary_info: last-updated
+        fill_container: true
+      - type: custom:mushroom-number-card
+        entity: input_number.night_temperature
+        icon_type: none
+        display_mode: buttons
+        layout: horizontal
+        secondary_info: last-updated
+        fill_container: true
