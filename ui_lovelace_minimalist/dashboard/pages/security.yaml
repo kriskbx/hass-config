@@ -6,6 +6,9 @@ sections:
   - type: grid
     cards:
       - type: custom:frigate-card
+        cameras:
+          - camera_entity: camera.hallway
+            hide: false
         view:
           default: clips
           dark_mode: 'on'
