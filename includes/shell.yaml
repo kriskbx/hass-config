@@ -1,5 +1,7 @@
 shell_command:
-  activate_speaker_kitchen: ssh -o StrictHostKeyChecking=accept-new -i /secrets/homelab_pi_rsa pi@192.168.3.140 amixer sset "Speaker" 80%
+  high_volume_speaker_kitchen: ssh -o StrictHostKeyChecking=accept-new -i /secrets/homelab_pi_rsa pi@192.168.3.140 amixer sset "Speaker" 100%
+  activate_speaker_kitchen: ssh -o StrictHostKeyChecking=accept-new -i /secrets/homelab_pi_rsa pi@192.168.3.140 amixer sset "Speaker" 90%
   deactivate_speaker_kitchen: ssh -o StrictHostKeyChecking=accept-new -i /secrets/homelab_pi_rsa pi@192.168.3.140 amixer sset "Speaker" 0%
-  activate_speaker_livingroom: ssh -o StrictHostKeyChecking=accept-new -i /secrets/homelab_pi_rsa pi@192.168.3.53 amixer sset "Speaker" 80%
+  high_volume_speaker_livingroom: ssh -o StrictHostKeyChecking=accept-new -i /secrets/homelab_pi_rsa pi@192.168.3.53 amixer sset "Speaker" 100%
+  activate_speaker_livingroom: ssh -o StrictHostKeyChecking=accept-new -i /secrets/homelab_pi_rsa pi@192.168.3.53 amixer sset "Speaker" 90%
   deactivate_speaker_livingroom: ssh -o StrictHostKeyChecking=accept-new -i /secrets/homelab_pi_rsa pi@192.168.3.53 amixer sset "Speaker" 0%
