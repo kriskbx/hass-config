@@ -4,12 +4,28 @@ script:
   # -------- alarm -------- #
   activate_pre_alarm_warning_sequence:
     sequence:
+      - action: media_player.select_source
+        target:
+          entity_id:
+            - media_player.pispeaker_kitchen_snapcast_client
+            - media_player.pispeaker_living_room_snapcast_client
+        data:
+          source: mpd
       - repeat:
-          count: 20
+          count: 5
           sequence:
             - condition: state
               entity_id: alarm_control_panel.alarm
               state: "armed_away"
+            - service: shell_command.high_volume_speaker_kitchen
+            - service: shell_command.high_volume_speaker_livingroom
+            - action: media_player.play_media
+              target:
+                entity_id: media_player.music_player_daemon
+              data:
+                media_content_type: audio/mpeg
+                media_content_id: media-source://media_source/local/local/alarm.mp3
+            - delay: 5
 #            - delay: 2
 #            - action: button.press
 #              target:
@@ -21,12 +37,9 @@ script:
           entity_id: switch.scene_music
       - action: media_player.select_source
         target:
-          entity_id: media_player.pispeaker_kitchen_snapcast_client
-        data:
-          source: mpd
-      - action: media_player.select_source
-        target:
-          entity_id: media_player.pispeaker_living_room_snapcast_client
+          entity_id:
+            - media_player.pispeaker_kitchen_snapcast_client
+            - media_player.pispeaker_living_room_snapcast_client
         data:
           source: mpd
 #      - delay: 30
@@ -36,8 +49,6 @@ script:
             - condition: state
               entity_id: alarm_control_panel.alarm
               state: "armed_away"
-            - service: shell_command.high_volume_speaker_kitchen
-            - service: shell_command.high_volume_speaker_livingroom
             - action: media_player.play_media
               target:
                 entity_id: media_player.music_player_daemon
