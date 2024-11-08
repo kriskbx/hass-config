@@ -351,7 +351,7 @@ automation:
         entity_id: input_boolean.vacation
         state: "on"
       - action: shell_command.deactivate_speaker_kitchen
-      - action: media_player.stop
+      - action: media_player.media_stop
         target:
           entity_id:
             - media_player.music_player_daemon
