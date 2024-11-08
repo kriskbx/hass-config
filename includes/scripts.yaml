@@ -17,14 +17,14 @@ script:
             - condition: state
               entity_id: alarm_control_panel.alarm
               state: "armed_away"
-            - service: shell_command.high_volume_speaker_kitchen
-            - service: shell_command.high_volume_speaker_livingroom
             - action: media_player.play_media
               target:
                 entity_id: media_player.music_player_daemon
               data:
                 media_content_type: audio/mpeg
                 media_content_id: media-source://media_source/local/local/alarm.mp3
+            - service: shell_command.high_volume_speaker_kitchen
+            - service: shell_command.high_volume_speaker_livingroom
             - delay: 5
 #            - delay: 2
 #            - action: button.press
