@@ -327,6 +327,7 @@ automation:
       - condition: state
         entity_id: input_boolean.vacation
         state: "on"
+      - action: shell_command.activate_speaker_kitchen
       - action: media_player.select_source
         target:
           entity_id: media_player.pispeaker_kitchen_snapcast_client
@@ -349,6 +350,7 @@ automation:
       - condition: state
         entity_id: input_boolean.vacation
         state: "on"
+      - action: shell_command.deactivate_speaker_kitchen
       - action: media_player.stop
         target:
           entity_id:
