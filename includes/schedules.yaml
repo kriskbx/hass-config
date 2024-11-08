@@ -116,25 +116,25 @@ schedule:
     name: "Vacation sound schedule"
     monday:
       - from: "09:30:00"
-        to: "23:00:00"
+        to: "22:30:00"
     tuesday:
       - from: "09:30:00"
-        to: "23:00:00"
+        to: "22:30:00"
     wednesday:
       - from: "09:30:00"
-        to: "23:00:00"
+        to: "22:30:00"
     thursday:
       - from: "09:30:00"
-        to: "23:00:00"
+        to: "22:30:00"
     friday:
       - from: "09:30:00"
-        to: "23:45:00"
+        to: "22:30:00"
     saturday:
       - from: "11:30:00"
-        to: "23:45:00"
+        to: "23:00:00"
     sunday:
       - from: "11:30:00"
-        to: "23:45:00"
+        to: "23:00:00"
 
   # -------- vacuum -------- #
   vacuum_workday_apartment:
