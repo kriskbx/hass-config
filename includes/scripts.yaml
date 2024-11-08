@@ -29,9 +29,9 @@ script:
           entity_id: media_player.pispeaker_living_room_snapcast_client
         data:
           source: mpd
-      - delay: 30
+#      - delay: 30
       - repeat:
-          count: 30
+          count: 60
           sequence:
             - condition: state
               entity_id: alarm_control_panel.alarm
