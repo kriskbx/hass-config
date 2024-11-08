@@ -127,7 +127,7 @@ schedule:
       - from: "09:30:00"
         to: "23:00:00"
     friday:
-      - from: "18:57:00"
+      - from: "09:30:00"
         to: "23:45:00"
     saturday:
       - from: "11:30:00"
