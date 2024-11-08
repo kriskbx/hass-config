@@ -228,6 +228,8 @@ switch:
             entity_id: switch.stereo
           - service: switch.turn_on
             entity_id: switch.plug_kitchen_speaker
+          - service: shell_command.deactivate_speaker_kitchen
+          - service: shell_command.deactivate_speaker_livingroom
           - delay: 00:00:01
           - service: remote.send_command
             target:
