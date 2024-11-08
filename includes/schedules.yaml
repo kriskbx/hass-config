@@ -1,7 +1,7 @@
 # -------- Schedules -------- #
 schedule:
 
-  # -------- Heating -------- # 
+  # -------- Heating -------- #
   heating_work:
     name: "Heating Work"
     monday:
@@ -92,26 +92,49 @@ schedule:
   vacation_lights:
     name: "Vacation light schedule"
     monday:
-      - from: "17:00:00"
-        to: "23:30:00"
+      - from: "16:30:00"
+        to: "23:00:00"
     tuesday:
-      - from: "17:00:00"
-        to: "23:30:00"
+      - from: "16:30:00"
+        to: "23:00:00"
     wednesday:
-      - from: "17:00:00"
-        to: "23:30:00"
+      - from: "16:30:00"
+        to: "23:00:00"
     thursday:
-      - from: "17:00:00"
-        to: "23:30:00"
+      - from: "16:30:00"
+        to: "23:00:00"
     friday:
-      - from: "17:00:00"
-        to: "23:30:00"
+      - from: "16:30:00"
+        to: "23:45:00"
     saturday:
-      - from: "17:00:00"
-        to: "23:30:00"
+      - from: "16:30:00"
+        to: "23:45:00"
     sunday:
-      - from: "17:00:00"
-        to: "23:30:00"
+      - from: "16:30:00"
+        to: "23:45:00"
+  vacation_sounds:
+    name: "Vacation sound schedule"
+    monday:
+      - from: "09:30:00"
+        to: "23:00:00"
+    tuesday:
+      - from: "09:30:00"
+        to: "23:00:00"
+    wednesday:
+      - from: "09:30:00"
+        to: "23:00:00"
+    thursday:
+      - from: "09:30:00"
+        to: "23:00:00"
+    friday:
+      - from: "09:30:00"
+        to: "23:45:00"
+    saturday:
+      - from: "11:30:00"
+        to: "23:45:00"
+    sunday:
+      - from: "11:30:00"
+        to: "23:45:00"
 
   # -------- vacuum -------- #
   vacuum_workday_apartment:
