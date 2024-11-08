@@ -29,8 +29,6 @@ script:
           entity_id: media_player.pispeaker_living_room_snapcast_client
         data:
           source: mpd
-      - service: shell_command.high_volume_speaker_kitchen
-      - service: shell_command.high_volume_speaker_livingroom
 #      - delay: 30
       - repeat:
           count: 60
@@ -38,6 +36,8 @@ script:
             - condition: state
               entity_id: alarm_control_panel.alarm
               state: "armed_away"
+            - service: shell_command.high_volume_speaker_kitchen
+            - service: shell_command.high_volume_speaker_livingroom
             - action: media_player.play_media
               target:
                 entity_id: media_player.music_player_daemon
