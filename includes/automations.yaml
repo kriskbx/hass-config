@@ -328,6 +328,7 @@ automation:
         entity_id: input_boolean.vacation
         state: "on"
       - action: shell_command.activate_speaker_kitchen
+      - action: shell_command.deactivate_speaker_livingroom
       - action: media_player.select_source
         target:
           entity_id: media_player.pispeaker_kitchen_snapcast_client
