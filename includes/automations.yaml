@@ -51,6 +51,22 @@ automation:
           - action: switch.turn_off
             target:
               entity_id: switch.hallway_snapshots
+  - alias: '[ALARM] Send notification on person occupancy'
+    id: 'alarm_occupancy'
+    mode: single
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.hallway_person_occupancy
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: alarm_control_panel.alarm
+        state: "armed_away"
+    action:
+      - action: notify.pushover
+        data:
+          title: ALARM
+          message: Motion detected, check camera
   - alias: '[ALARM] Activate alarm when front door is opened'
     id: 'alarm_activation'
     mode: single
