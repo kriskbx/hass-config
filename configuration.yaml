@@ -89,6 +89,8 @@ homeassistant:
       friendly_name: Wohnzimmer
     climate.climate_arbeitszimmer:
       friendly_name: Arbeitszimmer
+    binary_sensor.presence_bathroom_presence:
+      friendly_name: Presence Badezimmer
 
 http:
   use_x_forwarded_for: true

@@ -107,3 +107,10 @@ sections:
         state_content:
           - state
           - last_changed
+      - type: tile
+        entity: binary_sensor.presence_bathroom_presence
+        layout_options:
+          grid_columns: full
+        state_content:
+          - state
+          - last_changed
