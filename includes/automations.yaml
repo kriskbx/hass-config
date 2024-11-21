@@ -363,6 +363,9 @@ automation:
       - platform: state
         entity_id: schedule.vacation_sounds
         to: "off"
+      - platform: state
+        entity_id: input_boolean.vacation
+        to: "off"
     action:
       - condition: state
         entity_id: input_boolean.vacation
