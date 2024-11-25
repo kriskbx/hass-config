@@ -168,7 +168,7 @@ sections:
           icon: false
           extrema: false
           average: false
-          labels: true
+          labels: hover
           state: true
         entities:
           - entity: sensor.air_quality_particulate_matter_10_0_m_concentration
