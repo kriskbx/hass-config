@@ -160,6 +160,26 @@ sections:
           grid_columns: 2
           grid_rows: 3
         hours_to_show: 6
+      - type: custom:mini-graph-card
+        name: Air Quality
+        hours_to_show: 1
+        points_per_hour: 20
+        show:
+          icon: false
+          extrema: false
+          average: false
+          labels: true
+          state: true
+        entities:
+          - entity: sensor.air_quality_particulate_matter_10_0_m_concentration
+            name: < 10.0µm
+            aggregate_func: avg
+          - entity: sensor.air_quality_particulate_matter_2_5_m_concentration
+            name: < 2.5µm
+            aggregate_func: avg
+          - entity: sensor.air_quality_particulate_matter_1_0_m_concentration
+            name: < 1.0µm
+            aggregate_func: avg
       - features:
           - type: target-temperature
         type: tile
