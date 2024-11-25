@@ -162,8 +162,8 @@ sections:
         hours_to_show: 6
       - type: custom:mini-graph-card
         name: Particulate matter
-        hours_to_show: 1
-        points_per_hour: 20
+        hours_to_show: 24
+        points_per_hour: 2
         show:
           icon: false
           extrema: false
