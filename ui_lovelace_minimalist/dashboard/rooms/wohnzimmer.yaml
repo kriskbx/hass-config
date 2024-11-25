@@ -161,7 +161,7 @@ sections:
           grid_rows: 3
         hours_to_show: 6
       - type: custom:mini-graph-card
-        name: Particulate matter in the air
+        name: Particulate matter
         hours_to_show: 1
         points_per_hour: 20
         show:
