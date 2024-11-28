@@ -22,6 +22,7 @@ scene:
       light.light_bett_unten: off
       light.light_ambient_bett_unten: off
       light.light_hani_schreibtisch: off
+      light.light_hani_schreibtisch_ambient: off
       light.light_ambient_beamer: off
       light.light_ambient_stereo: off
 
@@ -40,6 +41,7 @@ scene:
       light.light_bett_unten: off
       light.light_ambient_bett_unten: off
       light.light_hani_schreibtisch: off
+      light.light_hani_schreibtisch_ambient: off
       light.light_ambient_beamer: off
       light.light_ambient_stereo: off
 
@@ -68,6 +70,9 @@ scene:
         state: on
         brightness: 255
       light.light_hani_schreibtisch:
+        state: on
+        brightness: 255
+      light.light_hani_schreibtisch_ambient:
         state: on
         brightness: 255
       light.light_ambient_beamer: off
@@ -121,6 +126,9 @@ scene:
       light.light_hani_schreibtisch:
         state: on
         brightness: 125
+      light.light_hani_schreibtisch_ambient:
+        state: on
+        brightness: 255
       light.light_ambient_beamer:
         state: on
         brightness: 50
