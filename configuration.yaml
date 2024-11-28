@@ -60,14 +60,17 @@ homeassistant:
       friendly_name: Ambient Stereo
       icon: mdi:led-strip-variant
     light.light_kris_schreibtisch:
-      friendly_name: Kris Schreibtisch
+      friendly_name: Kris Desk
       icon: mdi:led-strip-variant
     light.elgato_gw24l1a03117:
       friendly_name: Kris Keylight
       icon: mdi:light-flood-down
     light.light_hani_schreibtisch:
-      friendly_name: Hani Schreibtisch
+      friendly_name: Hani Desk
       icon: mdi:desk-lamp
+    light.light_hani_schreibtisch_ambient:
+      friendly_name: Hani Desk Ambient
+      icon: mdi:led-strip-variant
     light.light_stehlampe_arbeitszimmer:
       friendly_name: Stehlampe Arbeitszimmer
       icon: mdi:floor-lamp
