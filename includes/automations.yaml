@@ -505,6 +505,28 @@ automation:
       - service: light.turn_off
         entity_id: light.light_decke_flur
 
+  # -------- bathroom lights -------- #
+  - alias: '[LIGHTS] Turn on the bathroom light on occupancy'
+    mode: single
+    trigger:
+      platform: state
+      entity_id: binary_sensor.presence_bathroom_presence
+      from: "off"
+      to: "on"
+    action:
+      - service: light.turn_on
+        entity_id: light.light_bathroom
+  - alias: '[LIGHTS] Turn off the bathroom light if there is no occupancy'
+    mode: single
+    trigger:
+      platform: state
+      entity_id: binary_sensor.presence_bathroom_presence
+      from: "on"
+      to: "off"
+    action:
+      - service: light.turn_off
+        entity_id: light.light_bathroom
+
   # -------- unter bett lights -------- #
   - alias: '[LIGHTS] Turn on the Bett unten light on occupancy'
     mode: restart
