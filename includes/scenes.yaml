@@ -6,6 +6,7 @@ scene:
     entities:
       light.light_decke_arbeitszimmer: off
       light.light_decke_flur: off
+      light.light_bathroom: off
       light.light_decke_wohnzimmer: off
       light.light_decke_kuche:
         state: on
@@ -21,7 +22,6 @@ scene:
       light.light_bett_oben: off
       light.light_bett_unten: off
       light.light_ambient_bett_unten: off
-      light.light_hani_schreibtisch: off
       light.light_hani_schreibtisch_ambient: off
       light.light_ambient_beamer: off
       light.light_ambient_stereo: off
@@ -31,6 +31,7 @@ scene:
     entities:
       light.light_decke_arbeitszimmer: off
       light.light_decke_flur: off
+      light.bathroom: off
       light.light_decke_wohnzimmer: off
       light.light_kris_schreibtisch: off
       light.light_decke_kuche: off
@@ -40,7 +41,6 @@ scene:
       light.light_bett_oben: off
       light.light_bett_unten: off
       light.light_ambient_bett_unten: off
-      light.light_hani_schreibtisch: off
       light.light_hani_schreibtisch_ambient: off
       light.light_ambient_beamer: off
       light.light_ambient_stereo: off
@@ -52,6 +52,9 @@ scene:
         state: on
         brightness: 200
       light.light_decke_flur:
+        state: on
+        brightness: 200
+      light.light_bathroom:
         state: on
         brightness: 200
       light.light_decke_wohnzimmer:
@@ -69,9 +72,6 @@ scene:
       light.light_ambient_bett_unten:
         state: on
         brightness: 255
-      light.light_hani_schreibtisch:
-        state: on
-        brightness: 255
       light.light_hani_schreibtisch_ambient:
         state: on
         brightness: 255
@@ -83,6 +83,9 @@ scene:
         state: on
         color_temp: 153
       light.light_decke_flur:
+        state: on
+        color_temp: 153
+      light.light_bathroom:
         state: on
         color_temp: 153
       light.light_decke_wohnzimmer:
@@ -104,7 +107,10 @@ scene:
         brightness: 255
       light.light_decke_flur:
         state: on
-        brightness: 40
+        brightness: 120
+      light.light_bathroom:
+        state: on
+        brightness: 255
       light.light_decke_wohnzimmer: off
       light.light_decke_kuche: off
       light.light_stehlampe_wohnzimmer:
@@ -123,9 +129,6 @@ scene:
         state: on
         brightness: 75
       light.light_ambient_bett_unten: off
-      light.light_hani_schreibtisch:
-        state: on
-        brightness: 125
       light.light_hani_schreibtisch_ambient:
         state: on
         brightness: 255
@@ -138,6 +141,9 @@ scene:
   - name: romantic_temp
     entities:
       light.light_decke_flur:
+        state: on
+        color_temp: 500
+      light.light_bathroom:
         state: on
         color_temp: 500
       light.light_stehlampe_wohnzimmer:

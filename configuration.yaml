@@ -65,8 +65,8 @@ homeassistant:
     light.elgato_gw24l1a03117:
       friendly_name: Kris Keylight
       icon: mdi:light-flood-down
-    light.light_hani_schreibtisch:
-      friendly_name: Hani Desk
+    light.light_bathroom:
+      friendly_name: Decke Badezimmer
       icon: mdi:desk-lamp
     light.light_hani_schreibtisch_ambient:
       friendly_name: Hani Desk Ambient

@@ -103,12 +103,12 @@ light:
     entities:
       - light.light_stehlampe_arbeitszimmer
       - light.light_kris_schreibtisch
-      - light.light_hani_schreibtisch
       - light.light_hani_schreibtisch_ambient
   - platform: group
     name: light_group_flur
     entities:
       - light.light_decke_flur
+      - light.light_bathroom
   - platform: group
     name: light_group_kuche
     entities:
