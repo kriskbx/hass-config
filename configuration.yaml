@@ -67,7 +67,7 @@ homeassistant:
       icon: mdi:light-flood-down
     light.light_bathroom:
       friendly_name: Decke Badezimmer
-      icon: mdi:desk-lamp
+      icon: mdi:ceiling-light
     light.light_hani_schreibtisch_ambient:
       friendly_name: Hani Desk Ambient
       icon: mdi:led-strip-variant
