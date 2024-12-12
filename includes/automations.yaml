@@ -1,6 +1,18 @@
 # -------- Automations -------- #
 automation:
 
+  # -------- maintenance -------- #
+  - alias: '[MAINTENANCE] Reboot pi-speakers'
+    id: 'reboot_pi_speakers'
+    mode: single
+    trigger:
+      - platform: state
+        entity_id: schedule.maintenance_window
+        to: "on"
+    action:
+      - action: shell_command.reboot_speaker_kitchen
+      - action: shell_command.reboot_speaker_livingroom
+
   # -------- alarm -------- #
   - alias: '[ALARM] Toggle video recordings whether alarm is armed'
     id: 'alarm_toggle_video_recordings'

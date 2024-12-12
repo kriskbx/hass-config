@@ -1,6 +1,31 @@
 # -------- Schedules -------- #
 schedule:
 
+  # -------- Maintenance -------- #
+  maintenance_window:
+    name: "Maintenance Window"
+    monday:
+      - from: "04:00:00"
+        to: "05:00:00"
+    tuesday:
+      - from: "04:00:00"
+        to: "05:00:00"
+    wednesday:
+      - from: "04:00:00"
+        to: "05:00:00"
+    thursday:
+      - from: "04:00:00"
+        to: "05:00:00"
+    friday:
+      - from: "04:00:00"
+        to: "05:00:00"
+    saturday:
+      - from: "04:00:00"
+        to: "05:00:00"
+    sunday:
+      - from: "04:00:00"
+        to: "05:00:00"
+
   # -------- Heating -------- #
   heating_work:
     name: "Heating Work"
