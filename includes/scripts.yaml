@@ -2,6 +2,26 @@
 script:
 
   # -------- alarm -------- #
+  crank_up_alarm_volume:
+    sequence:
+      - service: remote.send_command
+        target:
+          entity_id: remote.ir_blaster
+        data:
+          device: stereo
+          command: volume-up
+          num_repeats: 30
+          delay_secs: 0
+
+  manual_alarm_activation:
+    sequence:
+      - action: script.turn_on
+        target:
+          entity_id:
+            - script.crank_up_alarm_volume
+            - script.activate_alarm_sequence
+            - script.activate_pre_alarm_warning_sequence
+
   activate_pre_alarm_warning_sequence:
     sequence:
       - action: media_player.select_source

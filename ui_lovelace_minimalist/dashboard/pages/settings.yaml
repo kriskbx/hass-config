@@ -27,7 +27,7 @@ sections:
         heading_style: title
         icon: mdi:security
       - type: tile
-        entity: script.activate_alarm_sequence
+        entity: script.manual_alarm_activation
         name: Run Alarm Sequence
         color: red
         icon: mdi:alarm-light
