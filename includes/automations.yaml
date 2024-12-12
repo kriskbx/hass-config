@@ -79,6 +79,10 @@ automation:
         data:
           title: ALARM
           message: Motion detected, check camera
+          priority: 2
+          sound: "siren"
+          expire: 300
+          retry: 30
   - alias: '[ALARM] Activate alarm when front door is opened'
     id: 'alarm_activation'
     mode: single
@@ -95,6 +99,10 @@ automation:
         data:
           title: ALARM
           message: Door has been opened and alarm has been activated
+          priority: 2
+          sound: "siren"
+          expire: 300
+          retry: 30
       - action: script.turn_on
         target:
           entity_id:
