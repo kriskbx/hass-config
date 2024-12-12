@@ -22,6 +22,16 @@ sections:
         entity: input_boolean.heating
       - type: tile
         entity: input_boolean.vacuum
+      - type: heading
+        heading: Security
+        heading_style: title
+        icon: mdi:security
+      - type: tile
+        entity: script.activate_alarm_sequence
+        name: Run Alarm Sequence
+        color: red
+        icon: mdi:alarm-light
+        show_entity_picture: false
   - type: grid
     cards:
       - type: heading
