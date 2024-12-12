@@ -81,7 +81,7 @@ automation:
           message: Motion detected, check camera
           data:
             priority: 2
-            sound: "siren"
+            sound: "persistent"
             expire: 300
             retry: 30
   - alias: '[ALARM] Activate alarm when front door is opened'
@@ -102,7 +102,7 @@ automation:
           message: Door has been opened and alarm has been activated
           data:
             priority: 2
-            sound: "siren"
+            sound: "persistent"
             expire: 300
             retry: 30
       - action: script.turn_on
