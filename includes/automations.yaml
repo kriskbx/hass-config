@@ -357,6 +357,7 @@ automation:
         entity_id: scene.off
   - alias: '[SOUNDS] Turn on the radio stream in vacation mode'
     mode: single
+    id: 'sounds_vacation_on'
     trigger:
       - platform: state
         entity_id: schedule.vacation_sounds
@@ -381,6 +382,7 @@ automation:
           media_content_type: audio/mpeg
   - alias: '[SOUNDS] Turn off the radio stream in vacation mode'
     mode: single
+    id: 'sounds_vacation_off'
     trigger:
       - platform: state
         entity_id: schedule.vacation_sounds
@@ -389,9 +391,6 @@ automation:
         entity_id: input_boolean.vacation
         to: "off"
     action:
-      - condition: state
-        entity_id: input_boolean.vacation
-        state: "on"
       - action: shell_command.deactivate_speaker_kitchen
       - action: media_player.media_stop
         target:
