@@ -1,6 +1,32 @@
 # -------- Schedules -------- #
 schedule:
 
+  # -------- Air purifier -------- #
+  air_purifier:
+    name: "Air Purifier"
+    monday:
+      - from: "09:00:00"
+        to: "22:00:00"
+    tuesday:
+      - from: "09:00:00"
+        to: "22:00:00"
+    wednesday:
+      - from: "09:00:00"
+        to: "22:00:00"
+    thursday:
+      - from: "09:00:00"
+        to: "22:00:00"
+    friday:
+      - from: "10:00:00"
+        to: "23:00:00"
+    saturday:
+      - from: "10:00:00"
+        to: "23:00:00"
+    sunday:
+      - from: "10:00:00"
+        to: "23:00:00"
+
+
   # -------- Maintenance -------- #
   maintenance_window:
     name: "Maintenance Window"

@@ -1,6 +1,29 @@
 # -------- Automations -------- #
 automation:
 
+  # -------- air purifier -------- #
+  - alias: '[AIR-QUALITY] Activate air purifier in the morning'
+    mode: single
+    trigger:
+      platform: state
+      entity_id: schedule.air_purifier
+      to: "on"
+    action:
+      - condition: state
+        entity_id: input_boolean.vacation
+        state: "off"
+      - service: switch.turn_on
+        entity_id: switch.plug_air_purifier
+  - alias: '[AIR-QUALITY] Deactivate air purifier before bed time'
+    mode: single
+    trigger:
+      platform: state
+      entity_id: schedule.air_purifier
+      to: "off"
+    action:
+      - service: switch.turn_off
+        entity_id: switch.plug_air_purifier
+
   # -------- maintenance -------- #
   - alias: '[MAINTENANCE] Reboot pi-speakers'
     id: 'reboot_pi_speakers'
