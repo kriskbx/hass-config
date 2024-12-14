@@ -36,6 +36,9 @@ homeassistant:
     switch.plug_kitchen_speaker:
       friendly_name: Kitchen speaker
       icon: mdi:speaker
+    switch.plug_air_purifier:
+      friendly_name: Air Purifier
+      icon: mdi:air-purifier
     vacuum.roborock_vacuum_a15:
       friendly_name: Marvin
     light.light_stehlampe_wohnzimmer:

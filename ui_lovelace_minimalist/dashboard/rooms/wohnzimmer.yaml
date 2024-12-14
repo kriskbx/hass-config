@@ -134,6 +134,13 @@ sections:
         state_content:
           - state
           - last_changed
+      - type: tile
+        entity: switch.plug_air_purifier
+        layout_options:
+          grid_columns: full
+        state_content:
+          - state
+          - last_changed
 
   - type: grid
     column_span: 1
