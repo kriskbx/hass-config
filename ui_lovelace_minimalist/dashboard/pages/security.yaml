@@ -7,25 +7,12 @@ sections:
     cards:
       - type: custom:frigate-card
         cameras:
-          - camera_entity: camera.hallway
-            hide: false
+            - camera_entity: camera.hallway
         view:
           default: clips
-          dark_mode: 'on'
-          timeout_seconds: 30
-        menu:
-          style: none
-        performance:
-          profile: high
-        live:
-          draggable: false
-          zoomable: false
+        media_gallery:
           controls:
-            timeline:
-              show_recordings: true
             thumbnails:
-              mode: none
-        media_viewer:
-          draggable: true
-        layout_options:
-          grid_columns: full
+              show_details: true
+        dimensions:
+          aspect_ratio_mode: unconstrained

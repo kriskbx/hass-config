@@ -22,3 +22,4 @@ views:
   - !include "./pages/vacuum.yaml"
   - !include "./pages/remotes.yaml"
   - !include "./pages/settings.yaml"
+  - !include "./pages/security.yaml"
