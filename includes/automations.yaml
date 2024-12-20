@@ -103,7 +103,7 @@ automation:
           title: ALARM
           message: Motion detected, check camera
           data:
-            priority: 2
+#            priority: 2
             sound: "persistent"
             expire: 300
             retry: 30
