@@ -5,6 +5,8 @@ type: sections
 sections:
   - type: grid
     cards:
+      - type: picture
+        image_entity: image.hallway_person
       - type: custom:frigate-card
         cameras:
             - camera_entity: camera.hallway
