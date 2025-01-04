@@ -4,9 +4,10 @@ alarm_control_panel:
     name: Alarm
     unique_id: intruder_alarm
     code: !secret alarm_code
-    arming_time: 20
-    delay_time: 10
+    arming_time: 10
+    delay_time: 60
     arming_states:
+      - armed_vacation
       - armed_away
     disarmed:
       trigger_time: 0

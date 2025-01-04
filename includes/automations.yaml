@@ -3,6 +3,7 @@ automation:
 
   # -------- air purifier -------- #
   - alias: '[AIR-QUALITY] Activate air purifier in the morning'
+    id: 'air_quality_activate'
     mode: single
     trigger:
       platform: state
@@ -15,6 +16,7 @@ automation:
       - service: switch.turn_on
         entity_id: switch.plug_air_purifier
   - alias: '[AIR-QUALITY] Deactivate air purifier before bed time'
+    id: 'air_quality_deactivate'
     mode: single
     trigger:
       platform: state
@@ -43,7 +45,7 @@ automation:
     trigger:
       - platform: state
         entity_id: alarm_control_panel.alarm
-        to: "armed_away"
+        to: "armed_vacation"
       - platform: state
         entity_id: alarm_control_panel.alarm
         to: "disarmed"
@@ -51,10 +53,13 @@ automation:
         minutes: "*"
     action:
       - if:
-          - alias: "Alarm is armed"
-            condition: state
-            entity_id: alarm_control_panel.alarm
-            state: "armed_away"
+          - or:
+            - condition: state
+              entity_id: alarm_control_panel.alarm
+              state: "armed_vacation"
+            - condition: state
+              entity_id: alarm_control_panel.alarm
+              state: "armed_away"
         then:
           - action: switch.turn_on
             target:
@@ -69,8 +74,7 @@ automation:
             target:
               entity_id: switch.hallway_snapshots
       - if:
-          - alias: "Alarm is disarmed"
-            condition: state
+          - condition: state
             entity_id: alarm_control_panel.alarm
             state: "disarmed"
         then:
@@ -94,16 +98,43 @@ automation:
         entity_id: binary_sensor.hallway_person_occupancy
         to: "on"
     condition:
-      - condition: state
-        entity_id: alarm_control_panel.alarm
-        state: "armed_away"
+      - or:
+        - condition: state
+          entity_id: alarm_control_panel.alarm
+          state: "armed_vacation"
+        - condition: state
+          entity_id: alarm_control_panel.alarm
+          state: "armed_away"
     action:
       - action: notify.pushover
         data:
           title: ALARM
-          message: Motion detected, check camera
+          message: Motion detected, check camera!
           data:
-#            priority: 2
+            expire: 300
+            retry: 30
+  - alias: '[ALARM] Send notification when front door is opened'
+    id: 'alarm_notification'
+    mode: single
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.door_sensor_eingang_contact
+        to: "off"
+    condition:
+      - or:
+        - condition: state
+          entity_id: alarm_control_panel.alarm
+          state: "armed_vacation"
+        - condition: state
+          entity_id: alarm_control_panel.alarm
+          state: "armed_away"
+    action:
+      - action: notify.pushover
+        data:
+          title: ALARM
+          message: Door has been opened!
+          data:
+            priority: 2
             sound: "persistent"
             expire: 300
             retry: 30
@@ -117,23 +148,13 @@ automation:
     condition:
       - condition: state
         entity_id: alarm_control_panel.alarm
-        state: "armed_away"
+        state: "armed_vacation"
     action:
-      - action: notify.pushover
-        data:
-          title: ALARM
-          message: Door has been opened and alarm has been activated
-          data:
-            priority: 2
-            sound: "persistent"
-            expire: 300
-            retry: 30
       - action: script.turn_on
         target:
           entity_id:
             - script.activate_alarm_sequence
             - script.activate_pre_alarm_warning_sequence
-
 
   # -------- blinds -------- #
   - alias: '[BLINDS] Prevent blinds from opening when window left is open'

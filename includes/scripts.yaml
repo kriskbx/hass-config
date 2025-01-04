@@ -36,7 +36,7 @@ script:
           sequence:
             - condition: state
               entity_id: alarm_control_panel.alarm
-              state: "armed_away"
+              state: "armed_vacation"
             - action: media_player.play_media
               target:
                 entity_id: media_player.music_player_daemon
@@ -68,7 +68,7 @@ script:
           sequence:
             - condition: state
               entity_id: alarm_control_panel.alarm
-              state: "armed_away"
+              state: "armed_vacation"
             - action: media_player.play_media
               target:
                 entity_id: media_player.music_player_daemon
