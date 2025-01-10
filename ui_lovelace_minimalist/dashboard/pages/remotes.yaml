@@ -329,6 +329,41 @@ sections:
         heading: Snapcast
         heading_style: title
         icon: mdi:speaker-multiple
-
+      - type: tile
+        entity: media_player.pispeaker_kitchen_snapcast_client
+        grid_options:
+          columns: full
+        name: Küche
+        vertical: false
+        hide_state: false
+        show_entity_picture: false
+        state_content:
+          - source
+          - state
+          - volume_level
+      - type: tile
+        entity: media_player.pispeaker_living_room_snapcast_client
+        grid_options:
+          columns: full
+        name: Wohnzimmer
+        vertical: false
+        hide_state: false
+        show_entity_picture: false
+        state_content:
+          - source
+          - state
+          - volume_level
+      - type: tile
+        entity: media_player.kriss_macbook_pro_local_snapcast_client
+        grid_options:
+          columns: full
+        name: Kris Macbook
+        vertical: false
+        hide_state: false
+        show_entity_picture: false
+        state_content:
+          - source
+          - state
+          - volume_level
 
 
