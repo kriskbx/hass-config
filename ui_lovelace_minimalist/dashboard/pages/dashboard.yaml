@@ -227,7 +227,7 @@ sections:
                 tap_action:
                   action: toggle
               entity_4:
-                entity_id: switch.steam_link_wohnzimmer
+                entity_id: switch.plug_air_purifier
                 templates:
                   - red_on
                 tap_action:
