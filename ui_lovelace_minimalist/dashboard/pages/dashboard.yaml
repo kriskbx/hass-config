@@ -234,7 +234,7 @@ sections:
                   action: toggle
             label: >
               [[[
-                return (Math.round(states['sensor.temperature_humidity_wohnzimmer_temperature'].state * 10) / 10) + "°C" + "&nbsp; | &nbsp;" + (Math.round(states['sensor.temperature_humidity_wohnzimmer_humidity'].state * 10) / 10) + "%"
+                return (Math.round(states['sensor.temperature_humidity_wohnzimmer_temperature'].state * 10) / 10) + "°C" + "&nbsp; | &nbsp;" + (Math.round(states['sensor.temperature_humidity_wohnzimmer_humidity'].state * 10) / 10) + "%&nbsp; | &nbsp;" + (Math.max(states['sensor.air_quality_particulate_matter_10_0_m_concentration'].state, states['sensor.air_quality_particulate_matter_1_0_m_concentration'].state, states['sensor.air_quality_particulate_matter_2_5_m_concentration'].state)) + "µg/m³"
               ]]]
           - type: "custom:button-card"
             template:
