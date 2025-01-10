@@ -120,3 +120,10 @@ sections:
         state_content:
           - state
           - last_changed
+      - type: tile
+        entity: binary_sensor.hallway_person_occupancy
+        layout_options:
+          grid_columns: full
+        state_content:
+          - state
+          - last_changed

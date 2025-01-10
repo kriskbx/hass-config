@@ -98,6 +98,9 @@ homeassistant:
     binary_sensor.presence_bathroom_presence:
       friendly_name: Presence Badezimmer
       icon: mdi:shower
+    binary_sensor.hallway_person_occupancy:
+      friendly_name: AI person detection
+      icon: mdi:cctv
 
 http:
   use_x_forwarded_for: true
