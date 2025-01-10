@@ -2,26 +2,56 @@
 automation:
 
   # -------- air purifier -------- #
-  - alias: '[AIR-QUALITY] Activate air purifier in the morning'
-    id: 'air_quality_activate'
+#  - alias: '[AIR-QUALITY] Activate air purifier in the morning'
+#    id: 'air_quality_activate'
+#    mode: single
+#    trigger:
+#      platform: state
+#      entity_id: schedule.air_purifier
+#      to: "on"
+#    action:
+#      - condition: state
+#        entity_id: input_boolean.vacation
+#        state: "off"
+#      - service: switch.turn_on
+#        entity_id: switch.plug_air_purifier
+#  - alias: '[AIR-QUALITY] Deactivate air purifier before bed time'
+#    id: 'air_quality_deactivate'
+#    mode: single
+#    trigger:
+#      platform: state
+#      entity_id: schedule.air_purifier
+#      to: "off"
+#    action:
+#      - service: switch.turn_off
+#        entity_id: switch.plug_air_purifier
+  - alias: '[AIR-QUALITY] Turn on the air purifier when the air quality gets bad'
     mode: single
     trigger:
-      platform: state
-      entity_id: schedule.air_purifier
-      to: "on"
+      - platform: numeric_state
+        entity_id: sensor.air_quality_particulate_matter_10_0_m_concentration
+        above: 5
+      - platform: numeric_state
+        entity_id: sensor.air_quality_particulate_matter_2_5_m_concentration
+        above: 5
+      - platform: numeric_state
+        entity_id: sensor.air_quality_particulate_matter_1_0_m_concentration
+        above: 5
     action:
-      - condition: state
-        entity_id: input_boolean.vacation
-        state: "off"
       - service: switch.turn_on
         entity_id: switch.plug_air_purifier
-  - alias: '[AIR-QUALITY] Deactivate air purifier before bed time'
-    id: 'air_quality_deactivate'
+  - alias: '[AIR-QUALITY] Turn off the air purifier when the air quality is okay'
     mode: single
     trigger:
-      platform: state
-      entity_id: schedule.air_purifier
-      to: "off"
+      - platform: numeric_state
+        entity_id: sensor.air_quality_particulate_matter_10_0_m_concentration
+        below: 2
+      - platform: numeric_state
+        entity_id: sensor.air_quality_particulate_matter_2_5_m_concentration
+        below: 2
+      - platform: numeric_state
+        entity_id: sensor.air_quality_particulate_matter_1_0_m_concentration
+        below: 2
     action:
       - service: switch.turn_off
         entity_id: switch.plug_air_purifier
@@ -517,8 +547,8 @@ automation:
       - service: switch.turn_on
         entity_id: switch.scene_off
 
-  # -------- humidifier -------- #
-  - alias: '[CLIMATE] Turn on the humidifier when the humidity gets too high'
+  # -------- dehumidifier -------- #
+  - alias: '[CLIMATE] Turn on the dehumidifier when the humidity gets too high'
     mode: single
     trigger:
       platform: numeric_state
@@ -527,7 +557,7 @@ automation:
     action:
       - service: switch.turn_on
         entity_id: switch.dehumidifier_kuche
-  - alias: '[CLIMATE] Turn off the humidifier when the humidity is okay'
+  - alias: '[CLIMATE] Turn off the dehumidifier when the humidity is okay'
     mode: single
     trigger:
       - platform: numeric_state
