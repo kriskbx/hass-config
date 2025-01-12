@@ -44,5 +44,6 @@ sections:
               # living room
               - zones: [ [ 16145, 23599, 22073, 27660 ] ]
           - template: vacuum_goto
+          - template: vacuum_clean_zone
 
 
