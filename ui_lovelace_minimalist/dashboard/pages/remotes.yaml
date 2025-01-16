@@ -38,6 +38,18 @@ sections:
           - state
           - volume_level
       - type: tile
+        entity: media_player.pispeaker_bath_snapcast_client
+        grid_options:
+          columns: full
+        name: Badezimmer
+        vertical: false
+        hide_state: false
+        show_entity_picture: false
+        state_content:
+          - source
+          - state
+          - volume_level
+      - type: tile
         entity: media_player.kriss_macbook_pro_local_snapcast_client
         grid_options:
           columns: full
