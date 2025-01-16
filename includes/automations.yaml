@@ -67,6 +67,7 @@ automation:
     action:
       - action: shell_command.reboot_speaker_kitchen
       - action: shell_command.reboot_speaker_livingroom
+      - action: shell_command.reboot_speaker_bath
 
   # -------- alarm -------- #
   - alias: '[ALARM] Toggle video recordings whether alarm is armed'
