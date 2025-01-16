@@ -230,11 +230,13 @@ switch:
             entity_id: switch.plug_kitchen_speaker
           - service: shell_command.deactivate_speaker_kitchen
           - service: shell_command.deactivate_speaker_livingroom
+          - service: shell_command.deactivate_speaker_bath
           - action: media_player.select_source
             target:
               entity_id:
                 - media_player.pispeaker_kitchen_snapcast_client
                 - media_player.pispeaker_living_room_snapcast_client
+                - media_player.pispeaker_bath_snapcast_client
             data:
               source: Airplay
           - delay: 00:00:01
