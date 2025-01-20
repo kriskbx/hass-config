@@ -60,6 +60,14 @@ input_boolean:
     name: Automated Vacuum
     icon: mdi:robot-vacuum
     initial: on
+  purifier:
+    name: Automated Air Purifier
+    icon: mdi:air-purifier
+    initial: on
+  dehumidifier:
+    name: Automated Dehumidifier
+    icon: mdi:air-humidifier
+    initial: on
 
 # -------- number inputs -------- #
 input_number:

@@ -22,6 +22,10 @@ sections:
         entity: input_boolean.heating
       - type: tile
         entity: input_boolean.vacuum
+      - type: tile
+        entity: input_boolean.purifier
+      - type: tile
+        entity: input_boolean.dehumidifier
       - type: heading
         heading: Security
         heading_style: title

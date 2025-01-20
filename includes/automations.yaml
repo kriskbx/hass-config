@@ -37,6 +37,10 @@ automation:
       - platform: numeric_state
         entity_id: sensor.air_quality_particulate_matter_1_0_m_concentration
         above: 5
+    condition:
+      - condition: state
+        entity_id: input_boolean.purifier
+        state: "on"
     action:
       - service: switch.turn_on
         entity_id: switch.plug_air_purifier
@@ -52,6 +56,10 @@ automation:
       - platform: numeric_state
         entity_id: sensor.air_quality_particulate_matter_1_0_m_concentration
         below: 2
+    condition:
+      - condition: state
+        entity_id: input_boolean.purifier
+        state: "on"
     action:
       - service: switch.turn_off
         entity_id: switch.plug_air_purifier
@@ -555,6 +563,10 @@ automation:
       platform: numeric_state
       entity_id: sensor.temperature_humidity_kuche_humidity
       above: 68
+    condition:
+      - condition: state
+        entity_id: input_boolean.dehumidifier
+        state: "on"
     action:
       - service: switch.turn_on
         entity_id: switch.dehumidifier_kuche
@@ -564,6 +576,10 @@ automation:
       - platform: numeric_state
         entity_id: sensor.temperature_humidity_kuche_humidity
         below: 60
+    condition:
+      - condition: state
+        entity_id: input_boolean.dehumidifier
+        state: "on"
     action:
       - service: switch.turn_off
         entity_id: switch.dehumidifier_kuche
