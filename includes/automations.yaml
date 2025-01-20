@@ -41,6 +41,9 @@ automation:
       - condition: state
         entity_id: input_boolean.purifier
         state: "on"
+      - platform: state
+        entity_id: schedule.air_purifier
+        state: "on"
     action:
       - service: switch.turn_on
         entity_id: switch.plug_air_purifier
