@@ -50,10 +50,10 @@ sections:
           - state
           - volume_level
       - type: tile
-        entity: media_player.kriss_macbook_pro_local_snapcast_client
+        entity: media_player.justin_snapcast_client
         grid_options:
           columns: full
-        name: Kris Macbook
+        name: justin@local
         vertical: false
         hide_state: false
         show_entity_picture: false
