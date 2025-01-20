@@ -102,7 +102,7 @@ homeassistant:
       friendly_name: AI person detection
       icon: mdi:cctv
     light.light_bathroom_mirror:
-      friendly_name: Badezimmer Spiegel
+      friendly_name: Spiegel Badezimmer
       icon: mdi:lightbulb-fluorescent-tube-outline
 
 http:
