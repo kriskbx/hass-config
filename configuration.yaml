@@ -101,7 +101,7 @@ homeassistant:
     binary_sensor.hallway_person_occupancy:
       friendly_name: AI person detection
       icon: mdi:cctv
-    switch.light_bathroom_mirror:
+    light.light_bathroom_mirror:
       friendly_name: Badezimmer Spiegel
       icon: mdi:lightbulb-fluorescent-tube-outline
 

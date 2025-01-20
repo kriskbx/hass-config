@@ -118,7 +118,7 @@ light:
     entities:
       - light.light_decke_flur
       - light.light_bathroom
-      - switch.light_bathroom_mirror
+      - light.light_bathroom_mirror
   - platform: group
     name: light_group_kuche
     entities:
