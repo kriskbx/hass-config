@@ -36,6 +36,9 @@ homeassistant:
     switch.plug_kitchen_speaker:
       friendly_name: Kitchen speaker
       icon: mdi:speaker
+    switch.plug_bathroom_speaker:
+      friendly_name: Bathroom speaker
+      icon: mdi:speaker
     switch.plug_air_purifier:
       friendly_name: Air Purifier
       icon: mdi:air-purifier

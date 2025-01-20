@@ -102,6 +102,21 @@ sections:
     cards:
       - type: heading
         heading_style: title
+        heading: Devices
+        icon: mdi:television-speaker
+      - type: tile
+        entity: switch.plug_bathroom_speaker
+        layout_options:
+          grid_columns: full
+        state_content:
+          - state
+          - last_changed
+
+  - type: grid
+    column_span: 1
+    cards:
+      - type: heading
+        heading_style: title
         heading: Sensors
         icon: mdi:radar
       - type: tile

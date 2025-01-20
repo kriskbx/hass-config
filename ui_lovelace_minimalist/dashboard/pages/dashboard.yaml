@@ -322,3 +322,9 @@ sections:
                   - yellow_on
                 tap_action:
                   action: toggle
+              entity_2:
+                entity_id: switch.plug_bathroom_speaker
+                templates:
+                  - green_on
+                tap_action:
+                  action: toggle
