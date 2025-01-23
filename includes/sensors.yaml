@@ -38,6 +38,14 @@ group:
       - binary_sensor.window_sensor_wohnzimmer_links_contact
       - binary_sensor.window_sensor_wohnzimmer_rechts_contact
 
+  kuche_windows:
+    name: Küche Windows
+    icon: mdi:window-open
+    all: false
+    entities:
+      - binary_sensor.window_sensor_kuche_contact
+      - binary_sensor.window_sensor_abstellraum_contact
+
 # -------- booleans -------- #
 input_boolean:
   projector:
