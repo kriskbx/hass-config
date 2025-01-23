@@ -269,7 +269,7 @@ sections:
             name: "Küche"
             icon: >
               [[[
-                return states['binary_sensor.window_sensor_kuche_contact'].state == 'on' ? 'mdi:weather-windy' : 'mdi:pot-steam'
+                return states['group.kuche_windows'].state == 'on' ? 'mdi:weather-windy' : 'mdi:pot-steam'
               ]]]
             tap_action:
               action: navigate

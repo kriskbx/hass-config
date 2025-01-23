@@ -27,6 +27,8 @@ homeassistant:
       friendly_name: Window Wohnzimmer Rechts open
     binary_sensor.window_sensor_kuche_contact:
       friendly_name: Window Küche open
+    binary_sensor.window_sensor_abstellraum_contact:
+      friendly_name: Window Abstellraum open
     switch.steam_link_wohnzimmer:
       friendly_name: Steam Link
       icon: mdi:steam
