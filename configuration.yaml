@@ -19,6 +19,8 @@ homeassistant:
       icon: mdi:roller-shade
     binary_sensor.door_sensor_arbeitszimmer_contact:
       friendly_name: Door Arbeitszimmer open
+    binary_sensor.door_sensor_eingang_contact:
+      friendly_name: Door Eingang open
     binary_sensor.window_sensor_arbeitszimmer_contact:
       friendly_name: Window Arbeitszimmer open
     binary_sensor.window_sensor_wohnzimmer_links_contact:
