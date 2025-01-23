@@ -121,6 +121,7 @@ light:
       - light.light_stehlampe_arbeitszimmer
       - light.light_kris_schreibtisch
       - light.light_hani_schreibtisch_ambient
+      - light.light_artwork_arbeitszimmer
   - platform: group
     name: light_group_flur
     entities:

@@ -4,7 +4,9 @@ scene:
   # -------- vacation -------- #
   - name: "vacation"
     entities:
+      light.light_bathroom_mirror: off
       light.light_decke_arbeitszimmer: off
+      light.light_artwork_arbeitszimmer: off
       light.light_decke_flur: off
       light.light_bathroom: off
       light.light_decke_wohnzimmer: off
@@ -29,6 +31,8 @@ scene:
   # -------- off -------- #
   - name: "off"
     entities:
+      light.light_bathroom_mirror: off
+      light.light_artwork_arbeitszimmer: off
       light.light_decke_arbeitszimmer: off
       light.light_decke_flur: off
       light.bathroom: off
@@ -48,6 +52,11 @@ scene:
   # -------- work -------- #
   - name: work
     entities:
+      light.light_bathroom_mirror:
+        state: on
+      light.light_artwork_arbeitszimmer:
+        state: off
+        brightness: 255
       light.light_decke_arbeitszimmer:
         state: on
         brightness: 200
@@ -101,6 +110,10 @@ scene:
   # -------- romantic -------- #
   - name: romantic
     entities:
+      light.light_bathroom_mirror: off
+      light.light_artwork_arbeitszimmer:
+        state: on
+        brightness: 255
       light.light_decke_arbeitszimmer: off
       light.light_kris_schreibtisch:
         state: on
@@ -147,6 +160,9 @@ scene:
         state: on
         color_temp: 500
       light.light_stehlampe_wohnzimmer:
+        state: on
+        color_temp: 500
+      light.light_artwork_arbeitszimmer:
         state: on
         color_temp: 500
       light.light_stehlampe_arbeitszimmer:
