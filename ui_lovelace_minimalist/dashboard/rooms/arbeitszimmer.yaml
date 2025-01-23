@@ -45,6 +45,12 @@ sections:
       - features:
           - type: light-brightness
         type: tile
+        entity: light.light_artwork_arbeitszimmer
+        vertical: false
+        hide_state: false
+      - features:
+          - type: light-brightness
+        type: tile
         entity: light.light_kris_schreibtisch
         vertical: false
         hide_state: false
