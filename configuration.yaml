@@ -84,6 +84,8 @@ homeassistant:
     light.light_stehlampe_arbeitszimmer:
       friendly_name: Stehlampe Arbeitszimmer
       icon: mdi:floor-lamp
+    light.light_artwork_arbeitszimmer:
+      friendly_name: Artwork Arbeitszimmer
     light.light_decke_arbeitszimmer:
       friendly_name: Decke Arbeitszimmer
       icon: mdi:light-recessed
