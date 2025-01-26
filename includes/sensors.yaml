@@ -59,9 +59,11 @@ input_boolean:
     initial: off
   vacation:
     name: Vacation
+    icon: mdi:bag-suitcase
     initial: off
   away:
     name: Away
+    icon: mdi:lock-clock
     initial: off
   heating:
     name: Automated Heating
