@@ -406,6 +406,8 @@ switch:
             entity_id: switch.steam_link_wohnzimmer
           - service: switch.turn_off
             entity_id: switch.plug_kitchen_speaker
+          - service: switch.turn_off
+            entity_id: switch.plug_bathroom_speaker
           - service: script.turn_on_scene
             data:
               entity: "off"

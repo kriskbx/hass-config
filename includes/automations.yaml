@@ -263,6 +263,9 @@ automation:
             - condition: state
               entity_id: input_boolean.vacation
               state: "off"
+            - condition: state
+              entity_id: input_boolean.away
+              state: "off"
             - service: climate.set_temperature
               data:
                 hvac_mode: heat
@@ -307,6 +310,9 @@ automation:
               state: "on"
             - condition: state
               entity_id: input_boolean.vacation
+              state: "off"
+            - condition: state
+              entity_id: input_boolean.away
               state: "off"
             - service: climate.set_temperature
               data:
@@ -353,6 +359,9 @@ automation:
             - condition: state
               entity_id: input_boolean.vacation
               state: "off"
+            - condition: state
+              entity_id: input_boolean.away
+              state: "off"
             - service: climate.set_temperature
               data:
                 hvac_mode: heat
@@ -374,21 +383,29 @@ automation:
             - delay:
                 minutes: 10
 
-  - alias: '[HEATING] Turn on heating for vacation mode'
+  - alias: '[HEATING] Turn on heating for vacation & away mode'
     id: 'heating_vacation'
     mode: single
     trigger:
       - platform: state
         entity_id: input_boolean.vacation
         to: "on"
+      - platform: state
+        entity_id: input_boolean.away
+        to: "on"
       - platform: homeassistant
         event: start
     action:
       - repeat:
           while:
-            condition: state
-            entity_id: input_boolean.vacation
-            state: "on"
+            condition: or
+            conditions:
+              - condition: state
+                entity_id: input_boolean.vacation
+                state: "on"
+              - condition: state
+                entity_id: input_boolean.away
+                state: "on"
           sequence:
             - delay:
                 minutes: 1
