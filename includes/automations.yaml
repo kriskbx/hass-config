@@ -81,6 +81,33 @@ automation:
       - action: shell_command.reboot_speaker_bath
 
   # -------- alarm -------- #
+  - alias: '[ALARM] Toggle away mode when alarm is armed'
+    id: 'alarm_toggle_away_mode'
+    mode: single
+    trigger:
+      - platform: state
+        entity_id: alarm_control_panel.alarm
+        to: "armed_away"
+      - platform: state
+        entity_id: alarm_control_panel.alarm
+        to: "disarmed"
+    action:
+      - if:
+          - condition: state
+            entity_id: alarm_control_panel.alarm
+            state: "armed_away"
+        then:
+          - action: input_boolean.turn_on
+            target:
+              entity_id: input_boolean.away
+      - if:
+          - condition: state
+            entity_id: alarm_control_panel.alarm
+            state: "disarmed"
+        then:
+          - action: input_boolean.turn_off
+            target:
+              entity_id: input_boolean.away
   - alias: '[ALARM] Toggle video recordings whether alarm is armed'
     id: 'alarm_toggle_video_recordings'
     mode: single
@@ -88,6 +115,9 @@ automation:
       - platform: state
         entity_id: alarm_control_panel.alarm
         to: "armed_vacation"
+      - platform: state
+        entity_id: alarm_control_panel.alarm
+        to: "armed_away"
       - platform: state
         entity_id: alarm_control_panel.alarm
         to: "disarmed"
@@ -246,6 +276,12 @@ automation:
       - platform: state
         entity_id: schedule.heating_work
         to: "on"
+      - platform: state
+        entity_id: input_boolean.away
+        to: "off"
+      - platform: state
+        entity_id: input_boolean.vacation
+        to: "off"
       - platform: homeassistant
         event: start
     action:
@@ -294,6 +330,12 @@ automation:
       - platform: state
         entity_id: schedule.heating_after_work
         to: "on"
+      - platform: state
+        entity_id: input_boolean.away
+        to: "off"
+      - platform: state
+        entity_id: input_boolean.vacation
+        to: "off"
       - platform: homeassistant
         event: start
     action:
@@ -342,6 +384,12 @@ automation:
       - platform: state
         entity_id: schedule.heating_night
         to: "on"
+      - platform: state
+        entity_id: input_boolean.away
+        to: "off"
+      - platform: state
+        entity_id: input_boolean.vacation
+        to: "off"
       - platform: homeassistant
         event: start
     action:
