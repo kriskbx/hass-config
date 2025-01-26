@@ -12,29 +12,36 @@ sections:
         icon: mdi:auto-mode
       - type: tile
         entity: switch.scene_party
-        fill_container: true
+        layout_options:
+          grid_columns: full
       - type: tile
         entity: switch.scene_vacation
-        fill_container: true
+        layout_options:
+          grid_columns: full
       - type: tile
         entity: input_boolean.away
-        fill_container: true
+        layout_options:
+          grid_columns: full
       - type: heading
         icon: mdi:cog
         heading: Options
         heading_style: title
       - type: tile
         entity: input_boolean.heating
-        fill_container: true
+        layout_options:
+          grid_columns: full
       - type: tile
         entity: input_boolean.vacuum
-        fill_container: true
+        layout_options:
+          grid_columns: full
       - type: tile
         entity: input_boolean.purifier
-        fill_container: true
+        layout_options:
+          grid_columns: full
       - type: tile
         entity: input_boolean.dehumidifier
-        fill_container: true
+        layout_options:
+          grid_columns: full
       - type: heading
         heading: Security
         heading_style: title
