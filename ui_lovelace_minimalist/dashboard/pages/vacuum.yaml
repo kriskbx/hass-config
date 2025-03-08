@@ -22,14 +22,14 @@ sections:
         tiles: [ ]
         icons: [ ]
         map_source:
-          camera: image.roborock_s7_map_0
+          camera: camera.roborock_s7_map
           crop:
             top: 120
             left: 120
             right: 120
             bottom: 120
-        #calibration_source:
-        #  platform: true
+        calibration_source:
+          camera: true
         map_modes:
           - template: vacuum_clean_zone_predefined
             predefined_selections:
