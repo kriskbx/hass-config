@@ -22,7 +22,7 @@ sections:
         tiles: [ ]
         icons: [ ]
         map_source:
-          camera: camera.roborock_s7_map
+          camera: camera.roborock_s7_map_0
           crop:
             top: 120
             left: 120
