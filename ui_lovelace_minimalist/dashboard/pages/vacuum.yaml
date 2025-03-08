@@ -28,8 +28,8 @@ sections:
             left: 120
             right: 120
             bottom: 120
-        calibration_source:
-          platform: true
+        #calibration_source:
+        #  platform: true
         map_modes:
           - template: vacuum_clean_zone_predefined
             predefined_selections:
