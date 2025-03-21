@@ -684,8 +684,21 @@ automation:
       from: "off"
       to: "on"
     action:
-      - service: light.turn_on
-        entity_id: light.light_decke_flur
+      - if:
+          - condition: state
+            entity_id: schedule.heating_night
+            state: "on"
+        then:
+          - service: light.turn_on
+            entity_id: light.light_decke_flur
+            data:
+              brightness_pct: 1
+        else:
+          - service: light.turn_on
+            entity_id: light.light_decke_flur
+            data:
+              brightness_pct: 90
+
   - alias: '[LIGHTS] Turn off the hallway light if there is no occupancy'
     mode: single
     trigger:
@@ -708,6 +721,8 @@ automation:
     action:
       - service: light.turn_on
         entity_id: light.light_bathroom
+        data:
+          brightness_pct: 90
   - alias: '[LIGHTS] Turn off the bathroom light if there is no occupancy'
     mode: single
     trigger:
