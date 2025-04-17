@@ -42,12 +42,12 @@ sections:
         entity: light.light_stehlampe_arbeitszimmer
         vertical: false
         hide_state: false
-      - features:
-          - type: light-brightness
-        type: tile
-        entity: light.light_artwork_arbeitszimmer
-        vertical: false
-        hide_state: false
+#      - features:
+#          - type: light-brightness
+#        type: tile
+#        entity: light.light_artwork_arbeitszimmer
+#        vertical: false
+#        hide_state: false
       - features:
           - type: light-brightness
         type: tile
@@ -60,12 +60,12 @@ sections:
         entity: light.elgato_gw24l1a03117
         vertical: false
         hide_state: false
-      - features:
-          - type: light-brightness
-        type: tile
-        entity: light.light_hani_schreibtisch_ambient
-        vertical: false
-        hide_state: false
+#      - features:
+#          - type: light-brightness
+#        type: tile
+#        entity: light.light_hani_schreibtisch_ambient
+#        vertical: false
+#        hide_state: false
       - features:
           - type: light-brightness
         type: tile
