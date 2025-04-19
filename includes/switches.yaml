@@ -240,7 +240,7 @@ switch:
                 - media_player.pispeaker_living_room_snapcast_client
                 - media_player.pispeaker_bath_snapcast_client
             data:
-              source: Airplay
+              source: Spotify
           - delay: 00:00:01
           - service: remote.send_command
             target:
