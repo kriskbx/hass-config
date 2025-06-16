@@ -52,14 +52,18 @@ script:
 #                entity_id: button.camera1_camera1_siren
   activate_alarm_sequence:
     sequence:
-      - action: switch.turn_on
-        target:
-          entity_id: switch.scene_music
+      - service: switch.turn_on
+        entity_id: switch.stereo
+      - service: switch.turn_on
+        entity_id: switch.plug_kitchen_speaker
+      - service: switch.turn_on
+        entity_id: switch.plug_bathroom_speaker
       - action: media_player.select_source
         target:
           entity_id:
             - media_player.pispeaker_kitchen_snapcast_client
             - media_player.pispeaker_living_room_snapcast_client
+            - media_player.pispeaker_bath_snapcast_client
         data:
           source: mpd
       - action: media_player.volume_set
@@ -69,8 +73,33 @@ script:
           entity_id:
             - media_player.pispeaker_kitchen_snapcast_client
             - media_player.pispeaker_living_room_snapcast_client
+            - media_player.pispeaker_bath_snapcast_client
+      - service: shell_command.activate_speaker_kitchen
+      - service: shell_command.activate_speaker_livingroom
+      - service: shell_command.activate_speaker_bath
+      - action: media_player.play_media
+        target:
+          entity_id: media_player.music_player_daemon
+        data:
+          media_content_type: audio/mpeg
+          media_content_id: media-source://media_source/local/local/alarm.mp3
+      - service: remote.send_command
+        target:
+          entity_id: remote.ir_blaster
+        data:
+          device: stereo
+          command: cd
+      - service: script.normalize_volume
+      - service: remote.send_command
+        target:
+          entity_id: remote.ir_blaster
+        data:
+          device: stereo
+          command: volume-up
+          num_repeats: 5
+          delay_secs: 0
       - repeat:
-          count: 5
+          count: 30
           sequence:
             - condition: state
               entity_id: alarm_control_panel.alarm
@@ -81,28 +110,7 @@ script:
               data:
                 media_content_type: audio/mpeg
                 media_content_id: media-source://media_source/local/local/alarm.mp3
-            - delay: 5
-            - service: remote.send_command
-              target:
-                entity_id: remote.ir_blaster
-              data:
-                device: stereo
-                command: volume-up
-                num_repeats: 1
-                delay_secs: 0
-      - repeat:
-          count: 240
-          sequence:
-            - condition: state
-              entity_id: alarm_control_panel.alarm
-              state: "armed_vacation"
-            - action: media_player.play_media
-              target:
-                entity_id: media_player.music_player_daemon
-              data:
-                media_content_type: audio/mpeg
-                media_content_id: media-source://media_source/local/local/alarm.mp3
-            - delay: 5
+            - delay: 40
 
   # -------- lights -------- #
   party_color:
