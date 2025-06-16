@@ -62,9 +62,15 @@ script:
             - media_player.pispeaker_living_room_snapcast_client
         data:
           source: mpd
-#      - delay: 30
+      - action: media_player.volume_set
+        data:
+          volume_level: 1
+        target:
+          entity_id:
+            - media_player.pispeaker_kitchen_snapcast_client
+            - media_player.pispeaker_living_room_snapcast_client
       - repeat:
-          count: 60
+          count: 5
           sequence:
             - condition: state
               entity_id: alarm_control_panel.alarm
@@ -76,14 +82,27 @@ script:
                 media_content_type: audio/mpeg
                 media_content_id: media-source://media_source/local/local/alarm.mp3
             - delay: 5
-#            - service: remote.send_command
-#              target:
-#                entity_id: remote.ir_blaster
-#              data:
-#                device: stereo
-#                command: volume-up
-#                num_repeats: 1
-#                delay_secs: 0
+            - service: remote.send_command
+              target:
+                entity_id: remote.ir_blaster
+              data:
+                device: stereo
+                command: volume-up
+                num_repeats: 1
+                delay_secs: 0
+      - repeat:
+          count: 240
+          sequence:
+            - condition: state
+              entity_id: alarm_control_panel.alarm
+              state: "armed_vacation"
+            - action: media_player.play_media
+              target:
+                entity_id: media_player.music_player_daemon
+              data:
+                media_content_type: audio/mpeg
+                media_content_id: media-source://media_source/local/local/alarm.mp3
+            - delay: 5
 
   # -------- lights -------- #
   party_color:
