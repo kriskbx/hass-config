@@ -191,7 +191,7 @@ automation:
     trigger:
       - platform: state
         entity_id: binary_sensor.door_sensor_eingang_contact
-        to: "off"
+        to: "on"
     condition:
       - or:
         - condition: state
@@ -216,7 +216,7 @@ automation:
     trigger:
       - platform: state
         entity_id: binary_sensor.door_sensor_eingang_contact
-        to: "off"
+        to: "on"
     condition:
       - condition: state
         entity_id: alarm_control_panel.alarm
