@@ -131,6 +131,9 @@ http:
 #  logs:
 #    custom_components.auth_header: debug
 
+prometheus:
+  namespace: hass
+
 frontend:
   themes: !include_dir_merge_named themes
 
