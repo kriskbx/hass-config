@@ -16,10 +16,10 @@ sections:
         icon: mdi:robot-vacuum
       - type: custom:xiaomi-vacuum-map-card
         entity: vacuum.roborock_s7
-#        map_locked: true
+        map_locked: true
         vacuum_platform: Roborock
 #        tiles: [ ]
-#        icons: [ ]
+        icons: [ ]
         map_source:
           camera: image.roborock_s7_map_0_custom
           crop:
@@ -29,20 +29,20 @@ sections:
             bottom: 120
         calibration_source:
           camera: true
-#        map_modes:
-#          - template: vacuum_clean_zone_predefined
-#            predefined_selections:
-#              # bathroom
-#              - zones: [ [ 22324, 24789, 23988, 26570 ] ]
-#              # hallway
-#              - zones: [ [ 22060, 20890, 24055, 24819 ] ]
-#              # kitchen
-#              - zones: [ [ 24076, 19667, 27889, 23331 ] ]
-#              # office
-#              - zones: [ [ 24043, 23632, 27922, 27627 ] ]
-#              # living room
-#              - zones: [ [ 16145, 23599, 22073, 27660 ] ]
-#          - template: vacuum_goto
-#          - template: vacuum_clean_zone
+        map_modes:
+          - template: vacuum_clean_zone_predefined
+            predefined_selections:
+              # bathroom
+              - zones: [ [ 22324, 24789, 23988, 26570 ] ]
+              # hallway
+              - zones: [ [ 22060, 20890, 24055, 24819 ] ]
+              # kitchen
+              - zones: [ [ 24076, 19667, 27889, 23331 ] ]
+              # office
+              - zones: [ [ 24043, 23632, 27922, 27627 ] ]
+              # living room
+              - zones: [ [ 16145, 23599, 22073, 27660 ] ]
+          - template: vacuum_goto
+          - template: vacuum_clean_zone
 
 
