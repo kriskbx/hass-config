@@ -15,14 +15,13 @@ sections:
         heading: Roborock S7
         icon: mdi:robot-vacuum
       - type: custom:xiaomi-vacuum-map-card
-        preset_name: Live map
         entity: vacuum.roborock_s7
-        map_locked: true
-        vacuum_platform: humbertogontijo/homeassistant-roborock
-        tiles: [ ]
-        icons: [ ]
+#        map_locked: true
+        vacuum_platform: Roborock
+#        tiles: [ ]
+#        icons: [ ]
         map_source:
-          camera: image.roborock_s7_map_0
+          camera: image.roborock_s7_map_0_custom
           crop:
             top: 120
             left: 120
@@ -30,7 +29,7 @@ sections:
             bottom: 120
         calibration_source:
           camera: true
-        map_modes:
+#        map_modes:
 #          - template: vacuum_clean_zone_predefined
 #            predefined_selections:
 #              # bathroom
@@ -43,7 +42,7 @@ sections:
 #              - zones: [ [ 24043, 23632, 27922, 27627 ] ]
 #              # living room
 #              - zones: [ [ 16145, 23599, 22073, 27660 ] ]
-          - template: vacuum_goto
-          - template: vacuum_clean_zone
+#          - template: vacuum_goto
+#          - template: vacuum_clean_zone
 
 
