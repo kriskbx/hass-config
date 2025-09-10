@@ -18,7 +18,7 @@ sections:
         entity: vacuum.roborock_s7
         map_locked: true
         vacuum_platform: Roborock
-#        tiles: [ ]
+        tiles: [ ]
         icons: [ ]
         map_source:
           camera: image.roborock_s7_map_0_custom
