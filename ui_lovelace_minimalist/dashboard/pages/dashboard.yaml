@@ -131,9 +131,14 @@ sections:
         collapsible_controls: false
         use_media_info: true
         visibility:
-          - condition: state
-            entity: media_player.chromecast_hd
-            state_not: 'off'
+          - condition: and
+            conditions:
+              - condition: state
+                entity: switch.projector
+                state: 'on'
+              - condition: state
+                entity: media_player.chromecast_hd
+                state_not: 'off'
       - square: false
         type: grid
         cards:
