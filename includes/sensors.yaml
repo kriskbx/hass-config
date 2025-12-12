@@ -29,6 +29,7 @@ group:
     entities:
       - binary_sensor.window_sensor_arbeitszimmer_contact
       - binary_sensor.door_sensor_arbeitszimmer_contact
+      - default_false
 
   wohnzimmer_windows:
     name: Wohnzimmer Windows
@@ -37,6 +38,7 @@ group:
     entities:
       - binary_sensor.window_sensor_wohnzimmer_links_contact
       - binary_sensor.window_sensor_wohnzimmer_rechts_contact
+      - default_false
 
   kuche_windows:
     name: Küche Windows
@@ -45,6 +47,7 @@ group:
     entities:
       - binary_sensor.window_sensor_kuche_contact
       - binary_sensor.window_sensor_abstellraum_contact
+      - default_false
 
 # -------- booleans -------- #
 input_boolean:
