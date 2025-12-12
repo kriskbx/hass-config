@@ -81,6 +81,9 @@ input_boolean:
     name: Automated Dehumidifier
     icon: mdi:air-humidifier
     initial: on
+  default_false:
+    name: Defaults to false
+    initial: off
 
 # -------- number inputs -------- #
 input_number:
