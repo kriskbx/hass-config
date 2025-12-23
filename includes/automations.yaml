@@ -220,8 +220,7 @@ automation:
       - action: script.turn_on
         target:
           entity_id:
-            - script.activate_alarm_sequence
-            - script.activate_pre_alarm_warning_sequence
+            - script.activate_simple_alarm_sequence
 
   # -------- blinds -------- #
   - alias: '[BLINDS] Prevent blinds from opening when window left is open'
