@@ -183,12 +183,12 @@ automation:
             expire: 300
             retry: 30
 
-  - alias: '[ALARM] Send notification when front door is opened'
+  - alias: '[ALARM] Send notification when windows or doors are opened'
     id: 'alarm_notification'
     mode: single
     trigger:
       - platform: state
-        entity_id: binary_sensor.door_sensor_eingang_contact
+        entity_id: group.alarm_triggers
         to: "on"
     condition:
       - condition: state
@@ -198,7 +198,7 @@ automation:
       - action: notify.pushover
         data:
           title: ALARM
-          message: Door has been opened!
+          message: Window or door has been opened!
           data:
             priority: 2
             sound: "persistent"
