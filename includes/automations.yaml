@@ -205,7 +205,7 @@ automation:
             expire: 300
             retry: 30
 
-  - alias: '[ALARM] Activate alarm when front door is opened'
+  - alias: '[ALARM] Activate alarm when windows or doors are opened'
     id: 'alarm_activation'
     mode: single
     trigger:
@@ -215,7 +215,7 @@ automation:
     condition:
       - condition: state
         entity_id: input_boolean.vacation
-        state: "vacation"
+        state: "on"
     action:
       - action: script.turn_on
         target:
