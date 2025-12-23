@@ -143,25 +143,25 @@ schedule:
   vacation_lights:
     name: "Vacation light schedule"
     monday:
-      - from: "16:30:00"
-        to: "23:00:00"
+      - from: "16:00:00"
+        to: "23:45:00"
     tuesday:
-      - from: "16:30:00"
-        to: "23:00:00"
+      - from: "16:00:00"
+        to: "23:45:00"
     wednesday:
-      - from: "16:30:00"
-        to: "23:00:00"
+      - from: "16:00:00"
+        to: "23:45:00"
     thursday:
-      - from: "16:30:00"
-        to: "23:00:00"
+      - from: "16:00:00"
+        to: "23:45:00"
     friday:
-      - from: "16:30:00"
+      - from: "16:00:00"
         to: "23:45:00"
     saturday:
-      - from: "16:30:00"
+      - from: "16:00:00"
         to: "23:45:00"
     sunday:
-      - from: "16:30:00"
+      - from: "16:00:00"
         to: "23:45:00"
   vacation_sounds:
     name: "Vacation sound schedule"
@@ -182,10 +182,10 @@ schedule:
         to: "22:30:00"
     saturday:
       - from: "11:30:00"
-        to: "23:00:00"
+        to: "23:30:00"
     sunday:
       - from: "11:30:00"
-        to: "23:00:00"
+        to: "23:30:00"
 
   # -------- vacuum -------- #
   vacuum_workday_apartment:
