@@ -214,8 +214,8 @@ automation:
         to: "on"
     condition:
       - condition: state
-        entity_id: alarm_control_panel.alarm
-        state: "armed_vacation"
+        entity_id: input_boolean.vacation
+        state: "vacation"
     action:
       - action: script.turn_on
         target:
@@ -487,6 +487,8 @@ automation:
       - platform: state
         entity_id: scene.vacation
         to: "on"
+      - platform: homeassistant
+        event: start
     action:
       - condition: state
         entity_id: input_boolean.vacation
@@ -496,18 +498,22 @@ automation:
         state: "on"
       - service: scene.turn_on
         entity_id: scene.vacation
+
   - alias: '[LIGHTS] Turn off the lights in vacation mode'
     mode: single
     trigger:
       - platform: state
         entity_id: schedule.vacation_lights
         to: "off"
+      - platform: homeassistant
+        event: start
     action:
       - condition: state
         entity_id: input_boolean.vacation
         state: "on"
       - service: scene.turn_on
         entity_id: scene.off
+
   - alias: '[SOUNDS] Turn on the radio stream in vacation mode'
     mode: single
     id: 'sounds_vacation_on'
@@ -518,6 +524,8 @@ automation:
       - platform: state
         entity_id: scene.vacation
         to: "on"
+      - platform: homeassistant
+        event: start
     action:
       - condition: state
         entity_id: input_boolean.vacation
@@ -539,6 +547,7 @@ automation:
         data:
           media_content_id: https://channels.fluxfm.de/FluxFM/stream.mp3
           media_content_type: audio/mpeg
+
   - alias: '[SOUNDS] Turn off the radio stream in vacation mode'
     mode: single
     id: 'sounds_vacation_off'
@@ -549,6 +558,8 @@ automation:
       - platform: state
         entity_id: input_boolean.vacation
         to: "off"
+      - platform: homeassistant
+        event: start
     action:
       - action: shell_command.deactivate_speaker_kitchen
       - action: media_player.media_stop
