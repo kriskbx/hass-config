@@ -30,6 +30,10 @@ script:
             - media_player.pispeaker_living_room_snapcast_client
         data:
           source: mpd
+      - service: shell_command.activate_speaker_kitchen
+      - service: shell_command.activate_speaker_livingroom
+      - service: shell_command.high_volume_speaker_kitchen
+      - service: shell_command.high_volume_speaker_livingroom
       - repeat:
           count: 20
           sequence:
@@ -42,10 +46,6 @@ script:
               data:
                 media_content_type: audio/mpeg
                 media_content_id: media-source://media_source/local/local/alarm.mp3
-            - service: shell_command.activate_speaker_kitchen
-            - service: shell_command.activate_speaker_livingroom
-            - service: shell_command.high_volume_speaker_kitchen
-            - service: shell_command.high_volume_speaker_livingroom
             - delay: 40
 
   activate_high_intensity_alarm_sequence:
