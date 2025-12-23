@@ -119,6 +119,37 @@ automation:
             target:
               entity_id: input_boolean.away
 
+  - alias: '[ALARM] Toggle vacation mode when alarm is armed'
+    id: 'alarm_toggle_away_mode'
+    mode: single
+    trigger:
+      - platform: state
+        entity_id: alarm_control_panel.alarm
+        to: "armed_vacation"
+      - platform: state
+        entity_id: alarm_control_panel.alarm
+        to: "disarmed"
+      - platform: homeassistant
+        event: start
+    action:
+      - if:
+          - or:
+              - condition: state
+                entity_id: alarm_control_panel.alarm
+                state: "armed_vacation"
+        then:
+          - action: input_boolean.turn_on
+            target:
+              entity_id: input_boolean.vacation
+      - if:
+          - condition: state
+            entity_id: alarm_control_panel.alarm
+            state: "disarmed"
+        then:
+          - action: input_boolean.turn_off
+            target:
+              entity_id: input_boolean.vacation
+
   - alias: '[ALARM] Toggle video recordings when away mode is on'
     id: 'alarm_toggle_video_recordings'
     mode: single
