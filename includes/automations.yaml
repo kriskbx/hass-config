@@ -521,7 +521,7 @@ automation:
         entity_id: schedule.vacation_sounds
         to: "on"
       - platform: state
-        entity_id: scene.vacation
+        entity_id: input_boolean.vacation
         to: "on"
       - platform: homeassistant
         event: start
