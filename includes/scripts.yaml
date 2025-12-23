@@ -35,7 +35,7 @@ script:
       - service: shell_command.high_volume_speaker_kitchen
       - service: shell_command.high_volume_speaker_livingroom
       - repeat:
-          count: 20
+          count: 60
           sequence:
             - condition: state
               entity_id: input_boolean.vacation
@@ -46,7 +46,7 @@ script:
               data:
                 media_content_type: audio/mpeg
                 media_content_id: media-source://media_source/local/local/alarm.mp3
-            - delay: 40
+            - delay: 10
 
   activate_high_intensity_alarm_sequence:
     sequence:
