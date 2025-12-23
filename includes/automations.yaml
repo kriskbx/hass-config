@@ -47,6 +47,7 @@ automation:
     action:
       - service: switch.turn_on
         entity_id: switch.plug_air_purifier
+
   - alias: '[AIR-QUALITY] Turn off the air purifier when the air quality is okay'
     mode: single
     trigger:
@@ -87,15 +88,22 @@ automation:
     trigger:
       - platform: state
         entity_id: alarm_control_panel.alarm
+        to: "armed_vacation"
+      - platform: state
+        entity_id: alarm_control_panel.alarm
         to: "armed_away"
       - platform: state
         entity_id: alarm_control_panel.alarm
         to: "disarmed"
     action:
       - if:
-          - condition: state
-            entity_id: alarm_control_panel.alarm
-            state: "armed_away"
+          - or:
+              - condition: state
+                entity_id: alarm_control_panel.alarm
+                state: "armed_vacation"
+              - condition: state
+                entity_id: alarm_control_panel.alarm
+                state: "armed_away"
         then:
           - action: input_boolean.turn_on
             target:
@@ -108,30 +116,20 @@ automation:
           - action: input_boolean.turn_off
             target:
               entity_id: input_boolean.away
-  - alias: '[ALARM] Toggle video recordings whether alarm is armed'
+
+  - alias: '[ALARM] Toggle video recordings when away mode is on'
     id: 'alarm_toggle_video_recordings'
     mode: single
     trigger:
       - platform: state
-        entity_id: alarm_control_panel.alarm
-        to: "armed_vacation"
-      - platform: state
-        entity_id: alarm_control_panel.alarm
-        to: "armed_away"
-      - platform: state
-        entity_id: alarm_control_panel.alarm
-        to: "disarmed"
+        entity_id: input_boolean.away
       - trigger: time_pattern
         minutes: "*"
     action:
       - if:
-          - or:
-            - condition: state
-              entity_id: alarm_control_panel.alarm
-              state: "armed_vacation"
-            - condition: state
-              entity_id: alarm_control_panel.alarm
-              state: "armed_away"
+          - condition: state
+            entity_id: input_boolean.away
+            state: "on"
         then:
           - action: switch.turn_on
             target:
@@ -147,8 +145,8 @@ automation:
               entity_id: switch.hallway_snapshots
       - if:
           - condition: state
-            entity_id: alarm_control_panel.alarm
-            state: "disarmed"
+            entity_id: input_boolean.away
+            state: "off"
         then:
           - action: switch.turn_off
             target:
@@ -162,6 +160,7 @@ automation:
           - action: switch.turn_off
             target:
               entity_id: switch.hallway_snapshots
+              
   - alias: '[ALARM] Send notification on person occupancy'
     id: 'alarm_occupancy'
     mode: single
