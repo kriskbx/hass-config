@@ -15,6 +15,9 @@ script:
 
   manual_alarm_activation:
     sequence:
+      - condition: state
+        entity_id: input_boolean.vacation
+        state: "on"
       - action: script.turn_on
         target:
           entity_id:
@@ -60,7 +63,7 @@ script:
         target:
           entity_id:
             - media_player.pispeaker_kitchen_snapcast_client
-            - media_player.pispeaker_living_room_snapcast_client
+            - media_player.pispeaker_living_room_snapccast_client
             - media_player.pispeaker_bath_snapcast_client
         data:
           source: mpd
