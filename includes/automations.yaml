@@ -210,7 +210,7 @@ automation:
     mode: single
     trigger:
       - platform: state
-        entity_id: binary_sensor.door_sensor_eingang_contact
+        entity_id: group.alarm_triggers
         to: "on"
     condition:
       - condition: state
