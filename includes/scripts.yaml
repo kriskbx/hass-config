@@ -2,16 +2,16 @@
 script:
 
   # -------- alarm -------- #
-#  crank_up_alarm_volume:
-#    sequence:
-#      - service: remote.send_command
-#        target:
-#          entity_id: remote.ir_blaster
-#        data:
-#          device: stereo
-#          command: volume-up
-#          num_repeats: 30
-#          delay_secs: 0
+  #  crank_up_alarm_volume:
+  #    sequence:
+  #      - service: remote.send_command
+  #        target:
+  #          entity_id: remote.ir_blaster
+  #        data:
+  #          device: stereo
+  #          command: volume-up
+  #          num_repeats: 30
+  #          delay_secs: 0
 
   manual_alarm_activation:
     sequence:
@@ -248,94 +248,119 @@ script:
     mode: single
     icon: mdi:countertop-outline
     sequence:
-      - service: roborock.vacuum_clean_zone
+      - action: vacuum.send_command
         target:
-          entity_id: vacuum.roborock_s7
+          entity_id:
+            - vacuum.roborock_s7
         data:
-          repeats: 2
-          zone: [ [ 24076, 19667, 27889, 23331 ] ]
+          command: app_segment_clean
+          params:
+            - segments:
+                - 19
+              repeat: 2
 
   vacuum_bathroom:
     alias: 'Vacuum: Bathroom'
     mode: single
     icon: mdi:shower
     sequence:
-      - service: roborock.vacuum_clean_zone
+      - action: vacuum.send_command
         target:
-          entity_id: vacuum.roborock_s7
+          entity_id:
+            - vacuum.roborock_s7
         data:
-          repeats: 3
-          zone: [ [ 22324, 24789, 23988, 26570 ] ]
+          command: app_segment_clean
+          params:
+            - segments:
+                - 17
+              repeat: 3
 
   vacuum_entry:
     alias: 'Vacuum: Entry'
     mode: single
     icon: mdi:door-open
     sequence:
-      - service: roborock.vacuum_clean_zone
+      - action: vacuum.send_command
         target:
-          entity_id: vacuum.roborock_s7
+          entity_id:
+            - vacuum.roborock_s7
         data:
-          repeats: 1
-          zone: [ [ 22060, 20890, 24055, 24819 ] ]
+          command: app_segment_clean
+          params:
+            - segments:
+                - 18
+              repeat: 2
 
   vacuum_office:
     alias: 'Vacuum: Office'
     mode: single
     icon: mdi:laptop
     sequence:
-      - service: roborock.vacuum_clean_zone
+      - action: vacuum.send_command
         target:
-          entity_id: vacuum.roborock_s7
+          entity_id:
+            - vacuum.roborock_s7
         data:
-          repeats: 1
-          zone: [ [ 24043, 23632, 27922, 27627 ] ]
+          command: app_segment_clean
+          params:
+            - segments:
+                - 20
+              repeat: 1
 
   vacuum_living_room:
     alias: 'Vacuum: Living Room'
     mode: single
     icon: mdi:sofa-outline
     sequence:
-      - service: roborock.vacuum_clean_zone
+      - action: vacuum.send_command
         target:
-          entity_id: vacuum.roborock_s7
+          entity_id:
+            - vacuum.roborock_s7
         data:
-          repeats: 1
-          zone:
-            - [ [ 16145, 23599, 22073, 27660 ] ]
+          command: app_segment_clean
+          params:
+            - segments:
+                - 16
+              repeat: 1
 
   vacuum_apartment_except_office:
     alias: 'Vacuum: Apartment except office'
     mode: single
     icon: mdi:home
     sequence:
-      - service: roborock.vacuum_clean_zone
+      - action: vacuum.send_command
         target:
-          entity_id: vacuum.roborock_s7
+          entity_id:
+            - vacuum.roborock_s7
         data:
-          repeats: 1
-          zone:
-            - [ 22324, 24789, 23988, 26570 ]
-            - [ 22060, 20890, 24055, 24819 ]
-            - [ 24076, 19667, 27889, 23331 ]
-            - [ 16145, 23599, 22073, 27660 ]
+          command: app_segment_clean
+          params:
+            - segments:
+                - 16
+                - 17
+                - 18
+                - 19
+              repeat: 1
 
   vacuum_apartment:
     alias: 'Vacuum: Apartment'
     mode: single
     icon: mdi:home
     sequence:
-      - service: roborock.vacuum_clean_zone
+      - action: vacuum.send_command
         target:
-          entity_id: vacuum.roborock_s7
+          entity_id:
+            - vacuum.roborock_s7
         data:
-          repeats: 1
-          zone:
-            - [ 22324, 24789, 23988, 26570 ]
-            - [ 22060, 20890, 24055, 24819 ]
-            - [ 24076, 19667, 27889, 23331 ]
-            - [ 16145, 23599, 22073, 27660 ]
-            - [ 24043, 23632, 27922, 27627 ]
+          command: app_segment_clean
+          params:
+            - segments:
+                - 16
+                - 17
+                - 18
+                - 19
+                - 20
+              repeat: 1
 
   # -------- Learn remotes -------- #
   learn_hdmi_switch:
