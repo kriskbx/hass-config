@@ -69,6 +69,12 @@ sections:
       - features:
           - type: light-brightness
         type: tile
+        entity: light.light_bett_unten
+        vertical: false
+        hide_state: false
+      - features:
+          - type: light-brightness
+        type: tile
         entity: light.light_decke_arbeitszimmer
         vertical: false
         hide_state: false
