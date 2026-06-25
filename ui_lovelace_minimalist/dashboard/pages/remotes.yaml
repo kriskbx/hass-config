@@ -377,5 +377,63 @@ sections:
                 device: stereo
                 command: volume-up
         columns: 3
-
+      - *ref_0
+      - type: heading
+        heading: Ventilator
+        heading_style: title
+        icon: mdi-fan
+      - type: custom:mushroom-template-card
+        primary: Power
+        secondary: ''
+        icon: mdi:power-standby
+        tap_action:
+          action: perform-action
+          perform_action: remote.send_command
+          target:
+            entity_id: remote.ir_blaster
+          data:
+            device: fan
+            command: power
+      - &ref_0
+        type: heading
+        icon: ''
+        heading: ' '
+        heading_style: subtitle
+      - square: false
+        type: grid
+        cards:
+          - type: custom:mushroom-template-card
+            primary: Fan speed
+            icon: mdi:fan-plus
+            tap_action:
+              action: perform-action
+              perform_action: remote.send_command
+              target:
+                entity_id: remote.ir_blaster
+              data:
+                device: fan
+                command: speed
+          - type: custom:mushroom-template-card
+            primary: Rotation
+            icon: mdi:rotate-360
+            tap_action:
+              action: perform-action
+              perform_action: remote.send_command
+              target:
+                entity_id: remote.ir_blaster
+              data:
+                device: fan
+                command: rotation
+          - type: custom:mushroom-template-card
+            primary: Timer
+            icon: mdi:timer-outline
+            tap_action:
+              action: perform-action
+              perform_action: remote.send_command
+              target:
+                entity_id: remote.ir_blaster
+              data:
+                device: fan
+                command: timer
+        columns: 3
 
