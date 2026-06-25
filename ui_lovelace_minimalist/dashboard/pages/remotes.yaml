@@ -377,7 +377,7 @@ sections:
                 device: stereo
                 command: volume-up
         columns: 3
-      - &ref_0
+      - *ref_0
       - type: heading
         heading: Ventilator
         heading_style: title
@@ -394,11 +394,7 @@ sections:
           data:
             device: fan
             command: power
-      - &ref_0
-        type: heading
-        icon: ''
-        heading: ' '
-        heading_style: subtitle
+      - *ref_0
       - square: false
         type: grid
         cards:
