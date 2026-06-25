@@ -377,7 +377,7 @@ sections:
                 device: stereo
                 command: volume-up
         columns: 3
-      - *ref_0
+      - &ref_0
       - type: heading
         heading: Ventilator
         heading_style: title
