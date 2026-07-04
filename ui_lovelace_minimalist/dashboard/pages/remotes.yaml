@@ -390,7 +390,9 @@ sections:
           action: perform-action
           perform_action: remote.send_command
           target:
-            entity_id: remote.ir_blaster
+            entity_id:
+              - remote.ir_blaster
+              - remote.rm_mini_3
           data:
             device: fan
             command: power
@@ -405,7 +407,9 @@ sections:
               action: perform-action
               perform_action: remote.send_command
               target:
-                entity_id: remote.ir_blaster
+                entity_id:
+                  - remote.ir_blaster
+                  - remote.rm_mini_3
               data:
                 device: fan
                 command: speed
@@ -416,7 +420,9 @@ sections:
               action: perform-action
               perform_action: remote.send_command
               target:
-                entity_id: remote.ir_blaster
+                entity_id:
+                  - remote.ir_blaster
+                  - remote.rm_mini_3
               data:
                 device: fan
                 command: rotation
@@ -427,7 +433,9 @@ sections:
               action: perform-action
               perform_action: remote.send_command
               target:
-                entity_id: remote.ir_blaster
+                entity_id:
+                  - remote.ir_blaster
+                  - remote.rm_mini_3
               data:
                 device: fan
                 command: timer
