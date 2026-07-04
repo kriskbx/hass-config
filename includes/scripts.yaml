@@ -385,6 +385,35 @@ script:
         data:
           device: hdmi_switch
           command: three
+  learn_fan_rm3:
+    sequence:
+      - service: remote.learn_command
+        target:
+          entity_id: remote.rm_mini_3
+        data:
+          device: fan
+          command: power
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.rm_mini_3
+        data:
+          device: fan
+          command: speed
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.rm_mini_3
+        data:
+          device: fan
+          command: rotation
+      - delay: 00:00:02
+      - service: remote.learn_command
+        target:
+          entity_id: remote.rm_mini_3
+        data:
+          device: fan
+          command: timer
   learn_fan:
     sequence:
       - service: remote.learn_command
