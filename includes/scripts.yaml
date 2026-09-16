@@ -256,7 +256,7 @@ script:
           command: app_segment_clean
           params:
             - segments:
-                - 19
+                - 20
               repeat: 2
 
   vacuum_bathroom:
@@ -272,7 +272,7 @@ script:
           command: app_segment_clean
           params:
             - segments:
-                - 17
+                - 18
               repeat: 3
 
   vacuum_entry:
@@ -288,7 +288,7 @@ script:
           command: app_segment_clean
           params:
             - segments:
-                - 18
+                - 19
               repeat: 2
 
   vacuum_office:
@@ -304,7 +304,7 @@ script:
           command: app_segment_clean
           params:
             - segments:
-                - 20
+                - 16
               repeat: 1
 
   vacuum_living_room:
@@ -320,7 +320,7 @@ script:
           command: app_segment_clean
           params:
             - segments:
-                - 16
+                - 17
               repeat: 1
 
   vacuum_apartment_except_office:
@@ -336,10 +336,10 @@ script:
           command: app_segment_clean
           params:
             - segments:
-                - 16
                 - 17
                 - 18
                 - 19
+                - 20
               repeat: 1
 
   vacuum_apartment:
