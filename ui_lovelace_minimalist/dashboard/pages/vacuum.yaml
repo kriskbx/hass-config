@@ -23,25 +23,77 @@ sections:
         map_source:
           camera: image.roborock_s7_map_0_custom
           crop:
-            top: 120
-            left: 120
-            right: 120
-            bottom: 120
+            top: 40
+            left: 40
+            right: 40
+            bottom: 40
         calibration_source:
           camera: true
         map_modes:
-          - template: vacuum_clean_zone_predefined
+          - template: vacuum_clean_segment
             predefined_selections:
-              # bathroom
-              - zones: [ [ 22324, 24789, 23988, 26570 ] ]
-              # hallway
-              - zones: [ [ 22060, 20890, 24055, 24819 ] ]
-              # kitchen
-              - zones: [ [ 24076, 19667, 27889, 23331 ] ]
-              # office
-              - zones: [ [ 24043, 23632, 27922, 27627 ] ]
-              # living room
-              - zones: [ [ 16145, 23599, 22073, 27660 ] ]
+              - id: "1"
+                outline:
+                  - - 21000
+                    - 19450
+                  - - 24700
+                    - 19450
+                  - - 24700
+                    - 23150
+                  - - 21000
+                    - 23150
+              - id: "2"
+                outline:
+                  - - 27050
+                    - 19450
+                  - - 32600
+                    - 19450
+                  - - 32600
+                    - 23200
+                  - - 27050
+                    - 23200
+              - id: "3"
+                outline:
+                  - - 24900
+                    - 20500
+                  - - 26400
+                    - 20500
+                  - - 26400
+                    - 21900
+                  - - 24900
+                    - 21900
+              - id: "4"
+                outline:
+                  - - 24600
+                    - 21900
+                  - - 27050
+                    - 21900
+                  - - 27050
+                    - 25900
+                  - - 24600
+                    - 25900
+              - id: "5"
+                outline:
+                  - - 21100
+                    - 23700
+                  - - 24850
+                    - 23700
+                  - - 24850
+                    - 27200
+                  - - 21100
+                    - 27200
+#          - template: vacuum_clean_zone_predefined
+#            predefined_selections:
+#              # bathroom
+#              - zones: [[24786, 20301, 26747, 22023]]
+#              # hallway
+#              - zones: [[24752, 22029, 27058, 26033]]
+#              # kitchen
+#              - zones: [[20948, 23516, 24777, 28004]]
+#              # office
+#              - zones: [[20879, 19298, 24847, 23336]]
+#              # living room
+#              - zones: [[27033, 19298, 32764, 23301]]
           - template: vacuum_goto
           - template: vacuum_clean_zone
 
