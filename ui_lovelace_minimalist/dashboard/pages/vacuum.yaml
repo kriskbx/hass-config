@@ -23,10 +23,10 @@ sections:
         map_source:
           camera: image.roborock_s7_map_0_custom
           crop:
-            top: 40
-            left: 40
-            right: 40
-            bottom: 40
+            top: 140
+            left: 150
+            right: 20
+            bottom: 110
         calibration_source:
           camera: true
         map_modes:
