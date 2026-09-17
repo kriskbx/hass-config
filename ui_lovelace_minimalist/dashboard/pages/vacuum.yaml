@@ -42,7 +42,7 @@ sections:
               - zones: [[20879, 19298, 24847, 23336]]
               # living room
               - zones: [[27033, 19298, 32764, 23301]]
-#          - template: vacuum_goto
+          - template: vacuum_goto
 #          - template: vacuum_clean_zone
       - type: custom:mushroom-vacuum-card
         entity: vacuum.roborock_s7
