@@ -49,17 +49,6 @@ sections:
             entity: switch.scene_romantic
           - type: custom:mushroom-template-card
             primary: ''
-            secondary: Bright
-            icon: mdi:brightness-7
-            layout: vertical
-            icon_color: yellow
-            badge_icon: ''
-            fill_container: false
-            tap_action:
-              action: toggle
-            entity: switch.scene_work
-          - type: custom:mushroom-template-card
-            primary: ''
             secondary: Cinema
             icon: mdi:movie-open
             layout: vertical
@@ -71,8 +60,8 @@ sections:
             entity: switch.scene_cinema
           - type: custom:mushroom-template-card
             primary: ''
-            secondary: Music
-            icon: mdi:music
+            secondary: Snapcast
+            icon: mdi:cast-audio
             layout: vertical
             icon_color: blue
             badge_icon: ''
@@ -80,6 +69,17 @@ sections:
             tap_action:
               action: toggle
             entity: switch.scene_music
+         - type: custom:mushroom-template-card
+            primary: ''
+            secondary: Vinyl
+            icon: mdi:album
+            layout: vertical
+            icon_color: yellow
+            badge_icon: ''
+            fill_container: false
+            tap_action:
+              action: toggle
+            entity: switch.scene_vinyl
           - type: custom:mushroom-template-card
             primary: ''
             secondary: Gaming

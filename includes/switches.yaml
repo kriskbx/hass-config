@@ -217,6 +217,24 @@ switch:
             data:
               entity_id: input_boolean.vacation
 
+      # -------- SCENE vinyl-------- #
+      scene_vinyl:
+        friendly_name: Vinyl
+        icon_template: mdi:album
+        value_template: "off"
+        turn_off:
+        turn_on:
+          - service: switch.turn_on
+            entity_id: switch.stereo
+          - service: shell_command.deactivate_speaker_livingroom
+          - service: remote.send_command
+            target:
+              entity_id: remote.ir_blaster
+            data:
+              device: stereo
+              command: phono
+          - service: script.normalize_volume
+
       # -------- SCENE music -------- #
       scene_music:
         friendly_name: Music
