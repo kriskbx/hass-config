@@ -69,7 +69,7 @@ sections:
             tap_action:
               action: toggle
             entity: switch.scene_music
-         - type: custom:mushroom-template-card
+          - type: custom:mushroom-template-card
             primary: ''
             secondary: Vinyl
             icon: mdi:album
